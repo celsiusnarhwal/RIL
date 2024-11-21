@@ -21,7 +21,6 @@ dependencies = [
     "semver>=3.0.2",
 ]
 
-
 [dependency-groups]
 docs = [
     "artwall",
