@@ -299,15 +299,6 @@ wheels = [
 ]
 
 [[package]]
-name = "colour"
-version = "0.1.5"
-source = { registry = "https://pypi.org/simple" }
-sdist = { url = "https://files.pythonhosted.org/packages/a0/d4/5911a7618acddc3f594ddf144ecd8a03c29074a540f4494670ad8f153efe/colour-0.1.5.tar.gz", hash = "sha256:af20120fefd2afede8b001fbef2ea9da70ad7d49fafdb6489025dae8745c3aee", size = 24776 }
-wheels = [
-    { url = "https://files.pythonhosted.org/packages/74/46/e81907704ab203206769dee1385dc77e1407576ff8f50a0681d0a6b541be/colour-0.1.5-py2.py3-none-any.whl", hash = "sha256:33f6db9d564fadc16e59921a56999b79571160ce09916303d35346dddc17978c", size = 23772 },
-]
-
-[[package]]
 name = "cryptography"
 version = "43.0.3"
 source = { registry = "https://pypi.org/simple" }
@@ -1670,7 +1661,6 @@ version = "1.0.0"
 source = { editable = "." }
 dependencies = [
     { name = "casefy" },
-    { name = "colour" },
     { name = "deepmerge" },
     { name = "hishel" },
     { name = "inflect" },
@@ -1680,7 +1670,6 @@ dependencies = [
     { name = "pydantic-extra-types" },
     { name = "pydantic-settings" },
     { name = "reflex" },
-    { name = "rich" },
     { name = "semver" },
 ]
 
@@ -1696,7 +1685,6 @@ docs = [
 [package.metadata]
 requires-dist = [
     { name = "casefy", specifier = ">=0.1.7" },
-    { name = "colour", specifier = ">=0.1.5" },
     { name = "deepmerge", specifier = ">=2.0" },
     { name = "hishel", specifier = ">=0.1.1" },
     { name = "inflect", specifier = ">=7.4.0" },
@@ -1706,7 +1694,6 @@ requires-dist = [
     { name = "pydantic-extra-types", specifier = ">=2.10.0" },
     { name = "pydantic-settings", specifier = ">=2.6.1" },
     { name = "reflex", specifier = ">=0.6.5" },
-    { name = "rich", specifier = ">=13.9.4" },
     { name = "semver", specifier = ">=3.0.2" },
 ]
 
