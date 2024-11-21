@@ -35,6 +35,9 @@ docs = [
 mkdocs-material = { git = "https://github.com/squidfunk/mkdocs-material-insiders" }
 artwall = { git = "https://github.com/celsiusnarhwal/artwall" }
 
+[tool.ruff.lint]
+ignore = ["F403"]
+
 [tool.hatch.build.targets.wheel]
 packages = ["RIL"]
 
