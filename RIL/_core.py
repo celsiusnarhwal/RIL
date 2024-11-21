@@ -70,33 +70,6 @@ class Base(rx.Component):
     def _create(cls, *children, **props) -> rx.Component:
         return super().create(*children, **props)
 
-    @classmethod
-    def _validate_prop_type(cls, prop_name: str, prop_value: t.Any):
-        outer_type = cls.get_fields()[prop_name].outer_type_
-        expected_type = t.get_args(outer_type)[0]
-
-        return utils.is_instance(prop_value, expected_type)
-
-    @classmethod
-    @validate_call
-    def _create_with_prevalidation(cls, *children, **props):
-        if not cls.prop_cls:
-            raise Exception(f"No prop class set for {cls.__name__}")
-
-        props = cls.prop_cls.validate_props(props)
-        component_model = cls._reproduce(props=props)
-
-        return component_model._create(*children, **props.pop("_extra", {}))
-
-
-class Empty:
-    """
-    Sentinel class to signal an empty value when `None` is not sufficient.
-    """
-
-    def __bool__(self):
-        return False
-
 
 def validate_props(func):
     def wrapper(*args, **props):
