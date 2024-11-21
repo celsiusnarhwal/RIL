@@ -10,7 +10,7 @@ import typing as t
 import casefy
 import inflect as ifl
 import reflex as rx
-from pydantic import validate_call, Field, field_serializer, model_serializer
+from pydantic import Field, field_serializer, model_serializer
 from pydantic_extra_types.color import Color
 from reflex.utils.imports import ImportDict
 
@@ -110,5 +110,6 @@ class MaterialSymbol(Base):
         )
 
         return component
+
 
 material = MaterialSymbol.create

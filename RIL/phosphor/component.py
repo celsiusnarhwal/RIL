@@ -2,7 +2,7 @@ import typing as t
 
 import casefy
 import reflex as rx
-from pydantic import validate_call, field_serializer, model_serializer, ConfigDict
+from pydantic import ConfigDict, field_serializer, model_serializer
 from pydantic_extra_types.color import Color
 from reflex import Component
 from reflex.utils.imports import ImportDict

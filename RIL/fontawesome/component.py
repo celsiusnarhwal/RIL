@@ -225,12 +225,16 @@ class FontAwesomeIcon(Base):
         if isinstance(mask, cls):
             props.pop("mask")
             lib_dependencies.extend(mask.lib_dependencies)
-            imports = always_merger.merge(copy.deepcopy(imports), mask.add_imports(mask))
+            imports = always_merger.merge(
+                copy.deepcopy(imports), mask.add_imports(mask)
+            )
 
             # The actual value of the mask prop is the raw JSX reference to the masking icon.
             props_to_override["mask"] = (rx.Var[t.Any], mask.icon)
         elif mask is not None:
-            raise TypeError(f"The mask of a Font Awesome icon must be another Font Awesome icon and not {type(mask)}")
+            raise TypeError(
+                f"The mask of a Font Awesome icon must be another Font Awesome icon and not {type(mask)}"
+            )
 
         # We create_material_symbol a new component class as a subclass of this one, overriding props as necessary.
         component_model = cls._reproduce(

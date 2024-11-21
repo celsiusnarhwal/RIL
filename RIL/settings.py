@@ -7,7 +7,7 @@ import httpx
 import semver
 from jinja2 import Environment, FileSystemLoader
 from loguru import logger
-from pydantic import AnyHttpUrl, Field, model_validator, BaseModel
+from pydantic import AnyHttpUrl, BaseModel, Field, model_validator
 from pydantic_extra_types.color import Color
 from pydantic_settings import (
     BaseSettings,
@@ -16,7 +16,6 @@ from pydantic_settings import (
     SettingsConfigDict,
     TomlConfigSettingsSource,
 )
-from pydantic_settings.sources import PydanticBaseEnvSettingsSource
 from reflex.utils.prerequisites import get_web_dir
 
 __all__ = ["settings"]
@@ -156,7 +155,7 @@ class FontAwesomePackageTokenSetting(BaseSettings):
         dotenv_settings: PydanticBaseSettingsSource,
         file_secret_settings: PydanticBaseSettingsSource,
     ) -> tuple[PydanticBaseSettingsSource, ...]:
-        return dotenv_settings,
+        return (dotenv_settings,)
 
     @model_validator(mode="after")
     def set_token(self):

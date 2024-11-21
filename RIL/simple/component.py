@@ -6,8 +6,7 @@ https://ril.celsiusnarhwal.dev/simple
 
 import typing as t
 
-import casefy
-from pydantic import validate_call, field_serializer
+from pydantic import field_serializer
 from pydantic_extra_types.color import Color
 
 from RIL._core import Base, Props, validate_props

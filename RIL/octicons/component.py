@@ -8,7 +8,7 @@ import re
 import typing as t
 
 import casefy
-from pydantic import validate_call, field_serializer, Field
+from pydantic import Field, field_serializer
 from pydantic_extra_types.color import Color
 
 from RIL._core import Base, Props, validate_props
