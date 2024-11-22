@@ -1657,7 +1657,7 @@ wheels = [
 
 [[package]]
 name = "reflex-icon-library"
-version = "1.0.0"
+version = "0.1.dev49+g3b0482f.d20241122"
 source = { editable = "." }
 dependencies = [
     { name = "casefy" },
