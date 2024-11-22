@@ -68,7 +68,6 @@ theme:
     code: Roboto Mono
     favicon: fontawesome/solid/book
   icon:
-#    logo: fontawesome/brands/font-awesome
     repo: fontawesome/brands/github
     admonition:
       note: fontawesome/solid/notes
