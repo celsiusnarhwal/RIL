@@ -31,9 +31,6 @@ jobs:
       - name: Install Python
         run: uv python install
 
-      - name: Install Dependencies
-        run: uv sync
-
       - name: Build Package
         run: uv build
 
