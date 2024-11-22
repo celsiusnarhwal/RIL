@@ -1657,13 +1657,12 @@ wheels = [
 
 [[package]]
 name = "reflex-icon-library"
-version = "0.1.dev49+g3b0482f.d20241122"
+version = "0.1.dev53+g8ee0426.d20241122"
 source = { editable = "." }
 dependencies = [
     { name = "casefy" },
     { name = "deepmerge" },
     { name = "hishel" },
-    { name = "iconoclast" },
     { name = "inflect" },
     { name = "jinja2" },
     { name = "loguru" },
@@ -1688,7 +1687,6 @@ requires-dist = [
     { name = "casefy", specifier = ">=0.1.7" },
     { name = "deepmerge", specifier = ">=2.0" },
     { name = "hishel", specifier = ">=0.1.1" },
-    { name = "iconoclast", specifier = ">=3.0.1" },
     { name = "inflect", specifier = ">=7.4.0" },
     { name = "jinja2", specifier = ">=3.1.4" },
     { name = "loguru", specifier = ">=0.7.2" },
