@@ -16,19 +16,10 @@ jobs:
     permissions:
       id-token: write
     steps:
-      - name: Generate PAT
-        id: pat
-        uses: qoomon/actions--access-token@v3
-        with:
-          scope: owner
-          permissions: |
-            contents: read
-
       - name: Checkout ${{ github.repository }}
         uses: actions/checkout@v4
         with:
-          repository: squidfunk/mkdocs-material-insiders
-          token: ${{ steps.pat.outputs.token }}
+          token: ${{ secrets.GH_PAT }}
 
       - name: Set Up uv
         uses: astral-sh/setup-uv@v3
