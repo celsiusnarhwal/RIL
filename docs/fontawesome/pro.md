@@ -73,7 +73,7 @@ Using Kits with RIL is a simple, four-step, process.
 First, follow the instructions above to set up Font Awesome Pro.
 
 Second, [choose the Kit you want to use](https://fontawesome.com/kits)
-(or [create a new one](https://fontawesome.com/kits)), head into its settings, and ensure **Features** > 
+(or [create a new one](https://fontawesome.com/kits/new)), head into its settings, and ensure **Features** > 
 **Enable Installing Your Kit as a Package** is checked.
 
 ![Font Awesome Pro "Enable Installing Your Kit as a Package" setting](../assets/images/fontawesome-enable-kit-package-setting.png){ align=left }
