@@ -14,8 +14,14 @@ jobs:
     name: Bulid Documentation
     runs-on: ubuntu-latest
     steps:
+      - name: Generate PAT
+        id: pat
+        uses: qoomon/actions--access-token@v3
+
       - name: Checkout ${{ github.repository }}
         uses: actions/checkout@v4
+        with:
+          token: ${{ steps.pat.outputs.token }}
 
       - name: Set Up uv
         uses: astral-sh/setup-uv@v3
