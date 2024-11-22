@@ -20,13 +20,11 @@ jobs:
         id: pat
         uses: qoomon/actions--access-token@v3
         with:
-          repository: |
-            - ${{ github.repository }}
-            - squidfunk/mkdocs-material-insiders
+          scope: owner
           permissions: |
             contents: read
 
-      - name: Checkout ${{ github.repository }}
+      - name: Checkout squidfunk/mkdocs-material-insiders
         uses: actions/checkout@v4
         with:
           token: ${{ steps.pat.outputs.token }}
