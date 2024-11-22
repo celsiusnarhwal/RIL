@@ -1,7 +1,7 @@
 [project]
 name = "reflex-icon-library"
 version = "1.0.0"
-description = "Add your description here"
+description = "Tens of thousands of icons for any Reflex project"
 readme = "README.md"
 authors = [
     { name = "celsius narhwal", email = "hello@celsiusnarhwal.dev" }
