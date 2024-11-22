@@ -20,8 +20,9 @@ jobs:
         id: pat
         uses: qoomon/actions--access-token@v3
         with:
+          scope: owner
           permissions: |
-            contents: write
+            contents: read
 
       - name: Checkout ${{ github.repository }}
         uses: actions/checkout@v4
