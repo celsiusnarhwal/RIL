@@ -1,4 +1,5 @@
 from RIL._core import Base
+import typing as t
 
 class SimpleIcon(Base):
     @classmethod
@@ -8,6 +9,7 @@ class SimpleIcon(Base):
         title: str = None,
         color: str | tuple = None,
         size: str | int = None,
+        version: int | t.Literal["default"] = None,
     ):
         """
         Create a Simple Icon.
@@ -31,6 +33,12 @@ class SimpleIcon(Base):
 
         size : str | int, optional
             The size of the icon. May be an integer (in pixels) or a CSS size string (e.g., `'1rem'`).
+
+        version : int | {"default"}, optional
+            The major version of Simple Icons to use for this icon. May be "latest" or an integer
+            greater than or equal to 10.
+
+            Defaults to the value of the `simple.version` setting.
         """
 
 simple = si = SimpleIcon.create
