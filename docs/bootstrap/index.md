@@ -11,8 +11,6 @@ hide:
 
 ## Usage
 
-Usage is very straightfoward:
-
 1. [Find the icon you want](https://icons.getbootstrap.com)
 2. Pass its name to `#!python icons.bootstrap`
 

@@ -11,8 +11,6 @@ its [Primer](https://primer.style) design system.
 
 ## Usage
 
-Usage is very straightfoward:
-
 1. [Find the icon you want](https://primer.style/octicons)
 2. Pass its name to `#!python icons.octicons`
 

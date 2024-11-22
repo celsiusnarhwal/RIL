@@ -11,8 +11,6 @@ for use with its [Material](https://material.io) design system.
 
 ## Usage
 
-Usage is very straightfoward:
-
 1. [Find the icon you want](https://fonts.google.com/icons)
 2. Pass its name to `#!python icons.material`
 

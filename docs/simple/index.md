@@ -11,9 +11,6 @@ hide:
 ## Usage
 
 Icons from Simple Icons can be used via `#!python icons.simple` or `#!python icons.si`.
-`#!python icons.simple` will be used throughout the rest of the documentation.
-
-Usage is very straightfoward:
 
 1. [Find the icon you want](https://simpleicons.org)
 2. Pass its name to `#!python icons.simple`

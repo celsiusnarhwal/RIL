@@ -10,8 +10,6 @@ hide:
 
 ## Usage
 
-Usage is very straightfoward:
-
 1. [Find the icon you want](https://phosphoricons.com)
 2. Pass its name to `#!python icons.phosphor`
 
