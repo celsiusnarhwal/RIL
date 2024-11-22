@@ -7,8 +7,6 @@ from pydantic_extra_types.color import Color
 
 from RIL._core import Base, Props, validate_props
 
-NPM_PACKAGE = "react-bootstrap-icons@^1"
-
 
 class BootstrapIconProps(Props):
     color: Color = None
@@ -38,7 +36,7 @@ class BootstrapIconProps(Props):
 
 
 class BootstrapIcon(Base):
-    library = NPM_PACKAGE
+    library = "react-bootstrap-icons@^1"
 
     @classmethod
     @validate_props
