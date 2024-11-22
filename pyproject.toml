@@ -24,9 +24,9 @@ dependencies = [
 
 [project.urls]
 Homepage = "https://ril.celsiusnarhwal.dev"
-Repository = "https://github.com/celsiusnarhwal/ril"
-Issues = "https://github.com/celsiusnarhwal/ril/issues"
-Changelog = "https://github.com/celsiusnarhwal/ril/blob/main/CHANGELOG.md"
+Repository = "https://github.com/celsiusnarhwal/RIL"
+Issues = "https://github.com/celsiusnarhwal/RIL/issues"
+Changelog = "https://github.com/celsiusnarhwal/RIL/blob/main/CHANGELOG.md"
 
 [dependency-groups]
 docs = [
