@@ -24,9 +24,10 @@ jobs:
           permissions: |
             contents: read
 
-      - name: Checkout squidfunk/mkdocs-material-insiders
+      - name: Checkout ${{ github.repository }}
         uses: actions/checkout@v4
         with:
+          repository: squidfunk/mkdocs-material-insiders
           token: ${{ steps.pat.outputs.token }}
 
       - name: Set Up uv
