@@ -72,7 +72,7 @@ pass its name to the method of your desired style.
     icons.fa.kit("my-custom-icon")
     ```
 
-The [Solid](https://fontawesome.com/search?f=classic&s=solid) and [Brands](https://fontawesome.com/search?f=brands)
+The [Solid](https://fontawesome.com/search?f=classic&s=solid) and [Brands](https://fontawesome.com/search?ic=brands)
 styles are available for free[^2]; other styles require [Font Awesome Pro](pro.md).
 
 !!! tip

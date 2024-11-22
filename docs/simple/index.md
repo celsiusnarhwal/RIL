@@ -10,11 +10,20 @@ hide:
 
 ## Usage
 
-Icons from Simple Icons can be used via `#!python icons.simple` or `#!python icons.si`.
+<div class="annotate" markdown>
 
 1. [Find the icon you want](https://simpleicons.org)
-2. Pass its name to `#!python icons.simple`
+2. Pass its name to `#!python icons.simple` (1)
 
+</div>
+
+1. `#!python icons.si` works, too.
+    ```python
+    import RIL as icons
+    
+    icons.si("simple icons")
+    ```
+   
 ```python
 import RIL as icons
 
