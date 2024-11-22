@@ -59,7 +59,7 @@ version via the `simple.version` setting.
     `simple.version` is the highest major version of Simple Icons that RIL may use (or `latest`). RIL
     will use the newest version of Simple Icons available within this constraint.
 
-    Must be greater than or equal to 10. Defaults to `latest`.
+    If this is an integer, it must be greater than or equal to 10. Defaults to `latest`.
 
     === "pyproject.toml"
 

@@ -37,7 +37,7 @@ First, enable Font Awesome Pro via the `fontawesome.pro_enabled` setting.
 
 
 Second, set the `FONTAWESOME_PACKAGE_TOKEN` environment variable to your 
-[Font Awesome package token](https://com/account/general#tokens).
+[Font Awesome package token](https://fontawesome.com/account/general#tokens).
 
 ???+ config "`FONTAWESOME_PACKAGE_TOKEN`: Your Font Awesome package token."
 
