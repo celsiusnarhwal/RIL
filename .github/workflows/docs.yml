@@ -20,7 +20,9 @@ jobs:
         id: pat
         uses: qoomon/actions--access-token@v3
         with:
-          scope: owner
+          repository: |
+            - ${{ github.repository }}
+            - squidfunk/mkdocs-material-insiders
           permissions: |
             contents: read
 
