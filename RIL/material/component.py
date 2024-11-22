@@ -72,7 +72,7 @@ class MaterialSymbol(Base):
 
     def add_imports(self) -> ImportDict | list[ImportDict]:
         return {
-            "@nine-thirty-five/material-symbols-react": rx.ImportVar(
+            "@nine-thirty-five/material-symbols-react@^1": rx.ImportVar(
                 None, render=False, transpile=True
             )
         }
