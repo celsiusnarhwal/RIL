@@ -13,6 +13,8 @@ jobs:
   build:
     name: Bulid Documentation
     runs-on: ubuntu-latest
+    permissions:
+      id-token: write
     steps:
       - name: Generate PAT
         id: pat
