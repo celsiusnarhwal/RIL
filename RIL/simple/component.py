@@ -116,14 +116,14 @@ class SimpleIconProps(Props):
                     f"Simple Icons <= {self.version}."
                 )
 
+                exit(1)
+
     @field_serializer("color")
     def serialize_color_as_hex(self, color: Color | t.Literal["default"] | None):
         return color.as_hex() if color and color != "default" else color
 
 
 class SimpleIcon(Base):
-    # library = settings.simple.package.component_library
-
     @property
     def import_var(self):
         return rx.ImportVar(self.tag, install=False)
