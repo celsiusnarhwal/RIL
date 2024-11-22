@@ -19,7 +19,7 @@ jobs:
       - name: Set Up Git Credentials
         uses: de-vri-es/setup-git-credentials@v2
         with:
-          credentials: ${{ secrets.CREDENTIALS }}
+          credentials: https://username:${{ secrets.GH_PAT }}@github.com
 
       - name: Checkout ${{ github.repository }}
         uses: actions/checkout@v4
