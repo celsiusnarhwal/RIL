@@ -15,8 +15,6 @@ jobs:
   build:
     name: Bulid Documentation
     runs-on: ubuntu-latest
-    permissions:
-      id-token: write
     steps:
       - name: Set Up Git Credentials
         uses: de-vri-es/setup-git-credentials@v2
