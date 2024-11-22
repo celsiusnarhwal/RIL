@@ -426,5 +426,4 @@ class FontAwesome(rx.ComponentNamespace):
             Whether to invert the icon's colors.
         """
 
-fontawesome = FontAwesome()
-fa = fontawesome
+fontawesome = fa = FontAwesome()

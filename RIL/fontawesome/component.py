@@ -286,5 +286,4 @@ class FontAwesome(rx.ComponentNamespace):
     sharp_duotone = FontAwesomeSharpDuotone()
 
 
-fontawesome = FontAwesome()
-fa = fontawesome
+fontawesome = fa = FontAwesome()

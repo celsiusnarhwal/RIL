@@ -33,5 +33,4 @@ class SimpleIcon(Base):
             The size of the icon. May be an integer (in pixels) or a CSS size string (e.g., `'1rem'`).
         """
 
-simple = SimpleIcon.create
-si = simple
+simple = si = SimpleIcon.create

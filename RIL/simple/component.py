@@ -57,5 +57,4 @@ class SimpleIcon(Base):
         return component
 
 
-simple = SimpleIcon.create
-si = simple
+simple = si = SimpleIcon.create
