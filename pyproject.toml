@@ -23,10 +23,10 @@ dependencies = [
 ]
 
 [project.urls]
-homepage = "https://ril.celsiusnarhwal.dev"
-repository = "https://github.com/celsiusnarhwal/ril"
-issues = "https://github.com/celsiusnarhwal/ril/issues"
-changelog = "https://github.com/celsiusnarhwal/ril/blob/main/CHANGELOG.md"
+Homepage = "https://ril.celsiusnarhwal.dev"
+Repository = "https://github.com/celsiusnarhwal/ril"
+Issues = "https://github.com/celsiusnarhwal/ril/issues"
+Changelog = "https://github.com/celsiusnarhwal/ril/blob/main/CHANGELOG.md"
 
 [dependency-groups]
 docs = [
