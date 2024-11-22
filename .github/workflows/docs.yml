@@ -29,8 +29,6 @@ jobs:
         with:
           enable-cache: true
 
-      - run: git clone https://github.com/squidfunk/mkdocs-material-insiders
-
       - name: Install Python
         run: uv python install
 
