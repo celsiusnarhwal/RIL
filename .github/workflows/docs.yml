@@ -38,7 +38,9 @@ jobs:
         run: uv sync --only-group docs
 
       - name: Build Documentation
-        run: uv run icl install && uv run mkdocs build
+        run: uv run icl install -q && uv run mkdocs build
+        env:
+          FONTAWESOME_PKG_TOKEN: ${{ secrets.FONTAWESOME_PKG_TOKEN }}
 
       - name: Upload Artifact
         uses: actions/upload-artifact@v4
