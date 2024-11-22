@@ -126,7 +126,7 @@ RIL can be configured through a `pyproject.toml` file, an `ril.toml` file, or en
     `{LIBRARY}` is one of `FONTAWESOME`, `SIMPLE`, or `PHOSPHOR` and `{SETTING_NAME}` is the name of the setting you 
     want to configure. Variable names are case-insensitive.
 
-    Note that there are two underscores between {LIBRARY} and {SETTING_NAME}.
+    Note that there are two underscores between `{LIBRARY}` and `{SETTING_NAME}`.
 
     If you put your environment variables in a `.env` file located in the current working directory,
     `RIL` will read and apply it automatically without the need for additional libraries or tools.
