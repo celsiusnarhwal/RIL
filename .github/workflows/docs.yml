@@ -17,6 +17,9 @@ jobs:
       - name: Generate PAT
         id: pat
         uses: qoomon/actions--access-token@v3
+        with:
+          permissions: |
+            contents: write
 
       - name: Checkout ${{ github.repository }}
         uses: actions/checkout@v4
