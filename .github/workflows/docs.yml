@@ -19,7 +19,10 @@ jobs:
       - name: Checkout ${{ github.repository }}
         uses: actions/checkout@v4
         with:
+          repository: squidfunk/mkdocs-material-insiders
           token: ${{ secrets.GH_PAT }}
+
+      - run: exit 1
 
       - name: Set Up uv
         uses: astral-sh/setup-uv@v3
