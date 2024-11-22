@@ -15,8 +15,6 @@ from RIL._core import Base, Props, validate_props
 
 __all__ = ["octicons"]
 
-NPM_PACKAGE = "@primer/octicons-react@^19"
-
 
 class OcticonProps(Props):
     color: Color = Field(None, serialization_alias="fill")
@@ -42,7 +40,7 @@ class OcticonProps(Props):
 
 
 class Octicon(Base):
-    library = NPM_PACKAGE
+    library = "@primer/octicons-react@^19"
 
     @classmethod
     @validate_props
