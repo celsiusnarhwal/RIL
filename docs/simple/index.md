@@ -34,24 +34,23 @@ Icon names are case-inensitive.
 
 ## Props
 
-| **Name**  | **Type**                           | **Description**                                                                                                                                                                                                                                                                                    |   |
-|-----------|------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---|
-| ``title`` | `#!python str`                     | A short, accessible, title for the icon.                                                                                                       |   |
-| ``color`` | `#!python str` \| `#!python tuple` | The color of the icon. May be a hex code, a tuple of RGB, RGBA, or HSL values, or any valid [CSS Color Module Level 3](https://www.w3.org/TR/css-color-3/#svg-color) color name. It may also be `#!python "default"`, in which case the icon will use the color it has been assigned by Simple Icons. |   |
-| ``size``    | `#!python int` \| `#!python str`   | The size of the icon. May be an integer (in pixels) or a CSS size string (e.g., `#!python "1rem"`).                                                                                                                                                                                                |   |
+| **Name** | **Type**                             | **Description**                                                                                                                                                                                                                                                                                       |                                                                                                                                                                                                                                                                                            |
+|---------|--------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `title` | `#!python str`                       | A short, accessible, title for the icon.                                                                                                                                                                                                                                                              |                                                                                                                                                                                                                                                                                            |
+| `color` | `#!python str` \| `#!python tuple`   | The color of the icon. May be a hex code, a tuple of RGB, RGBA, or HSL values, or any valid [CSS Color Module Level 3](https://www.w3.org/TR/css-color-3/#svg-color) color name. It may also be `#!python "default"`, in which case the icon will use the color it has been assigned by Simple Icons. |                                                                                                                                                                                                                                                                                            |
+| `size` | `#!python int` \| `#!python str`     | The size of the icon. May be an integer (in pixels) or a CSS size string (e.g., `#!python "1rem"`).                                                                                                                                                                                                   |                                                                                                                                                                                                                                                                                            |
+| `version` | `#!python int` \| `#!python "latest"` | The major version of Simple Icons to use for this icon. May be `#!python "latest"` or an integer greater than or equal to 10. Defaults to the value of the [`simple.version` setting](#versioning).                                                                                                     |   |
 
 ## Versioning
 
-Simple Icons routinely releases major versions that remove icons. RIL allows you to avoid surprise icon removals by
-setting the `simple.version` setting to the major version of Simple Icons you want to use.
+In addition to setting a version per-icon via the `version` prop, RIL also allows you to set a default Simple Icons
+version via the `simple.version` setting.
 
 ???+ config "`simple.version`: Controls the major version of Simple Icons used by RIL."
-    `simple.version` places an upper boundary on the major version of Simple Icons that
-    RIL will use. If set, RIL will use the newest version of 
-    [@icons-pack/react-simple-icons](https://npmjs.org/@icons-pack/react-simple-icons) that depends on
-    a version of Simple Icons with a major verion number less than or equal to `simple.version`.
+    `simple.version` is the highest major version of Simple Icons that RIL may use (or `latest`). RIL
+    will use the newest version of Simple Icons available within this constraint.
 
-    `simple.version` must be greater than or equal to 10.
+    Must be greater than or equal to 10. Defaults to `latest`.
 
     === "pyproject.toml"
 
