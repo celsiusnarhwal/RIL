@@ -89,9 +89,6 @@ class PhosphorIcon(Base):
         component.tag = casefy.pascalcase(icon.casefold())
         component.alias = "Phosphor" + component.tag
 
-        if props.weight:
-            component.alias += props.weight.capitalize()
-
         return component
 
     @staticmethod
