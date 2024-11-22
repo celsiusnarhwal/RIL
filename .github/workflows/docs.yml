@@ -1,5 +1,10 @@
 on:
   push:
+    paths:
+      - docs/**
+      - mkdocs.yml
+      - pyproject.toml
+      - .github/workflows/docs.yml
 
   workflow_dispatch:
 
@@ -18,7 +23,7 @@ jobs:
           enable-cache: true
 
       - name: Install Python
-        run: uv install python
+        run: uv python install
 
       - name: Install Dependencies
         run: uv sync --only-group docs
