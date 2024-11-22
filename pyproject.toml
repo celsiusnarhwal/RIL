@@ -31,8 +31,8 @@ docs = [
 ]
 
 [tool.uv.sources]
-mkdocs-material = { git = "https://github.com/squidfunk/mkdocs-material-insiders" }
 artwall = { git = "https://github.com/celsiusnarhwal/artwall" }
+mkdocs-material = { git = "https://github.com/squidfunk/mkdocs-material-insiders" }
 
 [tool.ruff.lint]
 ignore = ["F403"]
