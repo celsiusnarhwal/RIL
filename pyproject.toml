@@ -1,11 +1,11 @@
 [project]
 name = "reflex-icon-library"
-version = "1.0.0"
 description = "Tens of thousands of icons for any Reflex project"
 readme = "README.md"
 authors = [
     { name = "celsius narhwal", email = "hello@celsiusnarhwal.dev" }
 ]
+dynamic = ["version"]
 requires-python = ">=3.10"
 dependencies = [
     "casefy>=0.1.7",
@@ -21,6 +21,12 @@ dependencies = [
     "reflex>=0.6.5",
     "semver>=3.0.2",
 ]
+
+[project.urls]
+homepage = "https://ril.celsiusnarhwal.dev"
+repository = "https://github.com/celsiusnarhwal/ril"
+issues = "https://github.com/celsiusnarhwal/ril/issues"
+changelog = "https://github.com/celsiusnarhwal/ril/blob/main/CHANGELOG.md"
 
 [dependency-groups]
 docs = [
@@ -38,12 +44,9 @@ mkdocs-material = { git = "https://github.com/squidfunk/mkdocs-material-insiders
 [tool.ruff.lint]
 ignore = ["F403"]
 
-[tool.poe.tasks]
-docs.shell = "uv run icl install && uv run mkdocs build"
-
-[tool.hatch.build.targets.wheel]
-packages = ["RIL"]
+[tool.pdm.version]
+source = "scm"
 
 [build-system]
-requires = ["hatchling"]
-build-backend = "hatchling.build"
+requires = ["pdm-backend"]
+build-backend = "pdm.backend"
