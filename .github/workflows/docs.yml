@@ -17,9 +17,9 @@ jobs:
       id-token: write
     steps:
       - name: Set Up Git Credentials
-        uses: de-vri-es/setup-git-credentials@v2
+        uses: oleksiyrudenko/gha-git-credentials@v2
         with:
-          credentials: https://username:${{ secrets.GH_PAT }}@github.com
+          token: ${{ secrets.GH_PAT }}
 
       - name: Checkout ${{ github.repository }}
         uses: actions/checkout@v4
