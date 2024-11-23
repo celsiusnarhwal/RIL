@@ -150,8 +150,8 @@ extra:
       link: https://bsky.app/profile/celsiusnarhwal.dev
       name: bsky.app/profile/celsiusnarhwal.dev
     - icon: fontawesome/solid/envelope
-      link: hello@celsiusnarhwal.dev
-      name: Email hello@celsiusnarhwal.dev
+      link: mailto:hello@celsiusnarhwal.dev
+      name: hello@celsiusnarhwal.dev
     - icon: celsius
       link: https://celsiusnarhwal.dev
       name: celsiusnarhwal.dev
