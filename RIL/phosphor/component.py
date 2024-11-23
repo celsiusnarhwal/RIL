@@ -65,7 +65,6 @@ class PhosphorIconContextProps(PhosphorIconProps):
 
 class PhosphorIconContext(Base):
     tag = "PhosphorIconContext.Provider"
-    prop_cls = PhosphorIconContextProps
 
     def add_imports(self) -> ImportDict | list[ImportDict]:
         return {NPM_PACKAGE: [rx.ImportVar("IconContext", alias="PhosphorIconContext")]}
