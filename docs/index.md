@@ -10,7 +10,7 @@ The Reflex Icon Library (RIL) is your one-stop icon shop for [Reflex](https://re
 It includes the icon libraries of [Font Awesome](https://fontawesome.com), [Simple Icons](https://simpleicons.org),
 Google's [Material Symbols](https://fonts.google.com/icons),
 GitHub's [Octicons](https://primer.style/octicons), [Phosphor](https://phosphoricons.com/),
-and [Bootstrap Icons](https://icons.getbootstrap.com/), packaging over 12,000[^1] icons in total.
+and [Bootstrap Icons](https://icons.getbootstrap.com/), packaging over 12,000 icons in total.
 
 ## Installation
 
@@ -146,5 +146,3 @@ Just have Reflex to reinstall your project's frontend packages and you'll be goo
 ```shell
 reflex init && reflex run
 ```
-
-[^1]: For [Font Awesome Pro](fontawesome/pro.md) subscribers, this number jumps to over 40,000.
