@@ -142,6 +142,8 @@ extra:
   social:
     - icon: fontawesome/brands/github
       link: https://github.com/celsiusnarhwal
+    - icon: fontawesome/brands/python
+      link: https://pypi.org/project/reflex-icon-library
     - icon: simple/bluesky
       link: https://bsky.app/profile/celsiusnarhwal.dev
     - icon: fontawesome/solid/envelope
