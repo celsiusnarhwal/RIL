@@ -142,12 +142,16 @@ extra:
   social:
     - icon: fontawesome/brands/github
       link: https://github.com/celsiusnarhwal
+      name: github.com/celsiusnarhwal
     - icon: fontawesome/brands/python
       link: https://pypi.org/project/reflex-icon-library
+      name: The Reflex Icon Library on PyPI
     - icon: simple/bluesky
       link: https://bsky.app/profile/celsiusnarhwal.dev
+      name: bsky.app/profile/celsiusnarhwal.dev
     - icon: fontawesome/solid/envelope
-      link: mailto:hello@celsiusnarhwal.dev
+      link: hello@celsiusnarhwal.dev
+      name: Email hello@celsiusnarhwal.dev
     - icon: celsius
       link: https://celsiusnarhwal.dev
       name: celsiusnarhwal.dev
