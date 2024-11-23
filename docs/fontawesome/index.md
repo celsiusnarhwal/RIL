@@ -76,7 +76,7 @@ The [Classic Solid](https://fontawesome.com/search?f=classic&s=solid) and [Brand
 styles are available for free[^2]; other styles require [Font Awesome Pro](pro.md).
 
 !!! tip
-    Solid is the component's default style and can also be used by calling `fa` directly:
+    Classic Solid is the component's default style and can also be used by calling `fa` directly:
 
     ```python
     import RIL as icons
