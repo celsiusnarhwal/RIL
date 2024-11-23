@@ -131,8 +131,6 @@ having Reflex reinstall your project's frontend packages:
 reflex init && reflex run
 ```
 
-This process will consume registry bandwith, so try not to do it too often.
-
 ## Continous integration
 
 If you plan to build your Reflex project's frontend in a continuous integration environment, you are strongly advised to
