@@ -236,7 +236,7 @@ class FontAwesomeIcon(Base):
                 f"The mask of a Font Awesome icon must be another Font Awesome icon and not {type(mask)}"
             )
 
-        # We create_material_symbol a new component class as a subclass of this one, overriding props as necessary.
+        # We create a new component class as a subclass of this one, overriding props as necessary.
         component_model = cls._reproduce(
             lib_dependencies=(list[str], lib_dependencies),
             **props_to_override,
