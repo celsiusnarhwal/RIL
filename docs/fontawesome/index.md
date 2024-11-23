@@ -81,7 +81,7 @@ styles are available for free[^2]; other styles require [Font Awesome Pro](pro.m
     ```python
     import RIL as icons
 
-    icons.fa("house")  # equivalent to fa.solid("house")
+    icons.fa("house")  # equivalent to icons.fa.solid("house")
     ```
     
     Solid is also the default substyle for Sharp, Duotone, and Sharp Duotone:
@@ -89,9 +89,9 @@ styles are available for free[^2]; other styles require [Font Awesome Pro](pro.m
     ```python
     import RIL as icons
 
-    icons.fa.sharp("download")  # equivalent to fa.sharp.solid("download")
-    icons.fa.duotone("envelope")  # equivalent to fa.duotone.solid("envelope")
-    icons.fa.sharp_duotone("music")  # equivalent to fa.sharp_duotone.solid("music")
+    icons.fa.sharp("download")  # equivalent to icons.fa.sharp.solid("download")
+    icons.fa.duotone("envelope")  # equivalent to icons.fa.duotone.solid("envelope")
+    icons.fa.sharp_duotone("music")  # equivalent to icons.fa.sharp_duotone.solid("music")
     ``` 
 
 [^1]:
