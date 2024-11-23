@@ -120,7 +120,7 @@ markdown_extensions:
   - pymdownx.magiclink:
       repo_url_shorthand: true
       user: celsiusnarhwal
-      repo: synology-guide
+      repo: RIL
   - pymdownx.mark
   - pymdownx.smartsymbols
   - pymdownx.superfences:
