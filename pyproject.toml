@@ -36,15 +36,15 @@ docs = [
     "pillow>=11.0.0",
 ]
 
-[tool.uv.sources]
-artwall = { git = "https://github.com/celsiusnarhwal/artwall" }
-mkdocs-material = { git = "https://github.com/squidfunk/mkdocs-material-insiders" }
-
 [tool.ruff.lint]
 ignore = ["F403"]
 
 [tool.pdm.version]
 source = "scm"
+
+[tool.uv.sources]
+mkdocs-material = { git = "https://github.com/squidfunk/mkdocs-material-insiders" }
+artwall = { git = "https://github.com/celsiusnarhwal/artwall" }
 
 [build-system]
 requires = ["pdm-backend"]
