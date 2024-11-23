@@ -140,14 +140,22 @@ cache your dependencies in order to preserve your registry bandwith.
     This only applies to users who are statically building their project's frontend with `reflex export` in a CI
     environment. If you're unsure whether that's you, it probably isn't.
 
+Your cache should be keyed on both `.web/bun.lockb` and `.web/package-lock.json`. (1)
+{ .annotate }
+
+1. If the `REFLEX_WEB_WORKDIR` environment variable is set, use its value in place of `.web`.
+
 Below are links to the relevant documentation for several popular CI providers:
 
-- [:fontawesome-brands-github: GitHub Actions](https://docs.github.com/en/actions/advanced-guides/caching-dependencies-to-speed-up-workflows)
+<div class="annotate" markdown>
+
+- [:fontawesome-brands-github: GitHub Actions](https://docs.github.com/en/actions/advanced-guides/caching-dependencies-to-speed-up-workflows) (1)
 - [:fontawesome-brands-gitlab: GitLab](https://docs.gitlab.com/ee/ci/caching/)
 - [:simple-circleci: CircleCI](https://circleci.com/docs/2.0/caching/)
 - [:simple-travisci: Travis CI](https://docs.travis-ci.com/user/caching/)
-- [:simple-bamboo: Bamboo](https://confluence.atlassian.com/bamkb/how-to-enable-agent-dependency-caching-947855841.html)
 - [:fontawesome-brands-bitbucket: Bitbucket Pipelines](https://support.atlassian.com/bitbucket-cloud/docs/cache-dependencies/)
+
+</div>
 
 ## Using alternate registries (advanced)
 
