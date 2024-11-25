@@ -32,9 +32,6 @@ jobs:
           version: 0.5.x
           enable-cache: true
 
-      - name: Install Python
-        run: uv python install
-
       - name: Install Dependencies
         run: uv sync --only-group docs
 
