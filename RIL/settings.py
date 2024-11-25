@@ -33,7 +33,7 @@ class FontAwesomeSettings(BaseModel):
         Return the name of the Kit package if Font Awesome Pro is enabled and a Kit code is provided,
         or `None` otherwise.
         """
-        if self.kit_code and self.kit_code:
+        if self.pro_enabled and self.kit_code:
             logger.debug(f"Using Font Awesome Kit {self.kit_code}")
             return f"@awesome.me/kit-{self.kit_code}"
 
