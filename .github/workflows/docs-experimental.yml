@@ -34,5 +34,4 @@ jobs:
         uses: celsiusnarhwal/mkdocs-vercel-deploy@main
         with:
           vercel-token: ${{ secrets.VERCEL_TOKEN }}
-          vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
-          vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
+          vercel-project-name: reflex-icon-library
