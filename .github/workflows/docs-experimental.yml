@@ -35,4 +35,4 @@ jobs:
         with:
           vercel-token: ${{ secrets.VERCEL_TOKEN }}
           vercel-project-name: reflex-icon-library
-          production-branches: main
+          production-branch: main
