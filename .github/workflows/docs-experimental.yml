@@ -26,9 +26,9 @@ jobs:
           enable-cache: true
 
       - name: Install Dependencies
-        run: uv sync --only-group docs && uv run icl install
+        run: uv sync --only-group docs
         env:
-          FONTAWESOME_PKG_TOKEN: ${{ secrets.FONTAWESOME_PKG_TOKEN }}
+          UV_INDEX: ${{ secrets.FONTAWESOME_INDEX_URL }}
 
       - name: Deploy to Vercel
         uses: celsiusnarhwal/mkdocs-vercel-deploy@main
