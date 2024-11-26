@@ -9,7 +9,7 @@ RIL adheres to [semantic versioning](https://semver.org/spec/v2.0.0.html).
 ### Fixed
 
 - Fixed a bug in which RIL's Font Awesome component would attempt to use a Kit if a Kit code was specified
-even if the `fontawesome.pro_enabled` setting was not set to `true`.
+but the `fontawesome.pro_enabled` setting was not set to `true`.
 
 ## <a name="1-1-0">1.1.0 — 2024-11-22</a>
 
