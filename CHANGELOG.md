@@ -22,4 +22,4 @@ but the `fontawesome.pro_enabled` setting was not set to `true`.
 
 This is the initial release of the Reflex Icon Library.
 
-[^1]: Based on [Keep a Changelog](https://keepachangelog.com).
+[^1]: Format based on [Keep a Changelog](https://keepachangelog.com).
