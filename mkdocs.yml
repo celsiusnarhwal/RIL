@@ -86,6 +86,7 @@ plugins:
   - iconoclast:
       uv: true
       css: true
+      auto: true
   - social
   - artwall
 

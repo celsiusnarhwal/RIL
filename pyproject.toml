@@ -31,7 +31,6 @@ Changelog = "https://github.com/celsiusnarhwal/RIL/blob/main/CHANGELOG.md"
 docs = [
     "artwall",
     "cairosvg>=2.7.1",
-    "fontawesomepro>=6.6.0",
     "iconoclast>=3.0.1",
     "mkdocs-material",
     "pillow>=11.0.0",
@@ -46,9 +45,6 @@ source = "scm"
 [tool.uv.sources]
 mkdocs-material = { git = "https://github.com/squidfunk/mkdocs-material-insiders" }
 artwall = { git = "https://github.com/celsiusnarhwal/artwall" }
-
-[[tool.uv.index]]
-url = "https://dl.fontawesome.com/378FA3D1-48AF-47DE-B3D0-037A7F592036/fontawesome-pro/python/simple"
 
 [build-system]
 requires = ["pdm-backend"]
