@@ -34,13 +34,15 @@ jobs:
 
       - name: Install Dependencies
         run: uv sync --only-group docs
+
+      - name: Build Documentation
+        run: uv run mkdocs build
         env:
-          UV_INDEX: ${{ secrets.FONTAWESOME_INDEX_URL }}
+          FONTAWESOME_PKG_TOKEN: ${{ secerts.FONTAWESOME_PKG_TOKEN }}
 
       - name: Deploy to Vercel
-        uses: celsiusnarhwal/mkdocs-vercel-deploy@main
-        with:
-          vercel-token: ${{ secrets.VERCEL_TOKEN }}
-          vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
-          vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
-          production-branch: main
+        run: npx vercel --yes --token ${{ secrets.VERCEL_TOKEN }} ${{ github.ref_name == 'main' && '--prod' || '' }}
+        env:
+          VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+
