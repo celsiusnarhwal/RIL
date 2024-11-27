@@ -11,7 +11,7 @@ including over 400 icons for popular brands.
 
 Font Awesome icons can be used via `#!python icons.fontawesome` or `#!python icons.fa`. There's no functional
 difference between the two, but the latter is shorter, so it is preferred and is what will be used throughout
-the rest of the documentaiton.
+the rest of the documentation.
 
 Each of Font Awesome's [styles](style-reference.md) is available as a method of `#!python icons.fa`. To use an icon,
 pass its name to the method of your desired style.
