@@ -38,7 +38,7 @@ jobs:
       - name: Build Documentation
         run: uv run mkdocs build
         env:
-          FONTAWESOME_PKG_TOKEN: ${{ secerts.FONTAWESOME_PKG_TOKEN }}
+          FONTAWESOME_PKG_TOKEN: ${{ secrets.FONTAWESOME_PKG_TOKEN }}
 
       - name: Deploy to Vercel
         run: npx vercel --yes --token ${{ secrets.VERCEL_TOKEN }} ${{ github.ref_name == 'main' && '--prod' || '' }}
