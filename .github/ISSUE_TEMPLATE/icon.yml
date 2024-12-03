@@ -46,7 +46,8 @@ body:
   - type: markdown
     attributes:
       value: |
-        Issues related to [Lucide](https://ril.celsiusnarhwal.dev/lucide) are issues with Reflex itself and belong in [Reflex's repository](https://github.com/reflex-dev/reflex/issues).
+        > [!NOTE]
+        > Issues related to [Lucide](https://ril.celsiusnarhwal.dev/lucide) are issues with Reflex itself and belong in [Reflex's repository](https://github.com/reflex-dev/reflex/issues).
 
   - type: input
     attributes:
