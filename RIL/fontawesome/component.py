@@ -150,10 +150,14 @@ class FontAwesomeIcon(Base):
 
             return f"@fortawesome/{style}-svg-icons"
 
-        # If we still haven't returned, the only usable style and package are "classic-solid" and
-        # @fortawesome/free-solid-svg-icons, respectively.
+        # If we still haven't returned, our only remaining options are the free Classic Solid and
+        # Classic Regular packages.
+
         if style == "classic-solid":
             return "@fortawesome/free-solid-svg-icons"
+
+        if style == "classic-regular":
+            return "@fortawesome/free-regular-svg-icons"
 
         # Only thing left to do at this point is raise an exception.
         raise ValueError(
