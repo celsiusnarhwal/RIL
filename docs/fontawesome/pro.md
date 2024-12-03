@@ -184,3 +184,25 @@ This is an advanced capability that most users won't need.
         ```shell
         RIL_FONTAWESOME__NPM_REGISTRY="https://example.registry.com"
         ```
+
+## Troubleshooting
+
+### "Incorrect or missing password" error
+
+If you're trying to use Font Awesome Pro icons and NPM emits an error like:
+
+```{ .text .no-copy .no-select }
+npm error code E401
+npm error Incorrect or missing password.
+```
+
+It's probably because your Font Awesome package token is incorrect or missing. You should:
+
+- Double-check that the token matches the one on your [Font Awesome account page](https://fontawesome.com/account/general#tokens).
+- Make sure your token is exposed by the `FONTAWESOME_PACKAGE_TOKEN` environment variable. Case-sensitivity doesn't matter,
+but the spelling must otherwise be exact. There are no alternative ways of setting a token — trying to put it in a `pyproject.toml`
+or `ril.toml` file won't work.
+      - If you're using a `.env` file, make sure it's located in the current working directory — i.e., the directory in which
+      `reflex run` or `reflex export` is being executed. Also, make sure it's named `.env` *exactly*.
+
+If things still aren't working, [open an issue](https://github.com/celsiusnarhwal/RIL/issues/new).
