@@ -199,7 +199,7 @@ npm error Incorrect or missing password.
 It's probably because your Font Awesome package token is incorrect or missing. You should:
 
 - Double-check that the token matches the one on your [Font Awesome account page](https://fontawesome.com/account/general#tokens).
-- Make sure your token is exposed by the `FONTAWESOME_PACKAGE_TOKEN` environment variable. Case-sensitivity doesn't matter,
+- Make sure your token is exposed by the `FONTAWESOME_PACKAGE_TOKEN` environment variable. Casing doesn't matter,
 but the spelling must otherwise be exact. There are no alternative ways of setting a token — trying to put it in a `pyproject.toml`
 or `ril.toml` file won't work.
       - If you're using a `.env` file, make sure it's located in the current working directory — i.e., the directory in which
