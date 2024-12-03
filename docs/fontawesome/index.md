@@ -44,6 +44,9 @@ pass its name to the method of your desired style.
     import RIL as icons
 
     icons.fa.duotone.solid("envelope")  # fa-duotone fa-solid fa-envelope
+    icons.fa.duotone.regular("wand-magic-sparkles")  # fa-duotone fa-regular fa-wand-magic-sparkles
+    icons.fa.duotone.light("bomb")  # fa-duotone fa-light fa-bomb
+    icons.fa.duotone.thin("camera-retro")  # fa-duotone fa-thin fa-camera-retro
     ```
 
 === ":fontawesome-sharp-duotone-solid-icons: Sharp Duotone"
@@ -52,6 +55,9 @@ pass its name to the method of your desired style.
     import RIL as icons
 
     icons.fa.sharp_duotone.solid("music")  # fa-sharp-duotone fa-solid fa-music
+    icons.fa.sharp_duotone.regular("comment")  # fa-sharp-duotone fa-regular fa-comment
+    icons.fa.sharp_duotone.light("hippo")  # fa-sharp-duotone fa-light fa-hippo
+    icons.fa.sharp_duotone.thin("calendar-days")  # fa-sharp-duotone fa-thin fa-calendar-days
     ```
 
 === ":fontawesome-brands-font-awesome: Brands"
