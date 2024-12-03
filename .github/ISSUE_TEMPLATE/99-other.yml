@@ -1,5 +1,9 @@
 name: Something Else
 description: Report an issue that doesn't fit any of the other options.
+labels:
+  - other
+assignees:
+  - celsiusnarhwal
 
 body:
   - type: checkboxes

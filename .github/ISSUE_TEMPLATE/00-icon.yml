@@ -1,7 +1,9 @@
 name: Missing Icon
 description: Report an icon that should be working, but isn't.
 title: "[Missing Icon]: "
-labels: ["bug", "missing-icon"]
+labels:
+  - bug
+  - missing-icon
 assignees:
   - celsiusnarhwal
 
