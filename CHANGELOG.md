@@ -4,6 +4,13 @@ Notable changes to the Reflex Icon Library will be documented here. Breaking cha
 
 RIL adheres to [semantic versioning](https://semver.org/spec/v2.0.0.html).
 
+## <a name="1-2-0">1.2.0 — 2024-12-02</a>
+
+### Added
+
+- This version of RIL adds support for the Regular, Light, and Thin styles in the [Duotone](https://fontawesome.com/search?ip=duotone)
+and [Sharp Duotone](https://fontawesome.com/search?ip=sharp-duotone) families. ([Docs](https://ril.celsiusnarhwal.dev/fontawesome/#fa-secondaryopacity4-duotone))
+
 ## <a name="1-1-1">1.1.1 — 2024-11-25</a>
 
 ### Fixed
