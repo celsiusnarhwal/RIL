@@ -210,4 +210,4 @@ or `ril.toml` file won't work.
       - If you're using a `.env` file, make sure it's located in the current working directory — i.e., the directory in which
       `reflex run` or `reflex export` is being executed. Also, make sure it's named `.env` *exactly*.
 
-If things still aren't working, [open an issue](https://github.com/celsiusnarhwal/RIL/issues/new).
+If things still aren't working, [open an issue](https://github.com/celsiusnarhwal/RIL/issues/new/choose).
