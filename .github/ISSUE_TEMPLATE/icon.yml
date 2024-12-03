@@ -56,6 +56,7 @@ body:
       description: | 
         Provide the exact name of the problematic icon, as it appears on the upstream library's website. 
         For Font Awesome icons, include only the name of the icon (e.g. "house"); do not include its family or style.
+        
         - [Font Awesome](https://fontawesome.com)
         - [Simple Icons](https://simpleicons.org)
         - [Material Symbols](https://fonts.google.com/icons)
