@@ -2,4 +2,4 @@ blank_issues_enabled: false
 contact_links:
   - name: Lucide Issues
     url: https://github.com/reflex-dev/reflex/issues
-    about: If your issue has anything to do with [Lucide](https://ril.celsiusnarhwal.dev/lucide), you should tell the Reflex team about it instead.
+    about: If your issue has anything to do with Lucide icons, you should tell the Reflex team about it instead.
