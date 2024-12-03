@@ -5,7 +5,7 @@
 | **Style**                                                      | **Usage**                     | **Pro Required**                                                 | **Kit Required**                                                 |
 |----------------------------------------------------------------|-------------------------------|------------------------------------------------------------------|------------------------------------------------------------------|
 | [Solid](https://fontawesome.com/search?ip=classic&s=solid)     | `#!python icons.fa.solid()`   | <i class="fa-solid fa-circle-xmark" style="color: #ff4013;"></i> | <i class="fa-solid fa-circle-xmark" style="color: #ff4013;"></i> |
-| [Regular](https://fontawesome.com/search?ip=classic&s=regular) | `#!python icons.fa.regular()` | <i class="fa-solid fa-circle-check" style="color: #00e676;"></i> | <i class="fa-solid fa-circle-xmark" style="color: #ff4013;"></i> |
+| [Regular](https://fontawesome.com/search?ip=classic&s=regular) | `#!python icons.fa.regular()` | <i class="fa-solid fa-circle-xmark" style="color: #ff4013;"></i> | <i class="fa-solid fa-circle-xmark" style="color: #ff4013;"></i> |
 | [Thin](https://fontawesome.com/search?ip=classic&s=thin)       | `#!python icons.fa.thin()`    | <i class="fa-solid fa-circle-check" style="color: #00e676;"></i> | <i class="fa-solid fa-circle-xmark" style="color: #ff4013;"></i> |
 | [Light](https://fontawesome.com/search?ip=classic&s=light)     | `#!python icons.fa.light()`   | <i class="fa-solid fa-circle-check" style="color: #00e676;"></i> | <i class="fa-solid fa-circle-xmark" style="color: #ff4013;"></i> |
 

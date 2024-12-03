@@ -78,7 +78,8 @@ pass its name to the method of your desired style.
     icons.fa.kit("my-custom-icon")
     ```
 
-The [Classic Solid](https://fontawesome.com/search?f=classic&s=solid) and [Brands](https://fontawesome.com/search?ic=brands)
+The [Classic Solid](https://fontawesome.com/search?ip=classic&s=solid), 
+[Classic Regular](https://fontawesome.com/search?ip=classic&s=regular), and [Brands](https://fontawesome.com/search?ic=brands)
 styles are available for free[^2]; other styles require [Font Awesome Pro](pro.md).
 
 !!! tip
@@ -102,7 +103,8 @@ styles are available for free[^2]; other styles require [Font Awesome Pro](pro.m
 
 [^1]:
 Only [just over 2,000 icons](https://fontawesome.com/search?m=free) are free, though. The rest require [Font Awesome Pro](pro.md).
+
 [^2]:
-Even within the Classic Solid style, some individual icons require Font Awesome Pro. The Brands style is
-completely free.
+Even within the Classic Solid and Classic Regular styles, some individual icons require Font Awesome Pro. The Brands 
+style is completely free.
 
