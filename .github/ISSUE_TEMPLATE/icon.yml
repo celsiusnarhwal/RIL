@@ -55,7 +55,7 @@ body:
       label: Font Awesome Pro
       description: If you selected "Font Awesome" above, you must acknowledge the following statement or your issue will be closed without response.
       options:
-        - label: If I've [configured RIL to use Font Awesome Pro](https://ril.celsiusnarhwal.dev/fontawesome/pro), I have **not** changed the [`fontawesome.npm_registry`](https://ril.celsiusnarhwal.dev/fontawesome/pro/#using-alternate-registries-advanced) setting.
+        - label: If I've [configured RIL to use Font Awesome Pro](https://ril.celsiusnarhwal.dev/fontawesome/pro), I have **not** changed the [`fontawesome.npm_registry` setting](https://ril.celsiusnarhwal.dev/fontawesome/pro/#using-alternate-registries-advanced).
   - type: input
     attributes:
       label: Icon Name
