@@ -19,7 +19,6 @@ body:
           required: true
         - label: I have reinstalled my project's frontend packages with `reflex init && reflex run` and the icon still isn't working.
           required: true
-        - label: If I've [configured RIL to use Font Awesome Pro](https://ril.celsiusnarhwal.dev/fontawesome/pro), then I have **not** changed the `fontawesome.npm_registry` setting.
         - label: My issue is not related to a custom Font Awesome icon.
           required: true
 
@@ -51,6 +50,12 @@ body:
         > [!NOTE]
         > Issues related to [Lucide](https://ril.celsiusnarhwal.dev/lucide) are issues with Reflex itself and belong in [Reflex's repository](https://github.com/reflex-dev/reflex/issues).
 
+  - type: checkboxes
+    attributes:
+      label: Font Awesome Pro
+      description: If you selected "Font Awesome" above, you must acknowledge the following statement or your issue will be closed without response.
+      options:
+        - label: If I've [configured RIL to use Font Awesome Pro](https://ril.celsiusnarhwal.dev/fontawesome/pro), I have **not** changed the [`fontawesome.npm_registry`](https://ril.celsiusnarhwal.dev/fontawesome/pro/#using-alternate-registries-advanced) setting.
   - type: input
     attributes:
       label: Icon Name
@@ -68,6 +73,7 @@ body:
         <br>
     validations:
       required: true
+
 
   - type: dropdown
     attributes:
