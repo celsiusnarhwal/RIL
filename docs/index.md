@@ -103,12 +103,16 @@ RIL can be configured through a `pyproject.toml` file, an `ril.toml` file, or en
 
     1. Setting names should be written in `snake_case` rather than `kebab-case`. `kebab-case` names will cause an error.
 
-    `pyproject.toml` must be in your current working directory for RIL to see it.
+    `pyproject.toml` must be in your current working directory for RIL to see it. (1)
+    { .annotate }
+
+    1. If the root of your Reflex project (i.e., the parent directory of `rxconfig.py`) and the parent directory of
+    `pyproject.toml` are not the same directory, [using `ril.toml`](#riltoml) may be easier for you.
 
 === "ril.toml"
 
     If you don't want to use `pyproject.toml`, you can use RIL's own `ril.toml`. This works identically to
-    `pyproject.toml`, except the table is simply named `#!toml [library]`, where `library` is one of
+    `pyproject.toml` except the table is simply named `#!toml [library]`, where `library` is one of
     `fontawesome`, `simple`, or `phosphor`:
 
     ```toml
