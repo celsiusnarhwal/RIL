@@ -51,7 +51,9 @@ body:
   - type: input
     attributes:
       label: Icon Name
-      description: Provide the exact name of the problematic icon, as it appears on the upstream library's website. (For Font Awesome icons, include only the name of the icon; do not include its family or style).
+      description: | 
+        Provide the exact name of the problematic icon, as it appears on the upstream library's website. 
+        For Font Awesome icons, include only the name of the icon (e.g. "house"); do not include its family or style.
     validations:
       required: true
 
