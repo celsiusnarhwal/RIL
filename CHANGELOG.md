@@ -4,6 +4,14 @@ Notable changes to the Reflex Icon Library will be documented here. Breaking cha
 
 RIL adheres to [semantic versioning](https://semver.org/spec/v2.0.0.html).
 
+## <a name="1-2-1">1.2.1 — 2024-12-03</a>
+
+### Fixed
+
+- Previous versions of RIL erroneously restricted all of Font Awesome's Classic Regular icons to Font Awesome Pro users.
+In reality, [a subset of those icons is available for free](https://fontawesome.com/search?m=free&s=regular&ip=classic).
+Users who don't subscribe to Font Awesome Pro can now use those icons through RIL.
+
 ## <a name="1-2-0">1.2.0 — 2024-12-02</a>
 
 ### Added
