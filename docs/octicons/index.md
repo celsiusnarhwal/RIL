@@ -6,7 +6,7 @@ hide:
 
 # :fontawesome-brands-github: Octicons
 
-[Octicons](https://primer.style/octicons) is a library of icons designed by [GitHub](https://github.com) as part of
+[Octicons](https://primer.style/octicons) is a library of icons designed by [GitHub](https://github.com/about) as part of
 its [Primer](https://primer.style) design system.
 
 ## Usage
