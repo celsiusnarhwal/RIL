@@ -1,0 +1,115 @@
+name: Missing Icon
+description: Report an icon that should be working, but isn't.
+title: "[Missing Icon]: "
+labels: ["bug", "missing-icon"]
+assignees:
+  - celsiusnarhwal
+
+body:
+  - type: checkboxes
+    attributes:
+      label: Before you begin...
+      description: Please acknowledge the following statements.
+      options:
+        - label: I have searched this repository for similar issues.
+          required: true
+        - label: The icon actually exists in the respective upstream icon library.
+          required: true
+        - label: I'm following RIL's [documentation](https://ril.celsiusnarhwal.dev) with regards to the spelling and casing of icon names.
+          required: true
+        - label: I have reinstalled my project's frontend packages with `reflex init && reflex run` and the icon still isn't working.
+          required: true
+        - label: My issue is not related to a custom Font Awesome icon.
+          required: true
+
+  - type: markdown
+    attributes:
+      value: |
+        Issues related to custom Font Awesome icons are inherently impossible for me to reproduce, so at least for now,
+        I have to ask that you refrain from opening any such issues. Sorry!
+      
+
+  - type: dropdown
+    attributes:
+      label: Library
+      description: Which library are you reporting a missing icon for?
+      options:
+        - Font Awesome
+        - Simple Icons
+        - Material Symbols
+        - Octicons
+        - Phosphor
+        - Bootstrap Icons
+    validations:
+      required: true
+
+  - type: markdown
+    attributes:
+      value: |
+        Issues related to [Lucide](https://ril.celsiusnarhwal.dev) are issues with Reflex itself and belong in [Reflex's repository](https://github.com/reflex-dev/reflex/issues/new).
+
+  - type: input
+    attributes:
+      label: Icon Name
+      description: Provide the exact name of the problematic icon, as it appears on the upstream library's website. (For Font Awesome icons, include only the name of the icon; do not include its family or style).
+    validations:
+      required: true
+
+  - type: dropdown
+    attributes:
+      label: Font Awesome Icon Style
+      description: |
+        If you're reporting a Font Awesome icon, select its style here. 
+        Omitting this option while having selected "Font Awesome" in the previous dropdown will result in your issue being closed without response.
+      options:
+        - Brands
+        - Classic Solid
+        - Classic Regular
+        - Classic Light
+        - Classic Thin
+        - Duotone Solid
+        - Duotone Regular
+        - Duotone Light
+        - Duotone Thin
+        - Sharp Solid
+        - Sharp Regular
+        - Sharp Light
+        - Sharp Thin
+        - Sharp Duotone Solid
+        - Sharp Duotone Regular
+        - Sharp Duotone Light
+        - Sharp Duotone Thin
+
+
+  - type: textarea
+    attributes:
+      label: Steps to Reproduce
+      description: Describe how to reproduce your issue.
+    validations:
+      required: true
+
+  - type: input
+    attributes:
+      label: Which version of RIL are you using?
+      description: You can find out by running `pip show reflex-icon-library` in your project's virtual environment. This works regardless of what tools you are or aren't using to manage your project's dependencies.
+    validations:
+      required: true
+
+  - type: input
+    attributes:
+      label: Which version of Reflex are you using?
+      description: You can find out by running `pip show reflex-icon-library` in your project's virtual environment. This works regardless of what tools you are or aren't using to manage your project's dependencies.
+    validations:
+      required: true
+
+  - type: input
+    attributes:
+      label: Which version of Python are you using?
+      description: You can find out by running `python --version` in your project's virtual environment.
+    validations:
+      required: true
+
+  - type: input
+    attributes:
+      label: Minimal Reproducible Example
+      description: Provide a link to a GitHub repository containing a [minimal reproducible example](https://stackoverflow.com/help/minimal-reproducible-example) of your issue. This isn't required, but your issue is likely to be resolved a lot faster if you do it.
