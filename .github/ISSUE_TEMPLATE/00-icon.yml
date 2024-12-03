@@ -15,7 +15,7 @@ body:
       options:
         - label: I have searched this repository for similar issues.
           required: true
-        - label: The icon actually exists in the respective upstream icon library.
+        - label: The icon exists in the respective upstream icon library.
           required: true
         - label: I'm following RIL's [documentation](https://ril.celsiusnarhwal.dev) with regards to the spelling and casing of icon names.
           required: true
