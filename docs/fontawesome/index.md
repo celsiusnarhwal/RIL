@@ -4,7 +4,7 @@ icon: fontawesome/brands/font-awesome
 
 # :fontawesome-brands-font-awesome: Font Awesome
 
-[Font Awesome](https://fontawesome.com) is a library of over 30,000[^1] icons in several different styles,
+[Font Awesome](https://fontawesome.com) is a library of over 50,000[^1] icons in several different styles,
 including over 400 icons for popular brands.
 
 ## Usage
