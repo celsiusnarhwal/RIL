@@ -145,12 +145,8 @@ class FontAwesomeIcon(Base):
 
         # If Font Awesome Pro is enabled, we use the appropriate Pro package.
         if settings.fontawesome.pro_enabled:
-            # Sharp Duotone Solid is currently a special case.
-            if style == "sharp-duotone-solid":
-                return "@fortawesome/sharp-duotone-solid-svg-icons"
-
-            # Duotone icons of any style use @fortawesome/pro-duotone-svg-icons.
-            if style.startswith("duotone"):
+            # Duotone Solid is currently a special case.
+            if style == "duotone-solid":
                 return "@fortawesome/pro-duotone-svg-icons"
 
             # Classic styles need to be prefixed with "pro-" to get the package name.
@@ -225,6 +221,7 @@ class FontAwesomeIcon(Base):
         if isinstance(mask, cls):
             props.pop("mask")
             lib_dependencies.extend(mask.lib_dependencies)
+            # noinspection PyArgumentList
             imports = always_merger.merge(
                 copy.deepcopy(imports), mask.add_imports(mask)
             )
@@ -262,11 +259,25 @@ class FontAwesomeDuotone(rx.ComponentNamespace):
     solid = __call__ = staticmethod(
         partial(staticmethod(FontAwesomeIcon.create), _icon_style="duotone-solid")
     )
+    regular = partial(
+        staticmethod(FontAwesomeIcon.create), _icon_style="duotone-regular"
+    )
+    light = partial(staticmethod(FontAwesomeIcon.create), _icon_style="duotone-light")
+    thin = partial(staticmethod(FontAwesomeIcon.create), _icon_style="duotone-thin")
 
 
 class FontAwesomeSharpDuotone(rx.ComponentNamespace):
     solid = __call__ = staticmethod(
         partial(staticmethod(FontAwesomeIcon.create), _icon_style="sharp-duotone-solid")
+    )
+    regular = partial(
+        staticmethod(FontAwesomeIcon.create), _icon_style="sharp-duotone-regular"
+    )
+    light = partial(
+        staticmethod(FontAwesomeIcon.create), _icon_style="sharp-duotone-light"
+    )
+    thin = partial(
+        staticmethod(FontAwesomeIcon.create), _icon_style="sharp-duotone-thin"
     )
 
 

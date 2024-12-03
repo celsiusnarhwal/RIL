@@ -172,7 +172,7 @@ class FontAwesomeSharp(rx.ComponentNamespace):
         """
 
 class FontAwesomeDuotone(rx.ComponentNamespace):
-    solid = FontAwesomeIcon.create
+    solid = regular = light = thin = FontAwesomeIcon.create
 
     @staticmethod
     def __call__(
@@ -256,7 +256,7 @@ class FontAwesomeDuotone(rx.ComponentNamespace):
         """
 
 class FontAwesomeSharpDuotone(rx.ComponentNamespace):
-    solid = FontAwesomeIcon.create
+    solid = regular = light = thin = FontAwesomeIcon.create
 
     @staticmethod
     def __call__(
