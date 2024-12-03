@@ -64,7 +64,7 @@ Using Kits with RIL is a simple, four-step, process.
 !!! tip "There is literally no downside to using a Kit"
     Using a Kit helps you save on registry bandwith and allows you to use [custom icons](#using-custom-icons).
     It also means RIL's Font Awesome component introduces only three Node.js dependencies to your project instead
-    of [up to 13](https://docs.fontawesome.com/web/setup/packages#svg-icon-packages).
+    of [up to 18](https://docs.fontawesome.com/web/setup/packages#svg-icon-packages).
 
     Kits should be always be preferred over plain Font Awesome Pro.
 
