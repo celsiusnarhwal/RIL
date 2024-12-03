@@ -1,0 +1,21 @@
+name: Something Else
+description: Report an issue that doesn't fit any of the other options.
+
+body:
+  - type: checkboxes
+    attributes:
+      label: Before you begin...
+      description: Please acknowledge the following statements.
+      options:
+        - label: My issue doesn't fit any of the other options I was presented with on the previous page.
+          required: true
+        - label: I have searched this repository for similar issues.
+          required: true
+        - label: I have searched RIL's [documentation](https://ril.celsiusnarhwal.dev) and could not find a resolution to my issue.
+          required: true
+
+  - type: textarea
+    attributes:
+      label: Describe your issue.
+    validations:
+      required: true
