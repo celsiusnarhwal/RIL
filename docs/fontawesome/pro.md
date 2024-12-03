@@ -165,6 +165,11 @@ This is an advanced capability that most users won't need.
     `fontawesome.npm_registry` controls the registry from which Reflex will install packages in the `@fortawesome`
     and `@awesome.me` namespaces.
 
+    !!! danger "Don't open any issues if you use this setting"
+        If you set the `fontawesome.npm_registry` setting to anything other than its default of `https://npm.fontawesome.com`,
+        don't open any Font Awesome-related issues in RIL's repository. You will be asked for information that will
+        reveal you have configured this setting, at which point your issue will be closed without further response.
+
     === "pyproject.toml"
 
         ```toml
