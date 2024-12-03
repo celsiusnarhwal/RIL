@@ -62,7 +62,6 @@ body:
         - [Octicons](https://primer.style/octicons)
         - [Phosphor](https://phosphoricons.com)
         - [Bootstrap Icons](https://icons.getbootstrap.com)
-
     validations:
       required: true
 
