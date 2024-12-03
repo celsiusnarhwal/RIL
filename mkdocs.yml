@@ -84,9 +84,7 @@ plugins:
         target: _blank
   - typeset
   - iconoclast:
-      uv: true
       css: true
-      auto: true
   - social
   - artwall
 
