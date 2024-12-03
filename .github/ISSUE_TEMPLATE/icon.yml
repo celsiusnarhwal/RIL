@@ -73,7 +73,7 @@ body:
       label: Font Awesome Icon Style
       description: |
         If you're reporting a Font Awesome icon, select its style here. 
-        Omitting this option while having selected "Font Awesome" in the previous dropdown will result in your issue being closed without response.
+        Omitting this option while having selected "Font Awesome" at the previous dropdown will result in your issue being closed without response.
       options:
         - Brands
         - Classic Solid
