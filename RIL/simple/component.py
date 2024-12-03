@@ -1,9 +1,3 @@
-"""
-A Reflex component providing access to the library of Simple Icons.
-
-https://ril.celsiusnarhwal.dev/simple
-"""
-
 import typing as t
 from functools import partial
 

@@ -1,9 +1,3 @@
-"""
-A Reflex component providing access to GitHub's Octicons.
-
-https://ril.celsiusnarhwal.dev/octicons
-"""
-
 import re
 import typing as t
 

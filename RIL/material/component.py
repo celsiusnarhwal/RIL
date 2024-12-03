@@ -1,9 +1,3 @@
-"""
-A Reflex component providing access to Google's Material Symbols.
-
-https://ril.celesiusnarhwal.dev/material
-"""
-
 import re
 import typing as t
 

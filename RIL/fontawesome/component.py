@@ -1,7 +1,3 @@
-"""
-A Reflex component for the Font Awesome library of icons.
-"""
-
 import copy
 import typing as t
 from functools import partial

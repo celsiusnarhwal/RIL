@@ -15,10 +15,6 @@ class Props(BaseModel):
     def model_dump(self, **kwargs):
         return super().model_dump(**kwargs, exclude_none=True, by_alias=True)
 
-    @classmethod
-    def validate_props(cls, props) -> dict:
-        return cls.model_validate(props).model_dump(exclude_none=True, by_alias=True)
-
     @model_serializer(mode="wrap")
     def serialize(self, handler: t.Callable):
         serialized = handler(self)
@@ -37,8 +33,6 @@ class Base(rx.Component):
     """
     Base class for all components in this library.
     """
-
-    prop_cls: t.ClassVar[Props] = None
 
     @classmethod
     @validate_call
