@@ -64,7 +64,7 @@ body:
         - [Phosphor](https://phosphoricons.com)
         - [Bootstrap Icons](https://icons.getbootstrap.com)
         
-        <br><br>
+        <br>
     validations:
       required: true
 
