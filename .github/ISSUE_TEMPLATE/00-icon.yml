@@ -8,9 +8,6 @@ assignees:
   - celsiusnarhwal
 
 body:
-  - type: markdown
-    attributes:
-      value: Thanks for using the Reflex Icon Library. Help me help you by filling out this form honestly and to the best of your ability.
   - type: checkboxes
     attributes:
       label: Before you begin...
