@@ -9,7 +9,7 @@ Font Awesome supports "T-shirt" sizes from `2xs` to `2xl` as well as literal siz
 
 1. In full, that's:
 
-    - `2xs`, `xs`, `sm`, `md`, `lg`, `xl`, and `2xl`
+    - `2xs`, `xs`, `sm`, `lg`, `xl`, and `2xl`
     - `1x`, `2x`, `3x`, `4x`, `5x`, `6x`, `7x`, `8x`, `9x`, and `10x`
 
 ```python
