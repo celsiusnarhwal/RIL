@@ -112,7 +112,7 @@ RIL can be configured through a `pyproject.toml` file, an `ril.toml` file, or en
 === "ril.toml"
 
     If you don't want to use `pyproject.toml`, you can use RIL's own `ril.toml`. This works identically to
-    `pyproject.toml` except the table is simply named `#!toml [library]`, where `library` is one of
+    `pyproject.toml`, except the table is simply named `#!toml [library]`, where `library` is one of
     `fontawesome`, `simple`, or `phosphor`:
 
     ```toml
