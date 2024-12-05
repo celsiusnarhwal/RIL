@@ -4,6 +4,16 @@ Notable changes to the Reflex Icon Library will be documented here. Breaking cha
 
 RIL adheres to [semantic versioning](https://semver.org/spec/v2.0.0.html).
 
+## <a name="1-3-0">1.3.0 — 2024-12-05</a>
+
+### Added
+
+- Bootstrap Icons can now be used via `icons.bi` in addition to the existing `icons.bootstrap`.
+
+### Changed
+
+- Some Font Awesome-related error messages were improved for clarity.
+
 ## <a name="1-2-1">1.2.1 — 2024-12-03</a>
 
 ### Fixed
