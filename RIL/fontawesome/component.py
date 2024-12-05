@@ -9,6 +9,7 @@ from reflex.utils.imports import ImportDict
 
 from RIL._core import Base
 from RIL.settings import settings
+from RIL import utils
 
 __all__ = ["fontawesome", "fa"]
 
@@ -131,8 +132,8 @@ class FontAwesomeIcon(Base):
         # Since we're not using a Kit, custom icons should raise a `ValueError`.
         if style == "kit":
             raise ValueError(
-                "You tried to use an icon from a Kit, but either you haven't provided a Kit code or "
-                "Font Awesome Pro isn't enabled."
+                f"Additional configuration is required to use custom Font Awesome icons. "
+                f"{utils.docs('fontawesome/pro/#using-a-kit')}"
             )
 
         # Brand icons always use @fortawesome/free-brands-svg-icons.
@@ -161,7 +162,7 @@ class FontAwesomeIcon(Base):
 
         # Only thing left to do at this point is raise an exception.
         raise ValueError(
-            f"The {' '.join(style.split('-')[:-1]).title()} style requires Font Awesome Pro."
+            f"The {' '.join(style.split('-')).title()} style requires Font Awesome Pro. {utils.docs('fontawesome/pro')}"
         )
 
     @classmethod

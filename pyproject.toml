@@ -19,6 +19,7 @@ dependencies = [
     "pydantic-settings>=2.6.1",
     "reflex>=0.6.5",
     "semver>=3.0.2",
+    "yarl>=1.18.0",
 ]
 
 [project.urls]
