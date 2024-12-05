@@ -22,9 +22,6 @@ dependencies = [
     "yarl>=1.18.0",
 ]
 
-[project.license]
-file = "LICENSE.md"
-
 [project.urls]
 Homepage = "https://ril.celsiusnarhwal.dev"
 Repository = "https://github.com/celsiusnarhwal/RIL"
