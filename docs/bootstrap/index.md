@@ -11,8 +11,20 @@ hide:
 
 ## Usage
 
+<div class="annotate" markdown>
+
 1. [Find the icon you want](https://icons.getbootstrap.com)
-2. Pass its name to `#!python icons.bootstrap`
+2. Pass its name to `#!python icons.bootstrap` (1)
+
+</div>
+
+1. `#!python icons.bi` works, too.
+
+    ```python
+    import RIL as icons
+    
+    icons.bi("arrow-right-square-fill")
+    ```
 
 ```python
 import RIL as icons

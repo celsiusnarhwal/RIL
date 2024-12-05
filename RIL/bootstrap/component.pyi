@@ -33,4 +33,4 @@ class BootstrapIcon(Base):
             An accessible, short-text, description of the icon.
         """
 
-bootstrap = BootstrapIcon.create
+bootstrap = bi = BootstrapIcon.create

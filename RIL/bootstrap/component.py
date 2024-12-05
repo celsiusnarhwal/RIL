@@ -54,4 +54,4 @@ class BootstrapIcon(Base):
         return component
 
 
-bootstrap = BootstrapIcon.create
+bootstrap = bi = BootstrapIcon.create
