@@ -2,6 +2,7 @@
 name = "reflex-icon-library"
 description = "Thousands of icons for any Reflex project"
 readme = "README.md"
+license = "LICENSE.md"
 authors = [
     { name = "celsius narhwal", email = "hello@celsiusnarhwal.dev" }
 ]
