@@ -109,9 +109,9 @@ Finally, set the `fontawesome.kit_code` setting to your Kit code.
         RIL_FONTAWESOME__KIT_CODE=abcde12345
         ```
 
-!!! tip "Protecting your Kit from unauthorized use"
-    It is strongly recommended that you [specify at least one allowed domain for your Kit](https://docs.fontawesome.com/web/setup/use-kit#im-getting-a-lot-more-pageviews-than-i-think-i-should-be-what-can-i-do).
-    If you leave it empty, anyone with your Kit code can use your Kit via Font Awesome's CDN
+??? tip "Protecting your Kit from unauthorized use"
+    It is strongly recommended that you [set at least one allowed domain for your Kit](https://docs.fontawesome.com/web/setup/use-kit#im-getting-a-lot-more-pageviews-than-i-think-i-should-be-what-can-i-do).
+    If you don't set any, anyone with your Kit code can use your Kit via Font Awesome's CDN
     and your [pageviews](https://docs.fontawesome.com/web/setup/use-kit#kits-and-pageviews) might unexpectedly go through the roof.
 
     You can use your own domain if you have one, or `example.com` if you don't.
