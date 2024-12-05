@@ -87,6 +87,8 @@ Finally, set the `fontawesome.kit_code` setting to your Kit code.
 ???+ config "`fontawesome.kit_code`: A Font Awesome Kit code."
     Setting `fontawesome.kit_code` allows you to use the corresponding Kit with RIL.
 
+    Your Kit code is not a secret and is safe to commit to version control or share with other people.
+
     === "pyproject.toml"
 
         ```toml
