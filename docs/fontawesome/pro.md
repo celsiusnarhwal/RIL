@@ -130,7 +130,7 @@ icons.fa.kit("name-of-icon")
 ```
 
 !!! info "Duotone custom icons are unavailable for now"
-    Duotone custom icons are currently not availble in Kit packages, so you can't use them with RIL. 
+    Duotone custom icons are currently not available in Kit packages, so you can't use them with RIL. 
     This is a limitation on Font Awesome's side, so you'll have to wait for things to change on their end.
 
 ### Updating Kits
