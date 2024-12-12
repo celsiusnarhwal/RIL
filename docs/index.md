@@ -133,7 +133,7 @@ RIL can be configured through a `pyproject.toml` file, an `ril.toml` file, or en
     Note that there are two underscores between `{LIBRARY}` and `{SETTING_NAME}`.
 
     If you put your environment variables in a `.env` file located in the current working directory,
-    `RIL` will read and apply it automatically without the need for additional libraries or tools.
+    RIL will read and apply it automatically without the need for additional libraries or tools.
 
 RIL reads configuration sources with the following priority:
 
