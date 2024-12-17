@@ -158,11 +158,17 @@ Your cache should be keyed on both `.web/bun.lockb` and `.web/package-lock.json`
 
 Below are links to the relevant documentation for several popular CI providers:
 
-- [:fontawesome-brands-github: GitHub Actions](https://docs.github.com/en/actions/advanced-guides/caching-dependencies-to-speed-up-workflows)
+<div class="annotate" markdown>
+
+- [:fontawesome-brands-github: GitHub Actions](https://docs.github.com/en/actions/advanced-guides/caching-dependencies-to-speed-up-workflows) (1)
 - [:fontawesome-brands-gitlab: GitLab](https://docs.gitlab.com/ee/ci/caching/)
 - [:simple-circleci: CircleCI](https://circleci.com/docs/2.0/caching/)
 - [:simple-travisci: Travis CI](https://docs.travis-ci.com/user/caching/)
 - [:fontawesome-brands-bitbucket: Bitbucket Pipelines](https://support.atlassian.com/bitbucket-cloud/docs/cache-dependencies/)
+
+</div>
+
+1. GitHub Actions users can take advantage of [celsiusnarhwal/reflex-export](https://github.com/celsiusnarhwal/reflex-export) (yes, this is self-advertising).
 
 ## Using alternate registries (advanced)
 
