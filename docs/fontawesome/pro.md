@@ -144,11 +144,11 @@ reflex init && reflex run
 
 ## Continous integration
 
-If you plan to build your Reflex project's frontend in a continuous integration environment, you are strongly advised to
+If you plan to build your Reflex project in a continuous integration environment, you are strongly advised to
 cache your dependencies in order to preserve your registry bandwith.
 
 !!! question "Do I need to worry about this?"
-    This only applies to users who are statically building their project's frontend with `reflex export` in a CI
+    This only applies to users who are statically building their project with `reflex export` in a CI
     environment. If you're unsure whether that's you, it probably isn't.
 
 Your cache should be keyed on both `.web/bun.lockb` and `.web/package-lock.json`. (1)
@@ -169,6 +169,16 @@ Below are links to the relevant documentation for several popular CI providers:
 </div>
 
 1. GitHub Actions users can take advantage of [celsiusnarhwal/reflex-export](https://github.com/celsiusnarhwal/reflex-export) (yes, this is self-advertising).
+   ```yaml
+    - name: Checkout Repository
+      uses: actions/checkout@v4
+
+    - name: Install Dependencies
+      run: pip install -r requirements.txt
+
+    - name: Export Project
+      uses: celsiusnarhwal/reflex-export@v1
+   ```
 
 ## Using alternate registries (advanced)
 
