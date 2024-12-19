@@ -1,14 +1,7 @@
 # Font Awesome Pro
 
-<div class="annotate" markdown>
-
-If you have an active [Font Awesome Pro](https://fontawesome.com/plans) subscription(1), you
+If you have an active [Font Awesome Pro](https://fontawesome.com/plans) subscription[^1], you
 can use it with RIL in just two easy steps.
-{ .annotate }
-
-</div>
-
-1. You must be **actively paying** for Font Awesome Pro. A perpetual fallback license won't cut it.
 
 First, enable Font Awesome Pro via the `fontawesome.pro_enabled` setting.
 
@@ -58,8 +51,6 @@ That's it — you can now use Pro icons without any further setup.
 
 Kits are all-in-one management utilities for Font Awesome icons. You can read more about them at
 [Font Awesome's documentation](https://docs.fontawesome.com/web/setup/use-kit).
-
-Using Kits with RIL is a simple, four-step, process.
 
 !!! tip "There is literally no downside to using a Kit"
     Using a Kit helps you save on registry bandwith and allows you to use [custom icons](#using-custom-icons).
@@ -151,7 +142,7 @@ cache your dependencies in order to preserve your registry bandwith.
     This only applies to users who are statically building their project with `reflex export` in a CI
     environment. If you're unsure whether that's you, it probably isn't.
 
-Your cache should be keyed on both `.web/bun.lockb` and `.web/package-lock.json`. (1)
+Your cache should save the entire `.web` directory and be keyed on both `.web/bun.lockb` and `.web/package-lock.json`. (1)
 { .annotate }
 
 1. If the `REFLEX_WEB_WORKDIR` environment variable is set, use its value in place of `.web`.
@@ -169,16 +160,76 @@ Below are links to the relevant documentation for several popular CI providers:
 </div>
 
 1. GitHub Actions users can take advantage of [celsiusnarhwal/reflex-export](https://github.com/celsiusnarhwal/reflex-export) (yes, this is self-advertising).
-   ```yaml
-    - name: Checkout Repository
-      uses: actions/checkout@v4
 
-    - name: Install Dependencies
-      run: pip install -r requirements.txt
+    === ":fontawesome-brands-python: pip"
 
-    - name: Export Project
-      uses: celsiusnarhwal/reflex-export@v1
-   ```
+        ```yaml
+        - name: Checkout Repository
+          uses: actions/checkout@v4
+
+        - name: Set Up Python
+          uses: actions/setup-python@v5
+        
+        - name: Install Dependencies
+          run: pip install -r requirements.txt
+        
+        - name: Export Project
+          uses: celsiusnarhwal/reflex-export@v2
+        ```
+
+    === ":simple-uv: uv"
+
+        ```yaml
+        - name: Checkout Repository
+          uses: actions/checkout@v4
+        
+        - name: Set Up uv
+          uses: astral-sh/setup-uv@v4
+        
+        - name: Install Dependencies
+          run: uv sync
+        
+        - name: Export Project
+          uses: celsiusnarhwal/reflex-export@v2
+        ```
+
+    === ":simple-poetry: Poetry"
+
+        ```yaml
+        - name: Checkout Repository
+          uses: actions/checkout@v4
+
+        - name: Set Up Python
+          uses: actions/setup-python@v5
+        
+        - name: Install Poetry
+          run: pipx install poetry
+        
+        - name: Install Dependencies
+          run: poetry install
+          env:
+            POETRY_VIRTUALENVS_IN_PROJECT: true
+        
+        - name: Export Project
+          uses: celsiusnarhwal/reflex-export@v2
+        ```
+
+    === ":simple-pdm: PDM"
+
+        ```yaml
+        - name: Checkout Repository
+          uses: actions/checkout@v4
+        
+        - name: Set Up PDM
+          uses: pdm-project/setup-pdm@v4
+        
+        - name: Install Dependencies
+          run: pdm sync
+        
+        - name: Export Project
+          uses: celsiusnarhwal/reflex-export@v2
+        ```
+
 
 ## Using alternate registries (advanced)
 
@@ -238,3 +289,5 @@ or `ril.toml` file won't work.
       `reflex run` or `reflex export` is being executed. Also, make sure it's named `.env` *exactly*.
 
 If things still aren't working, [open an issue](https://github.com/celsiusnarhwal/RIL/issues/new/choose).
+
+[^1]: You must be **actively paying** for Font Awesome Pro. A perpetual fallback license won't cut it.
