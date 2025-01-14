@@ -7,12 +7,6 @@ assignees:
   - celsiusnarhwal
 
 body:
-  - type: markdown
-    attributes:
-      value: |
-        > [!IMPORTANT]
-        > Broken icons should be reported using the [broken icon form](https://github.com/celsiusnarhwal/RIL/issues/new?assignees=celsiusnarhwal&labels=bug%2Cbroken-icon&projects=&template=00-icon.yml&title=%5BBroken+Icon%5D%3A+).
-
   - type: checkboxes
     attributes:
       label: Before you begin...
@@ -22,6 +16,14 @@ body:
           required: true
         - label: I've read and am following RIL's [documentation](https://ril.celsiusnarhwal.dev).
           required: true
+        - label: I'm not reporting a broken icon. Broken icons should be reported using the [broken icon form](https://github.com/celsiusnarhwal/RIL/issues/new?assignees=celsiusnarhwal&labels=bug%2Cbroken-icon&projects=&template=00-icon.yml&title=%5BBroken+Icon%5D%3A+).
+
+  - type: textarea
+    attributes:
+      label: Description
+      description: Describe the bug.
+    validations:
+      required: true
 
   - type: textarea
     attributes:
