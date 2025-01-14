@@ -102,13 +102,6 @@ body:
         - Sharp Duotone Light
         - Sharp Duotone Thin
 
-  - type: textarea
-    attributes:
-      label: Steps to Reproduce
-      description: Describe how to reproduce your issue.
-    validations:
-      required: true
-
   - type: input
     attributes:
       label: Which version of RIL are you using?
