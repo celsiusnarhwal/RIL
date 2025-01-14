@@ -28,7 +28,7 @@ body:
   - type: textarea
     attributes:
       label: Steps to Reproduce
-      description: Describe how to reproduce your issue.
+      description: Describe how to reproduce the bug.
     validations:
       required: true
 
