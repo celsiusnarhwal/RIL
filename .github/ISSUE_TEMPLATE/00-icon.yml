@@ -31,11 +31,10 @@ body:
         > Issues related to custom Font Awesome icons are inherently impossible for me to reproduce, so at least for now,
         > I have to ask that you refrain from opening any such issues. Sorry!
       
-
   - type: dropdown
     attributes:
       label: Icon Library
-      description: Which library are you reporting a missing icon for?
+      description: Which library are you reporting a broken icon for?
       options:
         - Font Awesome
         - Simple Icons
@@ -102,7 +101,6 @@ body:
         - Sharp Duotone Regular
         - Sharp Duotone Light
         - Sharp Duotone Thin
-
 
   - type: textarea
     attributes:
