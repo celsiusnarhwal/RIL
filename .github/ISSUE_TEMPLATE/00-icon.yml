@@ -1,9 +1,9 @@
-name: Missing Icon
+name: Broken Icon
 description: Report an icon that should be working, but isn't.
-title: "[Missing Icon]: "
+title: "[Broken Icon]: "
 labels:
   - bug
-  - missing-icon
+  - broken-icon
 assignees:
   - celsiusnarhwal
 
