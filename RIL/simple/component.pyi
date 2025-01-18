@@ -10,6 +10,7 @@ class SimpleIcon(Base):
         color: str | tuple = None,
         size: str | int = None,
         version: int | t.Literal["default"] = None,
+        **kwargs,
     ):
         """
         Create a Simple Icon.

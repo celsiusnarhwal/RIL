@@ -17,6 +17,7 @@ class Octicon(Base):
         icon: str,
         color: str | tuple = None,
         size: int | str | t.Literal["small", "medium", "large"] = None,
+        **kwargs,
     ):
         """
         Create an Octicon.

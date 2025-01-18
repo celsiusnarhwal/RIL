@@ -38,6 +38,7 @@ class FontAwesomeIcon(Base):
         mask: FontAwesomeIcon = None,
         swap_opacity: bool = None,
         inverse: bool = None,
+        **kwargs,
     ) -> None:
         """
         Create a FontAwesome icon.
@@ -122,6 +123,7 @@ class FontAwesomeSharp(rx.ComponentNamespace):
         mask: FontAwesomeIcon = None,
         swap_opacity: bool = None,
         inverse: bool = None,
+        **kwargs,
     ) -> None:
         """
         Create a FontAwesome icon.
@@ -206,6 +208,7 @@ class FontAwesomeDuotone(rx.ComponentNamespace):
         mask: FontAwesomeIcon = None,
         swap_opacity: bool = None,
         inverse: bool = None,
+        **kwargs,
     ) -> None:
         """
         Create a FontAwesome icon.
@@ -290,6 +293,7 @@ class FontAwesomeSharpDuotone(rx.ComponentNamespace):
         mask: FontAwesomeIcon = None,
         swap_opacity: bool = None,
         inverse: bool = None,
+        **kwargs,
     ) -> None:
         """
         Create a FontAwesome icon.
@@ -377,6 +381,7 @@ class FontAwesome(rx.ComponentNamespace):
         mask: FontAwesomeIcon = None,
         swap_opacity: bool = None,
         inverse: bool = None,
+        **kwargs,
     ) -> None:
         """
         Create a FontAwesome icon.

@@ -11,6 +11,7 @@ class MaterialSymbol(Base):
         filled: bool = None,
         color: str | tuple = None,
         size: int | str = None,
+        **kwargs,
     ):
         """
         Create a Material Symbol.

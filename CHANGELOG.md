@@ -4,6 +4,13 @@ Notable changes to the Reflex Icon Library will be documented here. Breaking cha
 
 RIL adheres to [semantic versioning](https://semver.org/spec/v2.0.0.html).
 
+## <a name="1-3-1">1.3.1 — 2025-01-17</a>
+
+### Fixed
+
+- Fixed a bug in which Reflex's `class_name` prop would not be applied to icons from Simple Icons, Material Symbols,
+Phosphor Icons, and Bootstrap Icons.
+
 ## <a name="1-3-0">1.3.0 — 2024-12-05</a>
 
 ### Added

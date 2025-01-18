@@ -20,12 +20,6 @@ class Props(BaseModel):
         serialized = handler(self)
         reserialized = copy.deepcopy(serialized)
 
-        if self.__pydantic_extra__:
-            for key, value in serialized.items():
-                if key in self.__pydantic_extra__:
-                    reserialized.pop(key)
-                    reserialized.setdefault("_extra", {})[key] = value
-
         return reserialized
 
 
@@ -47,6 +41,9 @@ class Base(rx.Component):
 
         if isinstance(props, Props):
             props = props.model_dump()
+
+        for field in rx.Component.get_fields():
+            props.pop(field, None)
 
         model = create_model(
             cls.__name__,

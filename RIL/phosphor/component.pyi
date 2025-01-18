@@ -13,6 +13,7 @@ class PhosphorIcon(Base):
         color: str | tuple = None,
         size: int | str = None,
         alt: str = None,
+        **kwargs,
     ) -> rx.Component:
         """
         Create a Phosphor icon.
