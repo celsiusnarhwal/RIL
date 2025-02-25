@@ -28,8 +28,7 @@ body:
     attributes:
       value: |
         > [!IMPORTANT]
-        > Issues related to custom Font Awesome icons are inherently impossible for me to reproduce, so at least for now,
-        > I have to ask that you refrain from opening any such issues. Sorry!
+        > Issues related to custom Font Awesome icons are inherently impossible for me to reproduce, so at least for now, I have to ask that you refrain from opening any such issues. Sorry!
       
   - type: dropdown
     attributes:
