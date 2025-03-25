@@ -4,6 +4,12 @@ Notable changes to the Reflex Icon Library will be documented here. Breaking cha
 
 RIL adheres to [semantic versioning](https://semver.org/spec/v2.0.0.html).
 
+## <a name="1-3-3">1.3.3 — 2025-03-25>/a>
+
+### Fixed
+
+- Fixed a recursion error that would occur when creating an icon in Reflex 0.7.2 and later. ([#1](https://github.com/celsiusnarhwal/RIL/issues/1))
+
 ## <a name="1-3-2">1.3.2 — 2025-01-17</a>
 
 ### Fixed
