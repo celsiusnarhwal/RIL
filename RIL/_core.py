@@ -54,10 +54,6 @@ class Base(rx.Component):
 
         return model
 
-    @classmethod
-    def _create(cls, *children, **props) -> rx.Component:
-        return super().create(*children, **props)
-
 
 def validate_props(func):
     def wrapper(*args, **props):
