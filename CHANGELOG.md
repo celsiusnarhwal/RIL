@@ -32,7 +32,7 @@ Phosphor Icons, and Bootstrap Icons.
 ### Fixed
 
 - Previous versions of RIL erroneously restricted all of Font Awesome's Classic Regular icons to Font Awesome Pro users.
-In reality, [a subset of those icons is available for free](https://fontawesome.com/search?m=free&s=regular&ip=classic).
+In reality, [a subset of those icons is available for free](https://fontawesome.com/search?ic=free&s=regular&ip=classic).
 Users who don't subscribe to Font Awesome Pro can now use those icons through RIL.
 
 ## <a name="1-2-0">1.2.0 — 2024-12-02</a>
