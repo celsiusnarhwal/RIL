@@ -102,7 +102,7 @@ styles are available for free[^2]; other styles require [Font Awesome Pro](pro.m
     ``` 
 
 [^1]:
-Only [just over 2,000 icons](https://fontawesome.com/search?m=free) are free, though. The rest require [Font Awesome Pro](pro.md).
+Only [just over 2,000 icons](https://fontawesome.com/search?ic=free) are free, though. The rest require [Font Awesome Pro](pro.md).
 
 [^2]:
 Even within the Classic Solid and Classic Regular styles, some individual icons require Font Awesome Pro. The Brands 
