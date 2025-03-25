@@ -4,7 +4,7 @@ Notable changes to the Reflex Icon Library will be documented here. Breaking cha
 
 RIL adheres to [semantic versioning](https://semver.org/spec/v2.0.0.html).
 
-## <a name="1-3-3">1.3.3 — 2025-03-25>/a>
+## <a name="1-3-3">1.3.3 — 2025-03-25</a>
 
 ### Fixed
 
