@@ -43,7 +43,7 @@ class BootstrapIcon(Base):
     def create(cls, icon: str, props: BootstrapIconProps) -> rx.Component:
         component_model = cls._reproduce(props=props.model_dump())
 
-        component = component_model._create(**props.model_dump())
+        component = super(cls, component_model).create(**props.model_dump())
         component.tag = casefy.pascalcase(icon.casefold())
 
         if re.match(r"^\d", component.tag):

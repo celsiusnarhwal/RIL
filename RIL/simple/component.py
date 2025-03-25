@@ -133,7 +133,7 @@ class SimpleIcon(Base):
             component_model.add_imports, **props.package.import_dict
         )
 
-        component = component_model._create(**props.model_dump())
+        component = super(cls, component_model).create(**props.model_dump())
         component.library = props.package.component_library
         component.tag = "Si" + icon.replace(" ", "").replace(".", "dot").capitalize()
 

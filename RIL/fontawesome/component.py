@@ -183,6 +183,7 @@ class FontAwesomeIcon(Base):
     def create(cls, icon: str = None, _icon_style: str = None, **props) -> t.Self:
         # The icon name is normalized to fa{Icon} and given an alias suffixed with a UUID to avoid
         # collisions with any sister icons in different styles.
+
         tag = cls._normalize_icon_name(icon)
         alias = cls._get_icon_alias(icon, _icon_style)
 
@@ -244,7 +245,7 @@ class FontAwesomeIcon(Base):
         component_model.add_imports = partial(component_model.add_imports, **imports)
 
         # Finally, we return an instance of the new component class.
-        return component_model._create(**props)
+        return super(cls, component_model).create(**props)
 
 
 class FontAwesomeSharp(rx.ComponentNamespace):

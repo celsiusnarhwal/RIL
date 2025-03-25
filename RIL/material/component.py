@@ -76,7 +76,7 @@ class MaterialSymbol(Base):
     def create(cls, icon: str, props: MaterialSymbolProps) -> rx.Component:
         component_model = cls._reproduce(props=props.model_dump())
 
-        component = component_model._create(**props.model_dump())
+        component = super(cls, component_model).create(**props.model_dump())
         component.library = f"@nine-thirty-five/material-symbols-react/{props.variant}"
 
         if props.filled:
