@@ -9,7 +9,7 @@ RIL adheres to [semantic versioning](https://semver.org/spec/v2.0.0.html).
 ### Changed
 
 - When requesting Simple Icons' version history, RIL now uses the URL returned by
-[`reflex.utils.get_npm_registry()`](https://github.com/reflex-dev/reflex/blob/5b6afb1eb87435d58ba05d92094f1392709fbc98/reflex/utils/registry.py#L60)
+[`reflex.utils.get_npm_registry()`](https://github.com/reflex-dev/reflex/blob/5b6afb1eb87435d58ba05d92094f1392709fbc98/reflex/utils/registry.py#L60).
 This changes nothing for most users, but may improve the performance of the Simple Icons component for users in China, where
 network restrictions can make accessing the standard NPM registry difficult or impossible.
 
