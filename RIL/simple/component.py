@@ -12,6 +12,7 @@ from loguru import logger
 import hishel
 import httpx
 import semver
+from reflex.utils.registry import get_npm_registry
 
 __all__ = ["simple", "si"]
 
@@ -77,7 +78,7 @@ class SimpleIconProps(Props):
         if self.version == "latest":
             return SimpleIconsPackage.at("latest")
 
-        with hishel.CacheClient(base_url="https://registry.npmjs.org") as npm:
+        with hishel.CacheClient(base_url=get_npm_registry()) as npm:
             try:
                 resp = npm.get(SimpleIconsPackage.base_package)
                 resp.raise_for_status()
