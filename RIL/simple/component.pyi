@@ -1,5 +1,6 @@
-from RIL._core import Base
 import typing as t
+
+from RIL._core import Base
 
 class SimpleIcon(Base):
     @classmethod

@@ -7,9 +7,9 @@ import reflex as rx
 from deepmerge import always_merger
 from reflex.utils.imports import ImportDict
 
+from RIL import utils
 from RIL._core import Base
 from RIL.settings import settings
-from RIL import utils
 
 __all__ = ["fontawesome", "fa"]
 
