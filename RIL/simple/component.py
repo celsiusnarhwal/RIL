@@ -18,7 +18,7 @@ __all__ = ["simple", "si"]
 
 
 class SimpleIconsPackage(BaseModel):
-    base_package: t.ClassVar[str] = "@icons-pack/react-simple-icons"
+    base_package: t.ClassVar[str] = "@celsiusnarhwal/ril-simple-icons"
 
     name: str
 
@@ -32,9 +32,6 @@ class SimpleIconsPackage(BaseModel):
 
     @classmethod
     def at(cls, version: semver.Version | t.Literal["latest"]) -> t.Self:
-        if str(version) == "latest":
-            return cls(name=cls.base_package)
-
         return cls(
             name=f"{cls.base_package}-{version}@npm:{cls.base_package}@{version}"
         )
@@ -91,27 +88,24 @@ class SimpleIconProps(Props):
 
                 exit(1)
 
-            package_info = resp.json()
+        package_info = resp.json()
+        versions = [
+            semver.Version.parse(v)
+            for v in sorted(
+                package_info["versions"], key=semver.Version.parse, reverse=True
+            )
+        ]
 
-            for release in reversed(package_info["versions"].values()):
-                package_version = semver.Version.parse(release["version"])
+        for version in versions:
+            if version.major <= self.version and not version.prerelease:
+                return SimpleIconsPackage.at(version)
+        else:
+            logger.critical(
+                f"No version of {SimpleIconsPackage.base_package} could be sound for "
+                f"Simple Icons <= {self.version}."
+            )
 
-                if package_version.prerelease:
-                    continue
-
-                package_si_version = semver.Version.parse(
-                    release["devDependencies"]["simple-icons"]
-                )
-
-                if package_si_version.major <= self.version:
-                    return SimpleIconsPackage.at(package_version)
-            else:
-                logger.critical(
-                    f"No version of {SimpleIconsPackage.base_package} could be sound for "
-                    f"Simple Icons <= {self.version}."
-                )
-
-                exit(1)
+            exit(1)
 
     @field_serializer("color")
     def serialize_color_as_hex(self, color: Color | t.Literal["default"] | None):
