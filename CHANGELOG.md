@@ -4,6 +4,14 @@ Notable changes to the Reflex Icon Library will be documented here. Breaking cha
 
 RIL adheres to [semantic versioning](https://semver.org/spec/v2.0.0.html).
 
+## <a name="1-4-1">1.4.1 — 2025-04-10</a>
+
+### Changes
+
+- The Simple Icons component's upstream package is now [maintained by yours truly](https://github.com/celsiusnarhwal/ril-simple-icons).
+This shouldn't change anything for end users, but if you run into any issues, please [report them](https://github.com/celsiusnarhwal/RIL/issues).
+
+
 ## <a name="1-4-0">1.4.0 — 2025-03-26</a>
 
 ### Added
