@@ -76,7 +76,7 @@ relevant, but here's a quick overview of them all.
 
     | <div style="width:200px">**Setting**</div> | **Description**                                                                                                                                                                                                       | **Default**                 |
     |----------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------|
-    | `version`                    | The newest major version of Simple Icons that RIL may use, or `latest` for the latest version. ([More](simple/index.md/#versioning))                                                                                  | `latest`                    |
+    | `version`                    | The newest major version of Simple Icons that RIL may use, or `latest` for the latest version. ([More](simple/index.md/#global-version-switching))                                                                                  | `latest`                    |
     
 
 === ":simple-phosphoricons: Phosphor"
