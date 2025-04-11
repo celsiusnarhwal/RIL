@@ -57,7 +57,7 @@ Icon names are case-inensitive.
 
 Simple Icons periodically remove icons for various reasons — for example, if their associated entity rebrands
 or ceases operations. To prevent icon removals from breaking your project, the `version` prop allows you to choose
-which major version of Simple Icons a particular icon should use (see [Props](#props)). RIL supports everything
+which major version of Simple Icons a particular icon should use. RIL supports everything
 back to Simple Icons 10.
 
 For example, to use the Twitter icon that
