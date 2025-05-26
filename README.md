@@ -1,5 +1,8 @@
 # The Reflex Icon Library
 
+> [!IMPORTANT]
+> RIL is currently not compatible with Reflex 0.7.13 and later. See (this issue)(https://github.com/celsiusnarhwal/RIL/issues/4).
+
 The Reflex Icon Library (RIL) is your one-stop icon shop for [Reflex](https://reflex.dev) projects.
 It includes the icon libraries of [Font Awesome](https://fontawesome.com), [Simple Icons](https://simpleicons.org),
 Google's [Material Symbols](https://fonts.google.com/icons),
