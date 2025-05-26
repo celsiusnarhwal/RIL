@@ -4,6 +4,14 @@ Notable changes to the Reflex Icon Library will be documented here. Breaking cha
 
 RIL adheres to [semantic versioning](https://semver.org/spec/v2.0.0.html).
 
+## <a name="1-4-2">1.4.2 — 2025-05-26</a>
+
+### Changes
+
+- RIL is now compatible only with Reflex 0.7.12 and earlier due to a change in Reflex 0.7.13 that breaks RIL.
+([reflex-dev/reflex#5829](https://github.com/reflex-dev/reflex/pull/5289)). Assuming this problem is fixable,
+the next version of RIL will almost certainly drop support for Reflex 0.7.12 and earlier.
+
 ## <a name="1-4-1">1.4.1 — 2025-04-10</a>
 
 ### Changes
