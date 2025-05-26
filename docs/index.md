@@ -6,6 +6,10 @@ hide:
 
 # The Reflex Icon Library
 
+!!! warning "RIL is not currently compatible with Reflex 0.7.13 and later"
+    If you wish to use RIL, you must use Reflex 0.7.12 or earlier for now. See 
+    [this GitHub issue](https://github.com/celsiusnarhwal/RIL/issues/4) for details.
+
 The Reflex Icon Library (RIL) is your one-stop icon shop for [Reflex](https://reflex.dev) projects.
 It includes the icon libraries of [Font Awesome](https://fontawesome.com), [Simple Icons](https://simpleicons.org),
 Google's [Material Symbols](https://fonts.google.com/icons),
