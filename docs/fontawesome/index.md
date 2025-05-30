@@ -7,6 +7,10 @@ icon: fontawesome/brands/font-awesome
 [Font Awesome](https://fontawesome.com) is a library of over 50,000[^1] icons in several different styles,
 including over 400 icons for popular brands.
 
+!!! info "RIL only supports Font Awesome 6 for now"
+    Font Awesome 7 support is planned. Keep an eye on [this GitHub issue](https://github.com/celsiusnarhwal/RIL/issues/3)
+    for updates.
+
 ## Usage
 
 Font Awesome icons can be used via `#!python icons.fontawesome` or `#!python icons.fa`. There's no functional
