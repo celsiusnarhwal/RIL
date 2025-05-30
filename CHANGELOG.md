@@ -6,7 +6,7 @@ RIL adheres to [semantic versioning](https://semver.org/spec/v2.0.0.html).
 
 ## <a name="1-4-3">1.4.3 — 2025-05-30</a>
 
-### Changes
+### Changed
 
 - RIL is now compatible with Reflex 0.7.13 and later. The good news is that contrary to
   [my own expectations](https://github.com/celsiusnarhwal/RIL/issues/4), I didn't have to make any breaking changes
@@ -22,14 +22,14 @@ RIL adheres to [semantic versioning](https://semver.org/spec/v2.0.0.html).
 
 ## <a name="1-4-2">1.4.2 — 2025-05-26</a>
 
-### Changes
+### Changed
 
 - RIL is now compatible only with Reflex 0.7.12 and earlier due to a change in Reflex 0.7.13 that breaks RIL
   ([#4](https://github.com/celsiusnarhwal/RIL/issues/4)).
 
 ## <a name="1-4-1">1.4.1 — 2025-04-10</a>
 
-### Changes
+### Changed
 
 - The Simple Icons component's upstream package is
   now [maintained by yours truly](https://github.com/celsiusnarhwal/ril-simple-icons).
