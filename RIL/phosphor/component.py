@@ -72,7 +72,7 @@ class PhosphorIconContext(Base):
     @classmethod
     @validate_props
     def create(cls, *children, props: PhosphorIconContextProps) -> rx.Component:
-        component_model = cls._reproduce(props=props.model_dump())
+        component_model = cls._reproduce(props_to_override=props.model_dump())
         return super(cls, component_model).create(**props.model_dump())
 
 
@@ -82,10 +82,10 @@ class PhosphorIcon(Base):
     @classmethod
     @validate_props
     def create(cls, icon: str, props: PhosphorIconProps) -> rx.Component:
-        component_model = cls._reproduce(props=props.model_dump())
+        component_model = cls._reproduce(props_to_override=props.model_dump())
 
         component = super(cls, component_model).create(**props.model_dump())
-        component.tag = casefy.pascalcase(icon.casefold())
+        component.tag = casefy.pascalcase(icon.casefold()) + "Icon"
         component.alias = "Phosphor" + component.tag
 
         return component

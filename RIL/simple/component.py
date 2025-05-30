@@ -123,7 +123,7 @@ class SimpleIcon(Base):
     @classmethod
     @validate_props
     def create(cls, icon: str, props: SimpleIconProps):
-        component_model = cls._reproduce(props=props.model_dump())
+        component_model = cls._reproduce(props_to_override=props.model_dump())
         component_model.add_imports = partial(
             component_model.add_imports, **props.package.import_dict
         )

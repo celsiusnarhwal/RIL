@@ -39,7 +39,7 @@ class Octicon(Base):
     @classmethod
     @validate_props
     def create(cls, icon: str, props: OcticonProps):
-        component_model = cls._reproduce(props=props.model_dump())
+        component_model = cls._reproduce(props_to_override=props.model_dump())
         component = super(cls, component_model).create(**props.model_dump())
 
         icon = re.sub(r"icon$", "", icon, flags=re.I)

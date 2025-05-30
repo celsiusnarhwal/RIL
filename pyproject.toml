@@ -17,7 +17,7 @@ dependencies = [
     "pydantic>=2.10.0",
     "pydantic-extra-types>=2.10.0",
     "pydantic-settings>=2.6.1",
-    "reflex<=0.7.12",
+    "reflex>=0.7.12",
     "semver>=3.0.2",
     "yarl>=1.18.0",
 ]

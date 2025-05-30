@@ -1511,7 +1511,7 @@ wheels = [
 
 [[package]]
 name = "reflex"
-version = "0.7.12"
+version = "0.7.13"
 source = { registry = "https://fa.celsiusnarhwal.dev/simple" }
 dependencies = [
     { name = "alembic" },
@@ -1533,9 +1533,9 @@ dependencies = [
     { name = "typing-extensions" },
     { name = "wrapt" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/ce/a3/655b75d50e33f871c51c7647750f3431cf5d4f4f4ad53ea9a77a6fb923a7/reflex-0.7.12.tar.gz", hash = "sha256:8571283ca205a0e4e04012c8eca0e31f17e47a6c2e20913cd4271292e8b118c9", size = 567947 }
+sdist = { url = "https://files.pythonhosted.org/packages/7d/70/480587f05064eebb89049f955154cb2ea422f03c6ca281bcda66ab720bbc/reflex-0.7.13.tar.gz", hash = "sha256:d703ed8b01814f9374694deb12214e294e96cb354cdff8508dc2727e301acb75", size = 573512 }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/49/ce/3aa53cfe48b310a3d18c22c3c9d4577b149250bdf1507ec66d78e4f6d79a/reflex-0.7.12-py3-none-any.whl", hash = "sha256:cc7ffebd0850b67f9ef4fd5cce94e19641d82e27349c80e754253fb06406c193", size = 862132 },
+    { url = "https://files.pythonhosted.org/packages/06/c3/f53f2b17d16b1513abb10ad37a602c2be7bfcb583018abea202913f81e11/reflex-0.7.13-py3-none-any.whl", hash = "sha256:7691b812c8a3787d7fc4f83bcc5415546912b506f84f30447140f3dead30bc49", size = 870803 },
 ]
 
 [[package]]
@@ -1595,7 +1595,7 @@ requires-dist = [
     { name = "pydantic", specifier = ">=2.10.0" },
     { name = "pydantic-extra-types", specifier = ">=2.10.0" },
     { name = "pydantic-settings", specifier = ">=2.6.1" },
-    { name = "reflex", specifier = "<=0.7.12" },
+    { name = "reflex", specifier = "==0.7.13" },
     { name = "semver", specifier = ">=3.0.2" },
     { name = "yarl", specifier = ">=1.18.0" },
 ]

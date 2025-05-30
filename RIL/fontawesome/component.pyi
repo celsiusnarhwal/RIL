@@ -6,6 +6,12 @@ from RIL._core import Base
 
 class FontAwesomeIcon(Base):
     @classmethod
+    def _get_package_for_style(cls, style: str) -> str: ...
+    @classmethod
+    def _normalize_icon_name(cls, icon_name: str) -> str: ...
+    @classmethod
+    def _get_icon_alias(cls, icon_name: str, icon_style: str) -> str: ...
+    @classmethod
     def create(
         cls,
         icon: str,

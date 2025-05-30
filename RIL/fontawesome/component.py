@@ -181,6 +181,8 @@ class FontAwesomeIcon(Base):
 
     @classmethod
     def create(cls, icon: str = None, _icon_style: str = None, **props) -> t.Self:
+        props_to_override = {}
+
         # The icon name is normalized to fa{Icon} and given an alias suffixed with a UUID to avoid
         # collisions with any sister icons in different styles.
 
@@ -190,8 +192,7 @@ class FontAwesomeIcon(Base):
         # Determine the package this icon should be imported from.
         package = cls._get_package_for_style(_icon_style)
 
-        # These props need to be overridden. Format: {name: (rx.Var[type], default_value)}
-        props_to_override = {"icon": (rx.Var[t.Any], rx.Var(alias))}
+        props["icon"] = rx.Var(alias)
 
         # The component will depend on @fortawesome/fontawesome-svg-core and the Kit package (if a Kit exists)
         # or the appropriate @fortawesome package (if no Kit exists).
@@ -199,10 +200,10 @@ class FontAwesomeIcon(Base):
         if settings.fontawesome.kit_package:
             second_dependency = f"{settings.fontawesome.kit_package}@latest"
         else:
-            second_dependency = package
+            second_dependency = f"{package}@^6"
 
         lib_dependencies = [
-            "@fortawesome/fontawesome-svg-core",
+            "@fortawesome/fontawesome-svg-core@^6",
             second_dependency,
         ]
 
@@ -229,7 +230,7 @@ class FontAwesomeIcon(Base):
             )
 
             # The actual value of the mask prop is the raw JSX reference to the masking icon.
-            props_to_override["mask"] = (rx.Var[t.Any], mask.icon)
+            props_to_override["mask"] = mask.icon
         elif mask is not None:
             raise TypeError(
                 f"The mask of a Font Awesome icon must be another Font Awesome icon and not {type(mask)}"
@@ -237,8 +238,8 @@ class FontAwesomeIcon(Base):
 
         # We create a new component class as a subclass of this one, overriding props as necessary.
         component_model = cls._reproduce(
-            lib_dependencies=(list[str], lib_dependencies),
-            **props_to_override,
+            props_to_override=props_to_override,
+            lib_dependencies=lib_dependencies,
         )
 
         # We override `add_imports` to import the icon.
@@ -249,8 +250,8 @@ class FontAwesomeIcon(Base):
 
 
 class FontAwesomeSharp(rx.ComponentNamespace):
-    solid = __call__ = staticmethod(
-        partial(staticmethod(FontAwesomeIcon.create), _icon_style="sharp-solid")
+    solid = __call__ = partial(
+        staticmethod(FontAwesomeIcon.create), _icon_style="sharp-solid"
     )
     regular = partial(staticmethod(FontAwesomeIcon.create), _icon_style="sharp-regular")
     light = partial(staticmethod(FontAwesomeIcon.create), _icon_style="sharp-light")
@@ -258,8 +259,8 @@ class FontAwesomeSharp(rx.ComponentNamespace):
 
 
 class FontAwesomeDuotone(rx.ComponentNamespace):
-    solid = __call__ = staticmethod(
-        partial(staticmethod(FontAwesomeIcon.create), _icon_style="duotone-solid")
+    solid = __call__ = partial(
+        staticmethod(FontAwesomeIcon.create), _icon_style="duotone-solid"
     )
     regular = partial(
         staticmethod(FontAwesomeIcon.create), _icon_style="duotone-regular"
@@ -269,8 +270,8 @@ class FontAwesomeDuotone(rx.ComponentNamespace):
 
 
 class FontAwesomeSharpDuotone(rx.ComponentNamespace):
-    solid = __call__ = staticmethod(
-        partial(staticmethod(FontAwesomeIcon.create), _icon_style="sharp-duotone-solid")
+    solid = __call__ = partial(
+        staticmethod(FontAwesomeIcon.create), _icon_style="sharp-duotone-solid"
     )
     regular = partial(
         staticmethod(FontAwesomeIcon.create), _icon_style="sharp-duotone-regular"
@@ -284,8 +285,8 @@ class FontAwesomeSharpDuotone(rx.ComponentNamespace):
 
 
 class FontAwesome(rx.ComponentNamespace):
-    solid = __call__ = staticmethod(
-        partial(FontAwesomeIcon.create, _icon_style="classic-solid")
+    solid = __call__ = partial(
+        staticmethod(FontAwesomeIcon.create), _icon_style="classic-solid"
     )
     regular = partial(
         staticmethod(FontAwesomeIcon.create), _icon_style="classic-regular"
