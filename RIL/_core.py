@@ -44,14 +44,14 @@ class Base(rx.Component):
             for field in rx.Component.get_fields():
                 props_to_override.pop(field, None)
 
-                model = pydantic.v1.create_model(
-                    cls.__name__,
-                    __base__=cls,
-                    lib_dependencies=(list[str], lib_dependencies),
-                    **{k: (rx.Var[t.Any], v) for k, v in props_to_override.items()},
-                )
+            model = pydantic.v1.create_model(
+                cls.__name__,
+                __base__=cls,
+                lib_dependencies=(list[str], lib_dependencies),
+                **{k: (rx.Var[t.Any], v) for k, v in props_to_override.items()},
+            )
 
-                return model
+            return model
         else:
             return type(
                 cls.__name__,
