@@ -8,7 +8,7 @@ RIL adheres to [semantic versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
-- Fixed a minor issue that may have affected compatibility with Reflex 0.7.12 and earlier.
+- Fixed an issue that may have affected compatibility with Reflex 0.7.12 and earlier.
 
 ## <a name="1-4-3">1.4.3 — 2025-05-30</a>
 
