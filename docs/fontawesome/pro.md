@@ -126,7 +126,7 @@ icons.fa.kit("name-of-icon")
 
 ### Updating Kits
 
-If you add, remove, or edit icons or styles in your Kit, you can get those changes in your Reflex project by
+If you add, remove, or edit icons in your Kit, you can get those changes in your Reflex project by
 having Reflex reinstall your project's frontend packages:
 
 ```shell

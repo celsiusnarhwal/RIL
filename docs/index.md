@@ -149,7 +149,7 @@ RIL reads configuration sources with the following priority:
 ## Updating icon libraries
 
 Whenever new icons are added to any of RIL's supported libraries, you don't need to wait for an RIL update to use them.
-Just have Reflex to reinstall your project's frontend packages and you'll be good to go:
+Just have Reflex reinstall your project's frontend packages and you'll be good to go:
 
 ```shell
 reflex init && reflex run
