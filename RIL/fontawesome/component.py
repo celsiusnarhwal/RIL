@@ -183,7 +183,7 @@ class FontAwesomeIcon(Base):
     def create(cls, icon: str = None, _icon_style: str = None, **props) -> t.Self:
         props_to_override = {}
 
-        # The icon name is normalized to fa{Icon} and given an alias suffixed with a UUID to avoid
+        # The icon name is normalized to fa{Icon} and given an alias to avoid
         # collisions with any sister icons in different styles.
 
         tag = cls._normalize_icon_name(icon)
