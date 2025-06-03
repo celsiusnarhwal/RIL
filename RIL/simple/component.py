@@ -82,7 +82,7 @@ class SimpleIconProps(Props):
     @field_validator("version")
     def validate_version(cls, v):
         if isinstance(v, int) and not v >= 5:
-            raise ValueError("Simple Icons versiion must be greater than or equal to 5")
+            raise ValueError("Simple Icons version must be greater than or equal to 5")
 
         return v
 
@@ -91,7 +91,8 @@ class SimpleIconProps(Props):
         if v == "default":
             v = "brand"
             logger.warning(
-                "The 'default' color for Simple Icons is deprecated, use 'brand' instead"
+                "The 'default' color for Simple Icons is deprecated; use 'brand' instead. 'default' will no longer "
+                "be supported in RIL 2.0.0."
             )
 
         return v
