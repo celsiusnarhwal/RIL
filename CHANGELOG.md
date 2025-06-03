@@ -4,6 +4,13 @@ Notable changes to the Reflex Icon Library will be documented here. Breaking cha
 
 RIL adheres to [semantic versioning](https://semver.org/spec/v2.0.0.html).
 
+## <a name="1-5-0">1.5.0 — 2025-06-03</a>
+
+### Changed
+
+- RIL now respects the contents of the `.npmrc` file identified by [
+  `reflex.utils.prerequisites.initialize_npmrc()`](https://github.com/reflex-dev/reflex/blob/31be6458807f71de8be0cbdbef09b35d72cbdc6f/reflex/utils/prerequisites.py#L1071).
+
 ## <a name="1-4-4">1.4.4 — 2025-06-01</a>
 
 ### Fixed
@@ -18,7 +25,8 @@ RIL adheres to [semantic versioning](https://semver.org/spec/v2.0.0.html).
   [my own expectations](https://github.com/celsiusnarhwal/RIL/issues/4), I didn't have to make any breaking changes
   or drop support for Reflex 0.7.12 and earlier. The bad news is that I'm not gonna wanna test all future versions
   of RIL on both Reflex 0.7.12 and Reflex ≥0.7.13, so **support for Reflex 0.7.12 and earlier is deprecated in this
-  release and will be removed in RIL 2.0.0**. You should prepare for this by upgrading to the latest versions of RIL and Reflex as soon
+  release and will be removed in RIL 2.0.0**. You should prepare for this by upgrading to the latest versions of RIL and
+  Reflex as soon
   as possible. (Resolves [#4](https://github.com/celsiusnarhwal/RIL/issues/4).)
 - With the exception of `@fortawesome/react-fontawesome` and Font Awesome Kit packages, all Font Awesome NPM packages
   have been pinned to major version 6 in order to avoid unwanted surprises when Font Awesome 7 launches in June.
@@ -48,7 +56,7 @@ RIL adheres to [semantic versioning](https://semver.org/spec/v2.0.0.html).
 
 - When requesting Simple Icons' version history, RIL now uses the URL returned by
   [
-  `reflex.utils.get_npm_registry()`](https://github.com/reflex-dev/reflex/blob/5b6afb1eb87435d58ba05d92094f1392709fbc98/reflex/utils/registry.py#L60).
+  `reflex.utils.registry.get_npm_registry()`](https://github.com/reflex-dev/reflex/blob/5b6afb1eb87435d58ba05d92094f1392709fbc98/reflex/utils/registry.py#L60).
   This changes nothing for most users, but may improve the performance of the Simple Icons component for users in China,
   where
   network restrictions can make accessing the standard NPM registry difficult or impossible.

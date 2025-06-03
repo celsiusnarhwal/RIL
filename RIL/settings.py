@@ -13,7 +13,7 @@ from pydantic_settings import (
     SettingsConfigDict,
     TomlConfigSettingsSource,
 )
-from reflex.utils.prerequisites import get_web_dir
+from reflex.utils.prerequisites import get_web_dir, initialize_npmrc
 
 jinja = Environment(loader=FileSystemLoader(Path(__file__).parent / "templates"))
 
@@ -40,19 +40,15 @@ class FontAwesomeSettings(BaseModel):
     @model_validator(mode="after")
     def write_npmrc(self):
         """
-        Write a .npmrc file to the Reflex web directory if Font Awesome Pro is enabled, or remove that file if
-        it isn't.
+        Write Font Awesome Pro-specific configuration to .npmrc as needed.
         """
-        userland_npmrc = get_web_dir() / ".npmrc"
+        initialize_npmrc()
 
-        if not self.pro_enabled:
-            userland_npmrc.unlink(missing_ok=True)
-        else:
+        if self.pro_enabled:
             npmrc_template = jinja.get_template(".npmrc.jinja")
             reference_npmrc = npmrc_template.render(registry=self.npm_registry)
 
-            if userland_npmrc.parent.exists():
-                userland_npmrc.write_text(reference_npmrc)
+            get_web_dir().joinpath(".npmrc").open("a").write("\n" + reference_npmrc)
 
         return self
 

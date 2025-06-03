@@ -13,8 +13,8 @@ GitHub's [Octicons](https://primer.style/octicons), [Phosphor](https://phosphori
 and [Bootstrap Icons](https://icons.getbootstrap.com/), packaging over 12,000 icons in total.
 
 !!! warning "Support for Reflex 0.7.12 and earlier is deprecated"
-    Please upgrade to the latest versions of RIL and Reflex as soon as possible. For more information,
-    see [RIL's changelog](https://github.com/celsiusnarhwal/RIL/blob/main/CHANGELOG.md#1-4-3).
+Please upgrade to the latest versions of RIL and Reflex as soon as possible. For more information,
+see [RIL's changelog](https://github.com/celsiusnarhwal/RIL/blob/main/CHANGELOG.md#1-4-3).
 
 ## Installation
 
@@ -45,9 +45,9 @@ app.add_page(index)
 ```
 
 !!! warning "RIL does not validate icon names"
-    Passing the name of an icon that doesn't exist will get you a cryptic error from React, but RIL itself
-    won't complain. If you're passing an icon name that's not working and you're _confident_ it should, please
-    [open an issue](https://github.com/celsiusnarhwal/RIL/issues/new/choose).
+Passing the name of an icon that doesn't exist will get you a cryptic error from React, but RIL itself
+won't complain. If you're passing an icon name that's not working and you're _confident_ it should, please
+[open an issue](https://github.com/celsiusnarhwal/RIL/issues/new/choose).
 
 This is just a basic example. For detailed usage instructions, see the documentation for each icon library:
 
@@ -81,7 +81,6 @@ relevant, but here's a quick overview of them all.
     | <div style="width:200px">**Setting**</div> | **Description**                                                                                                                                                                                                       | **Default**                 |
     |----------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------|
     | `version`                    | The newest major version of Simple Icons that RIL may use, or `latest` for the latest version. ([More](simple/index.md/#global-version-switching))                                                                                  | `latest`                    |
-    
 
 === ":simple-phosphoricons: Phosphor"
 
@@ -154,12 +153,3 @@ Just have Reflex reinstall your project's frontend packages and you'll be good t
 ```shell
 reflex init && reflex run
 ```
-
-<hr/>
-
-!!! warning "RIL overrides `.npmrc`" 
-    Custom `.npmrc` files will not work in projects using RIL. This is intended behavior.
-
-    If you use a custom `.npmrc` file, you should migrate to [`bunfig.toml`](https://bun.sh/docs/runtime/bunfig), which RIL does not touch.
-    If you must use `.npmrc` specifically, please [open an issue](https://github.com/celsiusnarhwal/RIL/issues) and
-    explain your use case.
