@@ -45,9 +45,9 @@ app.add_page(index)
 ```
 
 !!! warning "RIL does not validate icon names"
-Passing the name of an icon that doesn't exist will get you a cryptic error from React, but RIL itself
-won't complain. If you're passing an icon name that's not working and you're _confident_ it should, please
-[open an issue](https://github.com/celsiusnarhwal/RIL/issues/new/choose).
+  Passing the name of an icon that doesn't exist will get you a cryptic error from React, but RIL itself
+  won't complain. If you're passing an icon name that's not working and you're _confident_ it should, please
+  [open an issue](https://github.com/celsiusnarhwal/RIL/issues/new/choose).
 
 This is just a basic example. For detailed usage instructions, see the documentation for each icon library:
 
