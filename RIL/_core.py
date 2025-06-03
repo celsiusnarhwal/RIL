@@ -41,6 +41,10 @@ class Base(rx.Component):
             props_to_override = props_to_override.model_dump()
 
         if semver.Version.parse(importlib.metadata.version("reflex")) < "0.7.13":
+            logger.warning(
+                "Support for your version of Reflex is deprecated and will be removed in RIL 2.0.0. "
+                "Please upgrade to the latest versions of Reflex and RIL."
+            )
             for field in rx.Component.get_fields():
                 props_to_override.pop(field, None)
 
@@ -81,5 +85,5 @@ logger.add(
     sink=sys.stderr,
     level=log_level.upper(),
     colorize=True,
-    format="<lvl>{level}: {message}</>",
+    format="<lvl>[Reflex Icon Library] {level}: {message}</>",
 )
