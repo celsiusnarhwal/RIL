@@ -77,4 +77,9 @@ if log_level.casefold() == "default":
     log_level = "warning"
 
 logger.remove()
-logger.add(sink=sys.stderr, level=log_level.upper(), colorize=True)
+logger.add(
+    sink=sys.stderr,
+    level=log_level.upper(),
+    colorize=True,
+    format="<lvl>{level}: {message}</>",
+)

@@ -1,15 +1,11 @@
 import typing as t
 from functools import partial
 
-import hishel
-import httpx
 import reflex as rx
-import semver
 from loguru import logger
-from pydantic import BaseModel, Field, field_serializer
+from pydantic import BaseModel, Field, field_serializer, field_validator
 from pydantic_extra_types.color import Color
 from reflex.utils.imports import ImportDict
-from reflex.utils.registry import get_npm_registry
 
 from RIL._core import Base, Props, validate_props
 from RIL.settings import settings
@@ -18,23 +14,34 @@ __all__ = ["simple", "si"]
 
 
 class SimpleIconsPackage(BaseModel):
-    base_package: t.ClassVar[str] = "@celsiusnarhwal/ril-simple-icons"
+    base_package: t.ClassVar[str] = "simple-icons"
 
-    name: str
-
-    @property
-    def component_library(self) -> str:
-        return self.name.split("@npm:")[0]
+    version: int | t.Literal["latest"]
 
     @property
-    def import_dict(self) -> dict:
-        return {self.name: rx.ImportVar(None, render=False)}
+    def version_specifier(self) -> str:
+        return self.version if self.version == "latest" else f"^{self.version}"
 
-    @classmethod
-    def at(cls, version: semver.Version | t.Literal["latest"]) -> t.Self:
-        return cls(
-            name=f"{cls.base_package}-{version}@npm:{cls.base_package}@{version}"
+    @property
+    def package_name(self):
+        return f"{self.package_alias}@npm:{self.base_package}@{self.version_specifier}"
+
+    @property
+    def package_alias(self) -> str:
+        return (
+            self.base_package
+            if self.version == "latest"
+            else f"{self.base_package}-{self.version}"
         )
+
+    @property
+    def import_name(self) -> str:
+        name = self.package_alias
+
+        if self.version != "latest" and self.version <= 7:
+            name += "/icons"
+
+        return name
 
 
 class SimpleIconProps(Props):
@@ -43,12 +50,12 @@ class SimpleIconProps(Props):
     A short, accessible, description of the icon.
     """
 
-    color: Color | t.Literal["default"] = None
+    color: Color | t.Literal["brand", "default"] = None
     """
     The color of this icon. May be:
     - a hex code (e.g., `"#03cb98"`)
     - an tuple of RGB, RBGA, or HSL values
-    - `"default"`, which makes the icon use whatever color Simple Icons has chosen as its default
+    - `"brand"` to use the icon's brand color
     - any valid color name as determined by the CSS Color Module Level 3 specification 
     (https://www.w3.org/TR/css-color-3/#svg-color)
     
@@ -60,9 +67,7 @@ class SimpleIconProps(Props):
     The size of the icon. May be an integer (in pixels) or a CSS size string (e.g., `'1rem'`).
     """
 
-    version: int | t.Literal["latest"] = Field(
-        settings.simple.version, ge=10, exclude=True
-    )
+    version: int | t.Literal["latest"] = Field(settings.simple.version, exclude=True)
     """
     The major version of Simple Icons to use for this icon. May be "latest" or an integer 
     greater than or equal to 10.
@@ -72,50 +77,35 @@ class SimpleIconProps(Props):
 
     @property
     def package(self) -> SimpleIconsPackage:
-        if self.version == "latest":
-            return SimpleIconsPackage.at("latest")
+        return SimpleIconsPackage(version=self.version)
 
-        with hishel.CacheClient(base_url=get_npm_registry()) as npm:
-            try:
-                resp = npm.get(SimpleIconsPackage.base_package)
-                resp.raise_for_status()
-            except httpx.HTTPError:
-                logger.critical(
-                    f"RIL could not determine the version of {SimpleIconsPackage.base_package} to install "
-                    "because it could not access the NPM registry. You can suppress this error "
-                    'by setting the simple.version setting to "latest".'
-                )
+    @field_validator("version")
+    def validate_version(cls, v):
+        if isinstance(v, int) and not v >= 5:
+            raise ValueError("Simple Icons versiion must be greater than or equal to 5")
 
-                exit(1)
+        return v
 
-        package_info = resp.json()
-        versions = [
-            semver.Version.parse(v)
-            for v in sorted(
-                package_info["versions"], key=semver.Version.parse, reverse=True
-            )
-        ]
-
-        for version in versions:
-            if version.major <= self.version and not version.prerelease:
-                return SimpleIconsPackage.at(version)
-        else:
-            logger.critical(
-                f"No version of {SimpleIconsPackage.base_package} could be sound for "
-                f"Simple Icons <= {self.version}."
+    @field_validator("color")
+    def validate_color(cls, v):
+        if v == "default":
+            v = "brand"
+            logger.warning(
+                "The 'default' color for Simple Icons is deprecated, use 'brand' instead"
             )
 
-            exit(1)
+        return v
 
     @field_serializer("color")
-    def serialize_color_as_hex(self, color: Color | t.Literal["default"] | None):
-        return color.as_hex() if color and color != "default" else color
+    def serialize_color_as_hex(self, color: Color | t.Literal["brand"] | None):
+        return color.as_hex() if color and color != "brand" else color
 
 
 class SimpleIcon(Base):
-    @property
-    def import_var(self):
-        return rx.ImportVar(self.tag, install=False)
+    library = "$/public/" + rx.asset("SimpleIcon.jsx", shared=True)
+    tag = "SimpleIcon"
+
+    icon: rx.Var[str]
 
     def add_imports(self, **imports) -> ImportDict | list[ImportDict]:
         return imports
@@ -123,16 +113,21 @@ class SimpleIcon(Base):
     @classmethod
     @validate_props
     def create(cls, icon: str, props: SimpleIconProps):
-        component_model = cls._reproduce(props_to_override=props.model_dump())
-        component_model.add_imports = partial(
-            component_model.add_imports, **props.package.import_dict
+        component_model = cls._reproduce(
+            props_to_override=props.model_dump(),
+            lib_dependencies=[props.package.package_name],
         )
 
-        component = super(cls, component_model).create(**props.model_dump())
-        component.library = props.package.component_library
-        component.tag = "Si" + icon.replace(" ", "").replace(".", "dot").capitalize()
+        tag = "si" + icon.replace(" ", "").replace(".", "dot").capitalize()
 
-        return component
+        component_model.add_imports = partial(
+            component_model.add_imports,
+            **{props.package.import_name: rx.ImportVar(tag, install=False)},
+        )
+
+        return super(cls, component_model).create(
+            **props.model_dump(), icon=rx.Var(tag)
+        )
 
 
 simple = si = SimpleIcon.create

@@ -4,7 +4,7 @@ from pathlib import Path
 
 from jinja2 import Environment, FileSystemLoader
 from loguru import logger
-from pydantic import AnyHttpUrl, BaseModel, Field, model_validator
+from pydantic import AnyHttpUrl, BaseModel, Field, field_validator, model_validator
 from pydantic_extra_types.color import Color
 from pydantic_settings import (
     BaseSettings,
@@ -58,7 +58,14 @@ class SimpleIconsSettings(BaseModel):
     Settings for RIL's Simple Icons component.
     """
 
-    version: int | t.Literal["latest"] = Field("latest", ge=10)
+    version: int | t.Literal["latest"] = Field("latest", ge=5)
+
+    @field_validator("version")
+    def validate_version(cls, v):
+        if isinstance(v, int) and not v >= 5:
+            raise ValueError("Simple Icons versiion must be greater than or equal to 5")
+
+        return v
 
 
 class PhosphorSettings(BaseModel):
