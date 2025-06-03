@@ -63,7 +63,7 @@ class SimpleIconsSettings(BaseModel):
     @field_validator("version")
     def validate_version(cls, v):
         if isinstance(v, int) and not v >= 5:
-            raise ValueError("Simple Icons versiion must be greater than or equal to 5")
+            raise ValueError("Simple Icons version must be greater than or equal to 5")
 
         return v
 
