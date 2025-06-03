@@ -154,3 +154,12 @@ Just have Reflex reinstall your project's frontend packages and you'll be good t
 ```shell
 reflex init && reflex run
 ```
+
+<hr/>
+
+!!! warning "RIL overrides `.npmrc`" 
+    Custom `.npmrc` files will not work in projects using RIL.
+
+    If you use a custom `.npmrc` file, you should migrate to [`bunfig.toml`](https://bun.sh/docs/runtime/bunfig), which RIL does not touch.
+    If you must use `.npmrc` specifically, please [open an issue](https://github.com/celsiusnarhwal/RIL/issues) and
+    explain your use case.
