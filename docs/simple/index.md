@@ -50,7 +50,7 @@ Icon names are case-inensitive.
 | `title`   | `#!python str`                        | A short, accessible, title for the icon.                                                                                                                                                                                           |                                                                                                                                                                                                                                                                                            |
 | `color`   | `#!python str` \| `#!python tuple`    | The color of the icon. May be a hex code, a tuple of RGB, RGBA, or HSL values, any valid [CSS Color Module Level 3](https://www.w3.org/TR/css-color-3/#svg-color) color name, or `#!python "brand"` to use the icon's brand color. |                                                                                                                                                                                                                                                                                            |
 | `size`    | `#!python int` \| `#!python str`      | The size of the icon. May be an integer (in pixels) or a CSS size string (e.g., `#!python "1rem"`).                                                                                                                                |                                                                                                                                                                                                                                                                                            |
-| `version` | `#!python int` \| `#!python "latest"` | The major version of Simple Icons to use for this icon. May be `#!python "latest"` or an integer greater than or equal to 10. Defaults to the value of the [`simple.version` setting](#global-version-switching).                  |                                                                                                                                                                                                                                                                                            |
+| `version` | `#!python int` \| `#!python "latest"` | The major version of Simple Icons to use for this icon. May be `#!python "latest"` or an integer greater than or equal to 5. Defaults to the value of the [`simple.version` setting](#global-version-switching).                  |                                                                                                                                                                                                                                                                                            |
 
 
 ## Version switching
@@ -92,7 +92,7 @@ that do not explicitly set the `version` prop.
     `simple.version` is the highest major version of Simple Icons that RIL may use (or `latest`). RIL
     will use the newest version of Simple Icons available within this constraint.
 
-    If this is an integer, it must be greater than or equal to 10. Defaults to `latest`.
+    If this is an integer, it must be greater than or equal to 5. Defaults to `latest`.
 
     === "pyproject.toml"
 
