@@ -28,7 +28,7 @@ class SimpleIcon(Base):
             The color of this icon. May be:
             - a hex code
             - a tuple of RGB, RGBA or HSL values
-            - `"default"`, which makes the icon use whatever color Simple Icons has chosen as its default
+            - `"brand"`, to use the icon's brand color
             - any valid color name as determined by the CSS Color Module Level 3 specification
 
             Hex codes are case-insensitive and the leading `#` is optional..
