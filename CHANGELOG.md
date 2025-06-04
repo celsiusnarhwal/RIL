@@ -1,8 +1,19 @@
 # Changelog[^1]
 
 Notable changes to the Reflex Icon Library will be documented here. Breaking changes are marked with a 🚩.
+Changes containing deprecations are marked with a ⚠️.
 
 RIL adheres to [semantic versioning](https://semver.org/spec/v2.0.0.html).
+
+## <a name="1-6-0">1.6.0 — 2025-06-03</a>
+
+- The Simple Icons component is now built on a custom React component internal to RIL.
+- The Simple Icons component now supports Simple Icons 5 and newer (it previously supported only Simple Icons 10
+  and newer).
+- ⚠️ The `"default"` color for the Simple Icons component is deprecated and succeeded by the `"brand`" color. This change
+aims to avoid potential confusion between the `"default"` color and the default color. Contined use of the `"default"`
+color will raise an exception starting in RIL 2.0.0.
+
 
 ## <a name="1-5-0">1.5.0 — 2025-06-03</a>
 
@@ -21,7 +32,7 @@ RIL adheres to [semantic versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Changed
 
-- RIL is now compatible with Reflex 0.7.13 and later. The good news is that contrary to
+- ⚠️ RIL is now compatible with Reflex 0.7.13 and later. The good news is that contrary to
   [my own expectations](https://github.com/celsiusnarhwal/RIL/issues/4), I didn't have to make any breaking changes
   or drop support for Reflex 0.7.12 and earlier. The bad news is that I'm not gonna wanna test all future versions
   of RIL on both Reflex 0.7.12 and Reflex ≥0.7.13, so **support for Reflex 0.7.12 and earlier is deprecated in this
