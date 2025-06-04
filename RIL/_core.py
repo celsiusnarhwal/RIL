@@ -1,6 +1,5 @@
 import copy
 import importlib.metadata
-import sys
 import typing as t
 
 import pydantic.v1
@@ -73,17 +72,3 @@ def validate_props(func):
         return validate_call(func)(*args, props=props)
 
     return wrapper
-
-
-log_level = rx.config.get_config().loglevel
-
-if log_level.casefold() == "default":
-    log_level = "warning"
-
-logger.remove()
-logger.add(
-    sink=sys.stderr,
-    level=log_level.upper(),
-    colorize=True,
-    format="<lvl>[Reflex Icon Library] {level}: {message}</>",
-)

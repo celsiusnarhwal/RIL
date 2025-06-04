@@ -1,7 +1,9 @@
 import os
+import sys
 import typing as t
 from pathlib import Path
 
+import reflex as rx
 from jinja2 import Environment, FileSystemLoader
 from loguru import logger
 from pydantic import AnyHttpUrl, BaseModel, Field, field_validator, model_validator
@@ -34,7 +36,6 @@ class FontAwesomeSettings(BaseModel):
         or `None` otherwise.
         """
         if self.pro_enabled and self.kit_code:
-            logger.debug(f"Using Font Awesome Kit {self.kit_code}")
             return f"@awesome.me/kit-{self.kit_code}"
 
     @model_validator(mode="after")
@@ -124,6 +125,21 @@ class RILSettings(BaseSettings):
     fontawesome: FontAwesomeSettings = Field(default_factory=FontAwesomeSettings)
     simple: SimpleIconsSettings = Field(default_factory=SimpleIconsSettings)
     phosphor: PhosphorSettings = Field(default_factory=PhosphorSettings)
+
+    @model_validator(mode="after")
+    def configure_logging(self) -> t.Self:
+        log_level = rx.config.get_config().loglevel
+
+        if log_level.casefold() == "default":
+            log_level = "warning"
+
+        logger.remove()
+        logger.add(
+            sink=sys.stderr,
+            level=log_level.upper(),
+            colorize=True,
+            format="<lvl>[Reflex Icon Library] {level}: {message}</>",
+        )
 
     @classmethod
     def settings_customise_sources(
