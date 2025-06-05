@@ -1,14 +1,9 @@
 import os
-import string
-import sys
 import typing as t
 from pathlib import Path
 
-import json5 as json
-import reflex as rx
 import reflex.utils.prerequisites as rxp
 from jinja2 import Environment, FileSystemLoader
-from loguru import logger
 from pydantic import (
     AnyHttpUrl,
     BaseModel,
@@ -134,48 +129,22 @@ class RILSettings(BaseSettings):
     simple: SimpleIconsSettings = Field(default_factory=SimpleIconsSettings)
     phosphor: PhosphorSettings = Field(default_factory=PhosphorSettings)
 
-    @model_validator(mode="after")
-    def configure_logging(self) -> t.Self:
-        log_level = rx.config.get_config().loglevel
-
-        if log_level.casefold() == "default":
-            log_level = "warning"
-
-        logger.remove()
-        logger.add(
-            sink=sys.stderr,
-            level=log_level.upper(),
-            colorize=True,
-            format="<lvl>[Reflex Icon Library] {level}: {message}</>",
-        )
-
-        return self
-
-    @model_validator(mode="after")
-    def update_next_config(self) -> t.Self:
-        rxp.update_next_config()
-
-        next_config_file = rxp.get_web_dir() / "next.config.js"
-
-        next_config = json.loads(
-            next_config_file.read_text()
-            .lstrip(string.printable.replace("{", ""))
-            .rstrip(";")
-        )
-
-        next_config.update(
-            {
-                "turbopack": {
-                    "rules": {"*.svg": {"loaders": ["@svgr/webpack"], "as": "*.js"}}
-                }
-            }
-        )
-
-        next_config_file.write_text(
-            f"module.exports = {json.dumps(next_config, indent=2)}"
-        )
-
-        return self
+    # @model_validator(mode="after")
+    # def configure_logging(self) -> t.Self:
+    #     log_level = rx.config.get_config().loglevel
+    #
+    #     if log_level.casefold() == "default":
+    #         log_level = "warning"
+    #
+    #     logger.remove()
+    #     logger.add(
+    #         sink=sys.stderr,
+    #         level="WARNING",
+    #         colorize=True,
+    #         format="<lvl>[Reflex Icon Library] {level}: {message}</>",
+    #     )
+    #
+    #     return self
 
     @classmethod
     def settings_customise_sources(

@@ -1,5 +1,5 @@
-import re
 import typing as t
+from functools import partial
 
 import casefy
 import inflect as ifl
@@ -8,6 +8,7 @@ from pydantic import Field, field_serializer, model_serializer
 from pydantic_extra_types.color import Color
 from reflex.utils.imports import ImportDict
 
+from RIL import utils
 from RIL._core import Base, Props, validate_props
 
 __all__ = ["material"]
@@ -16,6 +17,8 @@ inflect = ifl.engine()
 
 
 class MaterialSymbolProps(Props):
+    weight: t.Literal[100, 200, 300, 400, 500, 600, 700] = 400
+
     variant: t.Literal["outlined", "rounded", "sharp"] = Field("outlined", exclude=True)
     """
     The variant of the icon. May be either `"outlined"`, `"rounded"`, or `"sharp"`. Defaults to `"outlined"`.
@@ -64,46 +67,62 @@ class MaterialSymbol(Base):
     def import_var(self):
         return rx.ImportVar(tag=self.tag, alias=self.alias, install=False)
 
-    def add_imports(self) -> ImportDict | list[ImportDict]:
-        return {
-            "@nine-thirty-five/material-symbols-react@^1": rx.ImportVar(
-                None, render=False, transpile=True
-            )
-        }
+    def add_imports(self, **imports) -> ImportDict | list[ImportDict]:
+        return imports
 
     @classmethod
     @validate_props
+    @utils.require_turbopack
     def create(cls, icon: str, props: MaterialSymbolProps) -> rx.Component:
         component_model = cls._reproduce(props_to_override=props.model_dump())
 
-        component = super(cls, component_model).create(**props.model_dump())
-        component.library = f"@nine-thirty-five/material-symbols-react/{props.variant}"
+        tag = "Material" + casefy.pascalcase(icon.casefold())
+
+        import_path = f"@material-symbols/svg-{props.weight}/{props.variant}"
 
         if props.filled:
-            component.library += "/filled"
+            import_path += "-fill"
 
-        # The tag is the supplied icon name with whitespace removed and any numbers converted to their PascalCase
-        # word forms. Consecutive numbers are treated as a group — e.g., "E911 Avatar" becomes
-        # "ENineHundredElevenAvatar" and not "ENineOneOneAvatar".
+        import_path += ".svg"
 
-        component.tag = re.sub(
-            r"\d+",
-            lambda m: casefy.pascalcase(inflect.number_to_words(m.group(), andword="")),
-            icon,
+        component_model.add_imports = partial(
+            component_model.add_imports,
+            **{import_path: rx.ImportVar(tag, install=False, is_default=True)},
         )
 
-        component.tag = component.tag.replace(" ", "")
-
-        # The alias is "Material" + the tag + the variant + "Filled" if the icon is to use its
-        # filled appearance.
-
-        component.alias = (
-            "Material"
-            + component.tag
-            + casefy.pascalcase(" ".join(component.library.split("/")[2:]))
-        )
-
-        return component
+    # @classmethod
+    # @validate_props
+    # def create(cls, icon: str, props: MaterialSymbolProps) -> rx.Component:
+    #     component_model = cls._reproduce(props_to_override=props.model_dump())
+    #
+    #     component = super(cls, component_model).create(**props.model_dump())
+    #     component.library = f"@nine-thirty-five/material-symbols-react/{props.variant}"
+    #
+    #     if props.filled:
+    #         component.library += "/filled"
+    #
+    #     # The tag is the supplied icon name with whitespace removed and any numbers converted to their PascalCase
+    #     # word forms. Consecutive numbers are treated as a group — e.g., "E911 Avatar" becomes
+    #     # "ENineHundredElevenAvatar" and not "ENineOneOneAvatar".
+    #
+    #     component.tag = re.sub(
+    #         r"\d+",
+    #         lambda m: casefy.pascalcase(inflect.number_to_words(m.group(), andword="")),
+    #         icon,
+    #     )
+    #
+    #     component.tag = component.tag.replace(" ", "")
+    #
+    #     # The alias is "Material" + the tag + the variant + "Filled" if the icon is to use its
+    #     # filled appearance.
+    #
+    #     component.alias = (
+    #         "Material"
+    #         + component.tag
+    #         + casefy.pascalcase(" ".join(component.library.split("/")[2:]))
+    #     )
+    #
+    #     return component
 
 
 material = MaterialSymbol.create

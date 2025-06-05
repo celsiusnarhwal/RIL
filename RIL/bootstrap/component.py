@@ -1,10 +1,7 @@
-from functools import partial
-
 import casefy
 import reflex as rx
 from pydantic import field_serializer
 from pydantic_extra_types.color import Color
-from reflex import ImportDict
 
 from RIL import utils
 from RIL._core import Base, Props, validate_props
@@ -38,10 +35,11 @@ class BootstrapIconProps(Props):
 
 
 class BootstrapIcon(Base):
-    lib_dependencies = ["bootstrap-icons", "@svgr/webpack"]
+    lib_dependencies = ["bootstrap-icons"]
 
-    def add_imports(self, **imports) -> ImportDict | list[ImportDict]:
-        return imports
+    @property
+    def import_var(self):
+        return rx.ImportVar(self.tag, install=False, is_default=True)
 
     @classmethod
     @validate_props
@@ -51,20 +49,10 @@ class BootstrapIcon(Base):
             props_to_override=props.model_dump(),
         )
 
-        tag = "Bootstrap" + casefy.pascalcase(icon.casefold())
-
-        component_model.add_imports = partial(
-            component_model.add_imports,
-            **{
-                f"bootstrap-icons/icons/{icon.casefold()}.svg": rx.ImportVar(
-                    tag, install=False, is_default=True
-                )
-            },
-        )
-
         component = super(cls, component_model).create(**props.model_dump())
 
-        component.tag = tag
+        component.library = f"bootstrap-icons/icons/{icon.casefold()}.svg"
+        component.tag = "Bootstrap" + casefy.pascalcase(icon.casefold())
 
         return component
 

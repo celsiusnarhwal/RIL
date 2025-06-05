@@ -6,7 +6,16 @@ import pydantic.v1
 import reflex as rx
 import semver
 from loguru import logger
-from pydantic import BaseModel, ConfigDict, Field, model_serializer, validate_call
+from pydantic import (
+    BaseModel,
+    ConfigDict,
+    Field,
+    model_serializer,
+    validate_call,
+)
+from reflex.components.component import T
+
+from RIL.plugins import RILPlugin
 
 
 class Props(BaseModel):
@@ -27,6 +36,17 @@ class Base(rx.Component):
     """
     Base class for all components in this library.
     """
+
+    @classmethod
+    def create(cls: type[T], *children, **props) -> T:
+        from reflex.config import get_config
+
+        if not any((isinstance(plugin, RILPlugin) for plugin in get_config().plugins)):
+            raise ValueError(
+                "You must add the Reflex Icon Library's plugin (RIL.plugins.RILPlugin) to your rxconfig.py."
+            )
+
+        return super().create(*children, **props)
 
     @classmethod
     @validate_call
@@ -56,13 +76,16 @@ class Base(rx.Component):
 
             return model
         else:
+            if isinstance(cls.lib_dependencies, list):
+                lib_dependencies += cls.lib_dependencies
+
             return type(
                 cls.__name__,
                 (cls,),
                 {
                     "__module__": __name__,
                     "custom_attrs": props_to_override,
-                    "lib_dependencies": getattr(cls, "lib_dependencies", []),
+                    "lib_dependencies": lib_dependencies,
                 },
             )
 
