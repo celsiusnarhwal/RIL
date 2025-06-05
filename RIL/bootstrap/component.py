@@ -1,10 +1,12 @@
-import re
+from functools import partial
 
 import casefy
 import reflex as rx
 from pydantic import field_serializer
 from pydantic_extra_types.color import Color
+from reflex import ImportDict
 
+from RIL import utils
 from RIL._core import Base, Props, validate_props
 
 
@@ -20,9 +22,9 @@ class BootstrapIconProps(Props):
     Hex codes are case-insensitive and the leading `#` is optional.
     """
 
-    size: int | str = None
+    size: int | str = "1em"
     """
-    The size of the icon. May be an integer (in pixels) or a CSS size string (e.g., `'1rem'`).h
+    The size of the icon. May be an integer (in pixels) or a CSS size string (e.g., `'1rem'`)
     """
 
     title: str = None
@@ -36,20 +38,33 @@ class BootstrapIconProps(Props):
 
 
 class BootstrapIcon(Base):
-    library = "react-bootstrap-icons@^1"
+    lib_dependencies = ["bootstrap-icons", "@svgr/webpack"]
+
+    def add_imports(self, **imports) -> ImportDict | list[ImportDict]:
+        return imports
 
     @classmethod
     @validate_props
+    @utils.require_turbopack
     def create(cls, icon: str, props: BootstrapIconProps) -> rx.Component:
-        component_model = cls._reproduce(props_to_override=props.model_dump())
+        component_model = cls._reproduce(
+            props_to_override=props.model_dump(),
+        )
+
+        tag = "Bootstrap" + casefy.pascalcase(icon.casefold())
+
+        component_model.add_imports = partial(
+            component_model.add_imports,
+            **{
+                f"bootstrap-icons/icons/{icon.casefold()}.svg": rx.ImportVar(
+                    tag, install=False, is_default=True
+                )
+            },
+        )
 
         component = super(cls, component_model).create(**props.model_dump())
-        component.tag = casefy.pascalcase(icon.casefold())
 
-        if re.match(r"^\d", component.tag):
-            component.tag = "Icon" + component.tag
-
-        component.alias = "Bootstrap" + component.tag
+        component.tag = tag
 
         return component
 

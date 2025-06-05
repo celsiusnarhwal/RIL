@@ -62,7 +62,7 @@ class Base(rx.Component):
                 {
                     "__module__": __name__,
                     "custom_attrs": props_to_override,
-                    "lib_dependencies": lib_dependencies,
+                    "lib_dependencies": getattr(cls, "lib_dependencies", []),
                 },
             )
 

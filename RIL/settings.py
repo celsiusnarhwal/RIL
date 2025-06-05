@@ -1,12 +1,21 @@
 import os
+import string
 import sys
 import typing as t
 from pathlib import Path
 
+import json5 as json
 import reflex as rx
+import reflex.utils.prerequisites as rxp
 from jinja2 import Environment, FileSystemLoader
 from loguru import logger
-from pydantic import AnyHttpUrl, BaseModel, Field, field_validator, model_validator
+from pydantic import (
+    AnyHttpUrl,
+    BaseModel,
+    Field,
+    field_validator,
+    model_validator,
+)
 from pydantic_extra_types.color import Color
 from pydantic_settings import (
     BaseSettings,
@@ -15,7 +24,6 @@ from pydantic_settings import (
     SettingsConfigDict,
     TomlConfigSettingsSource,
 )
-from reflex.utils.prerequisites import get_web_dir, initialize_npmrc
 
 jinja = Environment(loader=FileSystemLoader(Path(__file__).parent / "templates"))
 
@@ -43,13 +51,13 @@ class FontAwesomeSettings(BaseModel):
         """
         Write Font Awesome Pro-specific configuration to .npmrc as needed.
         """
-        initialize_npmrc()
+        rxp.initialize_npmrc()
 
         if self.pro_enabled:
             npmrc_template = jinja.get_template(".npmrc.jinja")
             reference_npmrc = npmrc_template.render(registry=self.npm_registry)
 
-            get_web_dir().joinpath(".npmrc").open("a").write("\n" + reference_npmrc)
+            rxp.get_web_dir().joinpath(".npmrc").open("a").write("\n" + reference_npmrc)
 
         return self
 
@@ -140,6 +148,34 @@ class RILSettings(BaseSettings):
             colorize=True,
             format="<lvl>[Reflex Icon Library] {level}: {message}</>",
         )
+
+        return self
+
+    @model_validator(mode="after")
+    def update_next_config(self) -> t.Self:
+        rxp.update_next_config()
+
+        next_config_file = rxp.get_web_dir() / "next.config.js"
+
+        next_config = json.loads(
+            next_config_file.read_text()
+            .lstrip(string.printable.replace("{", ""))
+            .rstrip(";")
+        )
+
+        next_config.update(
+            {
+                "turbopack": {
+                    "rules": {"*.svg": {"loaders": ["@svgr/webpack"], "as": "*.js"}}
+                }
+            }
+        )
+
+        next_config_file.write_text(
+            f"module.exports = {json.dumps(next_config, indent=2)}"
+        )
+
+        return self
 
     @classmethod
     def settings_customise_sources(
