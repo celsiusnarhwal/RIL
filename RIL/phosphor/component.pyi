@@ -9,7 +9,9 @@ class PhosphorIcon(Base):
     def create(
         cls,
         icon: str,
-        weight: t.Literal["thin", "light", "regular", "bold", "fill", "duotone"] = None,
+        variant: t.Literal[
+            "thin", "light", "regular", "bold", "fill", "duotone"
+        ] = None,
         color: str | tuple = None,
         size: int | str = None,
         alt: str = None,
@@ -23,7 +25,7 @@ class PhosphorIcon(Base):
         icon : str
             The name of the icon.
 
-        weight : typing.Literal["thin", "light", "regular", "bold", "fill", "duotone"], optional
+        variant : typing.Literal["thin", "light", "regular", "bold", "fill", "duotone"], optional
             The icon's weight (i.e., style).
 
         color : str | tuple, optional

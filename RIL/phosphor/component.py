@@ -1,10 +1,12 @@
 import typing as t
+from typing import Mapping
 
 import casefy
 import reflex as rx
-from pydantic import ConfigDict, field_serializer, model_serializer
+from pydantic import ConfigDict, Field, field_serializer, model_serializer
 from pydantic_extra_types.color import Color
 from reflex import Component
+from reflex.components.component import ComponentField, field
 from reflex.utils.imports import ImportDict
 
 from RIL._core import Base, Props, validate_props
@@ -17,7 +19,9 @@ NPM_PACKAGE = "@phosphor-icons/react@^2"
 
 
 class PhosphorIconProps(Props):
-    weight: t.Literal["thin", "light", "regular", "bold", "fill", "duotone"] = None
+    variant: t.Literal["thin", "light", "regular", "bold", "fill", "duotone"] = Field(
+        "regular", serialization_alias="weight"
+    )
     """
     The icon's weight (i.e., style). May be one of `"thin"`, `"light"`, `"regular"`, `"bold"`, `"fill"`, or `"duotone"`.
     """
@@ -33,7 +37,7 @@ class PhosphorIconProps(Props):
     Hex codes are case-insensitive and the leading `#` is optional.
     """
 
-    size: int | str = None
+    size: int | str = "1em"
     """
     The size of the icon. May be an integer (in pixels) or a CSS size string (e.g., `'1rem'`).
     
@@ -54,9 +58,6 @@ class PhosphorIconProps(Props):
 class PhosphorIconContextProps(PhosphorIconProps):
     model_config = ConfigDict(extra="ignore")
 
-    # If we don't set a default here then context-wrapped icons will be *huge*.
-    size: int | str = "1em"
-
     @model_serializer(mode="wrap")
     def serialize(self, handler: t.Callable):
         serialized = super().serialize(handler)
@@ -66,27 +67,40 @@ class PhosphorIconContextProps(PhosphorIconProps):
 class PhosphorIconContext(Base):
     tag = "PhosphorIconContext.Provider"
 
+    weight: rx.Var[t.Any]
+    color: rx.Var[t.Any]
+    size: rx.Var[t.Any]
+
     def add_imports(self) -> ImportDict | list[ImportDict]:
         return {NPM_PACKAGE: [rx.ImportVar("IconContext", alias="PhosphorIconContext")]}
 
     @classmethod
     @validate_props
     def create(cls, *children, props: PhosphorIconContextProps) -> rx.Component:
-        component_model = cls._reproduce(props_to_override=props.model_dump())
-        return super(cls, component_model).create(**props.model_dump())
+        return super().create(**props.model_dump())
 
 
 class PhosphorIcon(Base):
     library = NPM_PACKAGE
 
+    weight: rx.Var[t.Any]
+    color: rx.Var[t.Any]
+    size: rx.Var[t.Any]
+    alt: rx.Var[t.Any]
+
+    @classmethod
+    def get_fields(cls) -> Mapping[str, ComponentField]:
+        return {
+            **super().get_fields(),
+            **{k: field(default=None) for k in PhosphorIconProps().model_dump()},
+        }
+
     @classmethod
     @validate_props
     def create(cls, icon: str, props: PhosphorIconProps) -> rx.Component:
-        component_model = cls._reproduce(props_to_override=props.model_dump())
-
-        component = super(cls, component_model).create(**props.model_dump())
+        component = super().create(**props.model_dump())
         component.tag = casefy.pascalcase(icon.casefold()) + "Icon"
-        component.alias = "Phosphor" + component.tag
+        component.alias = "Phosphor" + props.variant.capitalize() + component.tag
 
         return component
 
