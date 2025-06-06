@@ -49,6 +49,11 @@ class MaterialSymbolProps(Props):
         https://developer.mozilla.org/en-US/docs/Web/CSS/length
     """
 
+    title: str = None
+    """
+    An accesible, short-text, description of the icon.
+    """
+
     @property
     def package(self) -> str:
         return f"@material-symbols/svg-{self.weight}"
@@ -71,6 +76,7 @@ class MaterialSymbol(Base):
     fill: rx.Var[str]
     width: rx.Var[str]
     height: rx.Var[str]
+    title: rx.Var[str]
 
     @property
     def import_var(self):
@@ -80,18 +86,25 @@ class MaterialSymbol(Base):
     @validate_props
     @utils.require_turbopack
     def create(cls, icon: str, props: MaterialSymbolProps) -> rx.Component:
+        props.title = props.title or icon
+
         component = super().create(**props.model_dump())
 
-        component.tag = "Material" + casefy.pascalcase(icon.casefold())
-
-        library = f"{props.package}/{props.variant}/{casefy.snakecase(icon.casefold())}"
+        component.tag = (
+            "Material"
+            + props.variant.capitalize()
+            + casefy.pascalcase(icon.casefold())
+            + str(props.weight)
+        )
+        component.library = (
+            f"{props.package}/{props.variant}/{casefy.snakecase(icon.casefold())}"
+        )
 
         if props.filled:
-            library += "-fill"
+            component.tag += "Filled"
+            component.library += "-fill"
 
-        library += ".svg"
-
-        component.library = library
+        component.library += ".svg"
 
         return component
 
