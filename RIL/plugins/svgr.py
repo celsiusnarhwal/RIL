@@ -12,19 +12,22 @@ def _update_next_config(next_config_content: str):
         re.search("{.*}", next_config_content, flags=re.DOTALL).group(0)
     )
 
+    rules = {
+        "loaders": [
+            {
+                "loader": "@svgr/webpack",
+                "options": {"dimensions": False, "titleProp": True},
+            }
+        ],
+        "as": "*.js",
+    }
+
     next_config.update(
         {
             "turbopack": {
                 "rules": {
-                    "*.svg": {
-                        "loaders": [
-                            {
-                                "loader": "@svgr/webpack",
-                                "options": {"dimensions": False, "titleProp": True},
-                            }
-                        ],
-                        "as": "*.js",
-                    }
+                    "**/node_modules/@material-symbols/svg-*/**/*.svg": rules,
+                    "**/node_modules/bootstrap-icons/icons/*.svg": rules,
                 }
             }
         }
