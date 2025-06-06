@@ -23,7 +23,7 @@ RIL adheres to [semantic versioning](https://semver.org/spec/v2.0.0.html).
     
     config = rx.Config(
         app_name="my_app",
-        plugins=[rx.plugins.TailwindV4Plugin(), SVGRPlugin()],
+        plugins=[SVGRPlugin()],
     )
     ```
 - All non-Font Awesome icons now have a size of `1em` by default.
