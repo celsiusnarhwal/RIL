@@ -12,7 +12,7 @@ __all__ = ["octicons"]
 
 
 class OcticonProps(Props):
-    color: Color = Field(None, serialization_alias="fill")
+    color: Color = Field("currentColor", serialization_alias="fill")
     """
     The color of the icon. May be:
     - a hex code

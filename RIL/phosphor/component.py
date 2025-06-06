@@ -26,7 +26,7 @@ class PhosphorIconProps(Props):
     The icon's weight (i.e., style). May be one of `"thin"`, `"light"`, `"regular"`, `"bold"`, `"fill"`, or `"duotone"`.
     """
 
-    color: Color = None
+    color: Color = "currentColor"
     """
     The color of the icon. May be:
     - a hex code
