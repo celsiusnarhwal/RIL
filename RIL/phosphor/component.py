@@ -89,6 +89,8 @@ class PhosphorIcon(Base):
     @classmethod
     @validate_props
     def create(cls, icon: str, props: PhosphorIconProps) -> rx.Component:
+        props.alt = props.alt or icon
+
         component = super().create(**props.model_dump())
         component.tag = casefy.pascalcase(icon.casefold()) + "Icon"
         component.alias = "Phosphor" + props.variant.capitalize() + component.tag
