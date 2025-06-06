@@ -49,8 +49,8 @@ class PhosphorIconProps(Props):
     """
 
     @field_serializer("color")
-    def serialize_color_as_hex(self, color: Color | None):
-        return color.as_hex() if color else color
+    def serialize_color_as_hex(self, color: Color | str):
+        return color.as_hex() if isinstance(color, Color) else color
 
 
 class PhosphorIconContextProps(PhosphorIconProps):

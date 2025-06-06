@@ -50,7 +50,7 @@ class SimpleIconProps(Props):
     A short, accessible, description of the icon.
     """
 
-    color: Color | t.Literal["brand", "default"] = None
+    color: Color | t.Literal["brand", "default"] = "currentColor"
     """
     The color of this icon. May be:
     - a hex code (e.g., `"#03cb98"`)
@@ -98,8 +98,8 @@ class SimpleIconProps(Props):
         return v
 
     @field_serializer("color")
-    def serialize_color_as_hex(self, color: Color | t.Literal["brand"] | None):
-        return color.as_hex() if color and color != "brand" else color
+    def serialize_color_as_hex(self, color: Color | str):
+        return color.as_hex() if isinstance(color, Color) else color
 
 
 class SimpleIcon(Base):

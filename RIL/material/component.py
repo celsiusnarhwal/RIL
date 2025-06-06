@@ -58,8 +58,8 @@ class MaterialSymbolProps(Props):
         return f"@material-symbols/svg-{self.weight}"
 
     @field_serializer("color")
-    def serialize_color_as_hex(self, color: Color | None):
-        return color if color == "currentColor" else color.as_hex()
+    def serialize_color_as_hex(self, color: Color | str):
+        return color.as_hex() if isinstance(color, Color) else color
 
     @model_serializer(mode="wrap")
     def serialize(self, handler: t.Callable):
