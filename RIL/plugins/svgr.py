@@ -2,6 +2,7 @@ import re
 from typing import Unpack
 
 import json5 as json
+from deepmerge import always_merger
 from reflex.plugins import CommonContext, Plugin, PreCompileContext
 
 __all__ = ["SVGRPlugin"]
@@ -12,7 +13,7 @@ def _update_next_config(next_config_content: str):
         re.search("{.*}", next_config_content, flags=re.DOTALL).group(0)
     )
 
-    rules = {
+    loader_config = {
         "loaders": [
             {
                 "loader": "@svgr/webpack",
@@ -22,16 +23,18 @@ def _update_next_config(next_config_content: str):
         "as": "*.js",
     }
 
-    next_config.update(
+    turbopack_config = {
         {
             "turbopack": {
                 "rules": {
-                    "**/node_modules/@material-symbols/svg-*/**/*.svg": rules,
-                    "**/node_modules/bootstrap-icons/icons/*.svg": rules,
+                    "**/node_modules/@material-symbols/svg-*/**/*.svg": loader_config,
+                    "**/node_modules/bootstrap-icons/icons/*.svg": loader_config,
                 }
             }
         }
-    )
+    }
+
+    always_merger.merge(next_config, turbopack_config)
 
     return f"module.exports = {json.dumps(next_config)}"
 
