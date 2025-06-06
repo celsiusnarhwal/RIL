@@ -14,6 +14,7 @@ from pydantic import (
     model_serializer,
     validate_call,
 )
+from reflex import ImportDict
 from reflex.components.component import T
 
 from RIL.plugins import SVGRPlugin
@@ -37,6 +38,11 @@ class Base(rx.Component):
     """
     Base class for all components in this library.
     """
+
+    imports: dict | None = None
+
+    def add_imports(self) -> ImportDict | list[ImportDict]:
+        return self.imports or {}
 
     @classmethod
     @validate_call

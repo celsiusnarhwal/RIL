@@ -4,8 +4,6 @@ import reflex as rx
 from loguru import logger
 from pydantic import BaseModel, Field, field_serializer, field_validator
 from pydantic_extra_types.color import Color
-from reflex.components.component import field
-from reflex.utils.imports import ImportDict
 
 from RIL._core import Base, Props, validate_props
 from RIL.settings import settings
@@ -106,14 +104,9 @@ class SimpleIcon(Base):
     library = "$/public/" + rx.asset("SimpleIcon.jsx", shared=True)
     tag = "SimpleIcon"
 
-    imports = field(default_factory=dict, is_javascript_property=False)
-
     icon: rx.Var[str]
     title: rx.Var[t.Any]
     color: rx.Var[str]
-
-    def add_imports(self, **imports) -> ImportDict | list[ImportDict]:
-        return self.imports
 
     @classmethod
     @validate_props

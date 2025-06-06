@@ -87,6 +87,7 @@ class MaterialSymbol(SVGComponent):
         props.title = props.title or icon
 
         component = super().create(**props.model_dump())
+        component.imports = {props.package: rx.ImportVar(None, render=False)}
 
         component.tag = (
             "Material"
