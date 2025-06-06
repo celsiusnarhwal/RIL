@@ -21,7 +21,7 @@ class PhosphorIconProps(Props):
         "regular", serialization_alias="weight"
     )
     """
-    The variant of the icon (i.e., style). May be one of `"thin"`, `"light"`, `"regular"`, `"bold"`, `"fill"`, or `"duotone"`.
+    The variant of the icon. May be one of `"thin"`, `"light"`, `"regular"`, `"bold"`, `"fill"`, or `"duotone"`.
     """
 
     color: Color = "currentColor"
