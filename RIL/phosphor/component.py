@@ -1,12 +1,10 @@
 import typing as t
-from typing import Mapping
 
 import casefy
 import reflex as rx
 from pydantic import ConfigDict, Field, field_serializer, model_serializer
 from pydantic_extra_types.color import Color
 from reflex import Component
-from reflex.components.component import ComponentField, field
 from reflex.utils.imports import ImportDict
 
 from RIL._core import Base, Props, validate_props
@@ -87,13 +85,6 @@ class PhosphorIcon(Base):
     color: rx.Var[t.Any]
     size: rx.Var[t.Any]
     alt: rx.Var[t.Any]
-
-    @classmethod
-    def get_fields(cls) -> Mapping[str, ComponentField]:
-        return {
-            **super().get_fields(),
-            **{k: field(default=None) for k in PhosphorIconProps().model_dump()},
-        }
 
     @classmethod
     @validate_props
