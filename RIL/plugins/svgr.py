@@ -32,7 +32,7 @@ def _update_next_config(next_config_content: str):
         }
     }
 
-    always_merger.merge(next_config, turbopack_config)
+    next_config = always_merger.merge(next_config, turbopack_config)
 
     return f"module.exports = {json.dumps(next_config)}"
 
