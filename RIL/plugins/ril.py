@@ -34,7 +34,17 @@ def _update_next_config(next_config_contant: str):
     next_config.update(
         {
             "turbopack": {
-                "rules": {"*.svg": {"loaders": ["@svgr/webpack"], "as": "*.js"}}
+                "rules": {
+                    "*.svg": {
+                        "loaders": [
+                            {
+                                "loader": "@svgr/webpack",
+                                "options": {"dimensions": False, "titleProp": True},
+                            }
+                        ],
+                        "as": "*.js",
+                    }
+                }
             }
         }
     )
