@@ -1,6 +1,8 @@
+import typing as t
+
 import casefy
 import reflex as rx
-from pydantic import field_serializer
+from pydantic import Field, field_serializer, model_serializer
 from pydantic_extra_types.color import Color
 
 from RIL import utils
@@ -19,7 +21,7 @@ class BootstrapIconProps(Props):
     Hex codes are case-insensitive and the leading `#` is optional.
     """
 
-    size: int | str = "1em"
+    size: int | str = Field("1em", exclude=True)
     """
     The size of the icon. May be an integer (in pixels) or a CSS size string (e.g., `'1rem'`)
     """
@@ -33,9 +35,23 @@ class BootstrapIconProps(Props):
     def serialize_color_as_hex(self, color: Color | None):
         return color.as_hex() if color else color
 
+    @model_serializer(mode="wrap")
+    def serialize(self, handler: t.Callable):
+        serialized = super().serialize(handler)
+
+        if self.size:
+            serialized["height"] = serialized["width"] = self.size
+
+        return serialized
+
 
 class BootstrapIcon(Base):
     lib_dependencies = ["bootstrap-icons"]
+
+    color: rx.Var[t.Any]
+    width: rx.Var[t.Any]
+    height: rx.Var[t.Any]
+    title: rx.Var[t.Any]
 
     @property
     def import_var(self):
@@ -45,11 +61,9 @@ class BootstrapIcon(Base):
     @validate_props
     @utils.require_turbopack
     def create(cls, icon: str, props: BootstrapIconProps) -> rx.Component:
-        component_model = cls._reproduce(
-            props_to_override=props.model_dump(),
-        )
+        props.title = props.title or icon
 
-        component = super(cls, component_model).create(**props.model_dump())
+        component = super().create(**props.model_dump())
 
         component.library = f"bootstrap-icons/icons/{icon.casefold()}.svg"
         component.tag = "Bootstrap" + casefy.pascalcase(icon.casefold())
