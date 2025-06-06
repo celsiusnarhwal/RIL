@@ -6,8 +6,7 @@ import reflex as rx
 from pydantic import Field, field_serializer, model_serializer
 from pydantic_extra_types.color import Color
 
-from RIL import utils
-from RIL._core import Base, Props, validate_props
+from RIL._core import Props, SVGComponent, validate_props
 
 __all__ = ["material"]
 
@@ -72,7 +71,7 @@ class MaterialSymbolProps(Props):
         return serialized
 
 
-class MaterialSymbol(Base):
+class MaterialSymbol(SVGComponent):
     fill: rx.Var[str]
     width: rx.Var[str]
     height: rx.Var[str]
@@ -84,7 +83,6 @@ class MaterialSymbol(Base):
 
     @classmethod
     @validate_props
-    @utils.require_turbopack
     def create(cls, icon: str, props: MaterialSymbolProps) -> rx.Component:
         props.title = props.title or icon
 

@@ -4,6 +4,7 @@ import typing as t
 
 import pydantic.v1
 import reflex as rx
+import reflex.utils.prerequisites as rxp
 import semver
 from loguru import logger
 from pydantic import (
@@ -15,7 +16,7 @@ from pydantic import (
 )
 from reflex.components.component import T
 
-from RIL.plugins import RILPlugin
+from RIL.plugins import SVGRPlugin
 
 
 class Props(BaseModel):
@@ -36,17 +37,6 @@ class Base(rx.Component):
     """
     Base class for all components in this library.
     """
-
-    @classmethod
-    def create(cls: type[T], *children, **props) -> T:
-        from reflex.config import get_config
-
-        if not any((isinstance(plugin, RILPlugin) for plugin in get_config().plugins)):
-            raise ValueError(
-                "You must add the Reflex Icon Library's plugin (RIL.plugins.RILPlugin) to your rxconfig.py."
-            )
-
-        return super().create(*children, **props)
 
     @classmethod
     @validate_call
@@ -88,6 +78,27 @@ class Base(rx.Component):
                     "lib_dependencies": lib_dependencies,
                 },
             )
+
+
+class SVGComponent(Base):
+    """
+    Base class for components that require @svgr/webpack.
+    """
+
+    @classmethod
+    def create(cls: type[T], *children, **props) -> T:
+        from reflex.config import get_config
+
+        if not any((isinstance(plugin, SVGRPlugin) for plugin in get_config().plugins)):
+            raise ValueError(
+                f"You must add the Reflex Icon Library's SVGR plugin (RIL.plugins.SVGRPlugin) to your "
+                f"rxconfig.py to use {cls.__name__}."
+            )
+
+        if not rxp.environment.REFLEX_USE_TURBOPACK.get():
+            raise ValueError(f"Turbopack is required to use {cls.__name__}")
+
+        return super().create(*children, **props)
 
 
 def validate_props(func):

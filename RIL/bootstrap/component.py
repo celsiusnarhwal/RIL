@@ -5,8 +5,7 @@ import reflex as rx
 from pydantic import Field, field_serializer, model_serializer
 from pydantic_extra_types.color import Color
 
-from RIL import utils
-from RIL._core import Base, Props, validate_props
+from RIL._core import Props, SVGComponent, validate_props
 
 
 class BootstrapIconProps(Props):
@@ -45,7 +44,7 @@ class BootstrapIconProps(Props):
         return serialized
 
 
-class BootstrapIcon(Base):
+class BootstrapIcon(SVGComponent):
     lib_dependencies = ["bootstrap-icons"]
 
     color: rx.Var[t.Any]
@@ -59,7 +58,6 @@ class BootstrapIcon(Base):
 
     @classmethod
     @validate_props
-    @utils.require_turbopack
     def create(cls, icon: str, props: BootstrapIconProps) -> rx.Component:
         props.title = props.title or icon
 
