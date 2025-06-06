@@ -1,4 +1,4 @@
-import string
+import re
 from typing import Unpack
 
 import json5 as json
@@ -7,9 +7,9 @@ from reflex.plugins import CommonContext, Plugin, PreCompileContext
 __all__ = ["SVGRPlugin"]
 
 
-def _update_next_config(next_config_contant: str):
+def _update_next_config(next_config_content: str):
     next_config = json.loads(
-        next_config_contant.lstrip(string.printable.replace("{", "")).rstrip(";")
+        re.search("{.*}", next_config_content, flags=re.DOTALL).group(0)
     )
 
     next_config.update(
