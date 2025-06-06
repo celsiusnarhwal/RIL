@@ -26,7 +26,7 @@ class PhosphorIcon(Base):
             The name of the icon.
 
         variant : typing.Literal["thin", "light", "regular", "bold", "fill", "duotone"], optional
-            The icon's weight (i.e., style).
+            The variant of the icon.
 
         color : str | tuple, optional
             The color of the icon. May be:
@@ -48,7 +48,9 @@ class PhosphorIconContext(Base):
     @classmethod
     def create(
         cls,
-        weight: t.Literal["thin", "light", "regular", "bold", "fill", "duotone"] = None,
+        variant: t.Literal[
+            "thin", "light", "regular", "bold", "fill", "duotone"
+        ] = None,
         color: str | tuple = None,
         size: int | str = None,
     ) -> rx.Component:
@@ -57,8 +59,8 @@ class PhosphorIconContext(Base):
 
         Parameters
         ----------
-        weight : {"thin", "light", "regular", "bold", "fill", "duotone"}, optional
-            The weight of the icons. (i.e., style).
+        variant : {"thin", "light", "regular", "bold", "fill", "duotone"}, optional
+            The variant of the icons.
 
         color : str | tuple, optional
             The color of the icons. May be:
@@ -79,7 +81,9 @@ class Phosphor(rx.ComponentNamespace):
     @staticmethod
     def __call__(
         icon: str,
-        weight: t.Literal["thin", "light", "regular", "bold", "fill", "duotone"] = None,
+        variant: t.Literal[
+            "thin", "light", "regular", "bold", "fill", "duotone"
+        ] = None,
         color: str | tuple = None,
         size: int | str = None,
         alt: str = None,
@@ -92,8 +96,8 @@ class Phosphor(rx.ComponentNamespace):
         icon : str
             The name of the icon.
 
-        weight : typing.Literal["thin", "light", "regular", "bold", "fill", "duotone"], optional
-            The icon's weight (i.e., style).
+        variant : typing.Literal["thin", "light", "regular", "bold", "fill", "duotone"], optional
+            The variant of the icon.
 
         color : str | tuple, optional
             The color of the icon. May be:
