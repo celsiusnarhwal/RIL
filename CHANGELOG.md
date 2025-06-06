@@ -1,19 +1,63 @@
 # Changelog[^1]
 
-Notable changes to the Reflex Icon Library will be documented here. Breaking changes are marked with a 🚩.
-Changes containing deprecations are marked with a ⚠️.
+Notable changes to the Reflex Icon Library will be documented here.
 
 RIL adheres to [semantic versioning](https://semver.org/spec/v2.0.0.html).
 
+## <a name="2-0-0">2.0.0 — Unreleased</a>
+
+### 🚨 Breaking Changes
+
+
+- The Material Symbols and Bootstrap Icons components now have special requirements for use:
+  - [Turbopack](https://nextjs.org/docs/app/api-reference/turbopack) must be enabled. Turbopack can be enabled by setting the [`REFLEX_USE_TURBOPACK`](https://reflex.dev/docs/api-reference/environment-variables/#:~:text=REFLEX_USE_TURBOPACK)
+    environment variable to `true`.
+  - RIL's new `SVGRPlugin` must be included in your `rxconfig.py`.
+  
+    ```python
+    # rxconfig.py
+    
+    import reflex as rx
+    
+    from RIL import SVGRPlugin
+    
+    config = rx.Config(
+        app_name="my_app",
+        plugins=[rx.plugins.TailwindV4Plugin(), SVGRPlugin()],
+    )
+    ```
+- All non-Font Awesome icons now have a size of `1em` by default.
+- The Phosphor and Phosphor Context components' `weight` props have been renamed to `variant`. The `phosphor.weight`
+  setting has likewise been renamed to `phosphor.variant`. ([Docs](https://ril.celsiusnarhwal.dev/phosphor))
+
+### Added
+
+- The Material Symbols component now allows you to change the icon
+  weight. ([Docs](https://ril.celsiusnarhwal.dev/material/#props))
+
+### Changed
+
+- Material Symbol names are now case-insensitive.
+- The `color` props of the Simple Icons, Material Symbols, and Bootstrap Icons components now explicitly default to
+  `currentColor`. `currentColor` is only usable as a default value; explicitly passing it will cause an error.
+- The Material Symbols and Bootstrap Icons components now
+  use [@marella's Material Symbols SVG packages](https://github.com/marella/material-symbols)
+  and [the official Bootstrap Icons package](https://www.npmjs.com/package/bootstrap-icons), respectively.
+
 ## <a name="1-6-0">1.6.0 — 2025-06-03</a>
+
+### ⚠️ Deprecated
+
+- The `"default"` color for the Simple Icons component is deprecated and succeeded by the `"brand"` color. This
+  change
+  aims to avoid potential confusion between the `"default"` color and the default color. Support for the `"default"`
+  color will be removed entirely in RIL 2.0.0.
+
+### Changed
 
 - The Simple Icons component is now built on a custom React component internal to RIL.
 - The Simple Icons component now supports Simple Icons 5 and newer (it previously supported only Simple Icons 10
   and newer).
-- ⚠️ The `"default"` color for the Simple Icons component is deprecated and succeeded by the `"brand`" color. This change
-aims to avoid potential confusion between the `"default"` color and the default color. Contined use of the `"default"`
-color will raise an exception starting in RIL 2.0.0.
-
 
 ## <a name="1-5-0">1.5.0 — 2025-06-03</a>
 
@@ -30,15 +74,18 @@ color will raise an exception starting in RIL 2.0.0.
 
 ## <a name="1-4-3">1.4.3 — 2025-05-30</a>
 
+### ⚠️ Deprecated
+
+- Support for Reflex 0.7.12 and earlier is deprecated in this release and will be removed in RIL 2.0.0. You should
+  prepare for this by upgrading to the latest versions of RIL and Reflex as soon as possible.
+
 ### Changed
 
-- ⚠️ RIL is now compatible with Reflex 0.7.13 and later. The good news is that contrary to
+- RIL is now compatible with Reflex 0.7.13 and later. Fortunately, and contrary to
   [my own expectations](https://github.com/celsiusnarhwal/RIL/issues/4), I didn't have to make any breaking changes
-  or drop support for Reflex 0.7.12 and earlier. The bad news is that I'm not gonna wanna test all future versions
-  of RIL on both Reflex 0.7.12 and Reflex ≥0.7.13, so **support for Reflex 0.7.12 and earlier is deprecated in this
-  release and will be removed in RIL 2.0.0**. You should prepare for this by upgrading to the latest versions of RIL and
-  Reflex as soon
-  as possible. (Resolves [#4](https://github.com/celsiusnarhwal/RIL/issues/4).)
+  or drop support for Reflex 0.7.12 and earlier (though support for said versions is deprecated as previously stated).
+  (Resolves [#4](https://github.com/celsiusnarhwal/RIL/issues/4).)
+
 - With the exception of `@fortawesome/react-fontawesome` and Font Awesome Kit packages, all Font Awesome NPM packages
   have been pinned to major version 6 in order to avoid unwanted surprises when Font Awesome 7 launches in June.
 - Phosphor icons now have the string "Icon" suffixed to their component tags per
@@ -109,7 +156,7 @@ color will raise an exception starting in RIL 2.0.0.
 
 ### Added
 
-- This version of RIL adds support for the Regular, Light, and Thin styles of Font
+- RIL now supports the Regular, Light, and Thin styles of Font
   Awesome's [Duotone](https://fontawesome.com/search?ip=duotone)
   and [Sharp Duotone](https://fontawesome.com/search?ip=sharp-duotone)
   families. ([Docs](https://ril.celsiusnarhwal.dev/fontawesome/#fa-secondaryopacity4-duotone))
