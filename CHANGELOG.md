@@ -39,7 +39,7 @@ RIL adheres to [semantic versioning](https://semver.org/spec/v2.0.0.html).
 
 - Material Symbol names are now case-insensitive.
 - The `color` props of the Simple Icons, Material Symbols, and Bootstrap Icons components now explicitly default to
-  `currentColor`. `currentColor` is only usable as a default value; explicitly passing it will cause an error.
+  `"currentColor"`. `"currentColor"` is only usable as a default value; explicitly passing it will cause an error.
 - The Material Symbols and Bootstrap Icons components now
   use [@marella's Material Symbols SVG packages](https://github.com/marella/material-symbols)
   and [the official Bootstrap Icons package](https://www.npmjs.com/package/bootstrap-icons), respectively.
