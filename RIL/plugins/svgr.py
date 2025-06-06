@@ -24,12 +24,10 @@ def _update_next_config(next_config_content: str):
     }
 
     turbopack_config = {
-        {
-            "turbopack": {
-                "rules": {
-                    "**/node_modules/@material-symbols/svg-*/**/*.svg": loader_config,
-                    "**/node_modules/bootstrap-icons/icons/*.svg": loader_config,
-                }
+        "turbopack": {
+            "rules": {
+                "**/node_modules/@material-symbols/svg-*/**/*.svg": loader_config,
+                "**/node_modules/bootstrap-icons/icons/*.svg": loader_config,
             }
         }
     }
