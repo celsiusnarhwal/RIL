@@ -2,6 +2,7 @@ import re
 import typing as t
 
 import casefy
+import reflex as rx
 from pydantic import Field, field_serializer
 from pydantic_extra_types.color import Color
 
@@ -36,11 +37,13 @@ class OcticonProps(Props):
 class Octicon(Base):
     library = "@primer/octicons-react@^19"
 
+    fill: rx.Var[t.Any]
+    size: rx.Var[t.Any]
+
     @classmethod
     @validate_props
     def create(cls, icon: str, props: OcticonProps):
-        component_model = cls._reproduce(props_to_override=props.model_dump())
-        component = super(cls, component_model).create(**props.model_dump())
+        component = super().create(**props.model_dump())
 
         icon = re.sub(r"icon$", "", icon, flags=re.I)
         component.tag = casefy.pascalcase(icon.casefold()) + "Icon"
