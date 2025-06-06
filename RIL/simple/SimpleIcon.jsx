@@ -2,7 +2,7 @@ import * as React from "react";
 
 // noinspection JSUnusedGlobalSymbols
 export const SimpleIcon = (
-    ({icon, title, color = "currentColor", size = 24, ...others}, ref) => {
+    ({icon, title, color = "currentColor", size = "1em", ...others}, ref) => {
         const iconTitle = title ?? icon?.title
         const fillColor = color === "brand" ? "#" + icon?.hex : color
 
