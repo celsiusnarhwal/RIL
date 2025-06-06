@@ -7,6 +7,7 @@ class MaterialSymbol(Base):
     def create(
         cls,
         icon: str,
+        weight: t.Literal[100, 200, 300, 400, 500, 600, 700] = 400,
         variant: t.Literal["outlined", "rounded", "sharp"] = None,
         filled: bool = None,
         color: str | tuple = None,
@@ -20,6 +21,9 @@ class MaterialSymbol(Base):
         ----------
         icon : str
             The name of the icon.
+
+        weight : {100, 200, 300, 400, 500, 600, 700}, optional
+            The weight of the icon.
 
         variant : {"outlined", "rounded", "sharp"}, optional
             The variant of the icon.
