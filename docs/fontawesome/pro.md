@@ -112,7 +112,7 @@ Finally, set the `fontawesome.kit_code` setting to your Kit code.
 
 ### Using custom icons
 
-You can use [custom icons](https://docs.fontawesome.com/web/add-icons/upload-icons) via `#!python fa.kit()`.
+You can use [custom icons](https://docs.fontawesome.com/web/add-icons/upload-icons) via `#!python icons.fa.kit()`.
 
 ```python
 import RIL as icons
