@@ -6,6 +6,9 @@ RIL adheres to [semantic versioning](https://semver.org/spec/v2.0.0.html).
 
 ## <a name="2-0-0">2.0.0 — Unreleased</a>
 
+> [!IMPORTANT]
+> **This version has not yet been released!** The changes below are a working preview of what's to come.
+
 ### 🚨 Breaking Changes
 
 
