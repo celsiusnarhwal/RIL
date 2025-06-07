@@ -13,8 +13,7 @@ GitHub's [Octicons](https://primer.style/octicons), [Phosphor](https://phosphori
 and [Bootstrap Icons](https://icons.getbootstrap.com/), packaging over 12,000 icons in total.
 
 !!! warning "Support for Reflex 0.7.12 and earlier is deprecated"
-    Please upgrade to the latest versions of RIL and Reflex as soon as possible. For more information,
-    see [RIL's changelog](https://github.com/celsiusnarhwal/RIL/blob/main/CHANGELOG.md#1-4-3).
+    Please upgrade to the latest versions of RIL and Reflex as soon as possible.
 
 ## Installation
 
