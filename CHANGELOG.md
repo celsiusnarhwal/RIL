@@ -178,7 +178,7 @@ component, now default to the icon name you pass to those components' initializa
 ### Added
 
 - The Simple Icons component now allows you choose the major version of Simple Icons on a per-icon basis.
-  ([Docs](https://ril.celsiusnarhwal.dev/simple/#props))
+  ([Docs](https://ril.celsiusnarhwal.dev/simple/#version-switching))
 
 ## <a name="1-0-0">1.0.0 — 2024-11-22</a>
 
