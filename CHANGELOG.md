@@ -11,7 +11,7 @@ RIL adheres to [semantic versioning](https://semver.org/spec/v2.0.0.html).
 
 ### 🚨 Breaking Changes
 
-
+- Support for Reflex 0.7.12 and earlier has been dropped. 
 - The Material Symbols and Bootstrap Icons components now have special requirements for use:
   - [Turbopack](https://nextjs.org/docs/app/api-reference/turbopack) must be enabled. Turbopack can be enabled by setting the [`REFLEX_USE_TURBOPACK`](https://reflex.dev/docs/api-reference/environment-variables/#:~:text=REFLEX_USE_TURBOPACK)
     environment variable to `true`.
