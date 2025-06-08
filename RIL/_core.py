@@ -39,10 +39,11 @@ class Base(rx.Component):
     Base class for all components in this library.
     """
 
-    imports: dict | None = None
+    if t.TYPE_CHECKING:
+        imports: dict | None
 
     def add_imports(self) -> ImportDict | list[ImportDict]:
-        return self.imports or {}
+        return getattr(self, "imports", {}) or {}
 
     @classmethod
     @validate_call
