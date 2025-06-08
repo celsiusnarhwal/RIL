@@ -29,7 +29,9 @@ RIL adheres to [semantic versioning](https://semver.org/spec/v2.0.0.html).
         plugins=[SVGRPlugin()],
     )
     ```
+
 - All non-Font Awesome icons now have a size of `1em` by default.
+- The Simple Icons component's `color` prop no longer accepts `"default"` as a value. Use `"brand"` instead.
 - The Phosphor and Phosphor Context components' `weight` props have been renamed to `variant`. The `phosphor.weight`
   setting has likewise been renamed to `phosphor.variant`. ([Docs](https://ril.celsiusnarhwal.dev/phosphor))
 - The `title` props of the Material Symbols and Bootstrap Icons components, and the `alt` prop of the Phosphor
