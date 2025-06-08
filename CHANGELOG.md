@@ -44,7 +44,7 @@ component, now default to the icon name you pass to those components' initializa
 
 ### Changed
 
-- Material Symbol names are now case-insensitive.
+- Icon names passed to the Material Symbols component are now case-insensitive.
 - The `color` props of the Simple Icons, Material Symbols, and Bootstrap Icons components now explicitly default to
   `"currentColor"`. `"currentColor"` is only usable as a default value; explicitly passing it will cause an error.
 - The Material Symbols and Bootstrap Icons components now
