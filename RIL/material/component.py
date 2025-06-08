@@ -3,7 +3,7 @@ import typing as t
 import casefy
 import inflect as ifl
 import reflex as rx
-from pydantic import Field, field_serializer, model_serializer
+from pydantic import Field, computed_field, field_serializer
 from pydantic_extra_types.color import Color
 
 from RIL._core import Props, SVGComponent, validate_props
@@ -53,6 +53,16 @@ class MaterialSymbolProps(Props):
     An accesible, short-text, description of the icon.
     """
 
+    @computed_field
+    @property
+    def height(self) -> int | str:
+        return self.size
+
+    @computed_field
+    @property
+    def width(self) -> int | str:
+        return self.size
+
     @property
     def package(self) -> str:
         return f"@material-symbols/svg-{self.weight}"
@@ -60,15 +70,6 @@ class MaterialSymbolProps(Props):
     @field_serializer("color")
     def serialize_color_as_hex(self, color: Color | str):
         return color.as_hex() if isinstance(color, Color) else color
-
-    @model_serializer(mode="wrap")
-    def serialize(self, handler: t.Callable):
-        serialized = super().serialize(handler)
-
-        if self.size:
-            serialized["height"] = serialized["width"] = self.size
-
-        return serialized
 
 
 class MaterialSymbol(SVGComponent):
