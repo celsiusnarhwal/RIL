@@ -40,6 +40,7 @@ component, now default to the icon name you pass to those components' initializa
 
 - The `color` props of the Simple Icons, Material Symbols, Octicons, Phosphor, and Bootstrap Icons components now 
   accept `rx.color` components as values. For example:
+
     ```python
     import reflex as rx
     import RIL as icons
