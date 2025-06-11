@@ -215,7 +215,7 @@ class FontAwesomeIcon(Base):
         if isinstance(animation, str):
             props.pop("animation")
             props_to_override.update(
-                {animation: (bool, True) for animation in animation.split(" ")}
+                {animation: True for animation in animation.split(" ")}
             )
 
         # If a mask was provided, we need to combine the component's dependencies and imports with those
@@ -230,6 +230,7 @@ class FontAwesomeIcon(Base):
             )
 
             # The actual value of the mask prop is the raw JSX reference to the masking icon.
+            # noinspection PyUnresolvedReferences
             props_to_override["mask"] = mask.icon
         elif mask is not None:
             raise TypeError(
@@ -237,15 +238,21 @@ class FontAwesomeIcon(Base):
             )
 
         # We create a new component class as a subclass of this one, overriding props as necessary.
-        component_model = cls._reproduce(
-            props_to_override=props_to_override,
-            lib_dependencies=lib_dependencies,
+        component_model = type(
+            cls.__name__,
+            (cls,),
+            {
+                "__module__": __name__,
+                "custom_attrs": props_to_override,
+                "lib_dependencies": lib_dependencies,
+            },
         )
 
         # We override `add_imports` to import the icon.
         component_model.add_imports = partial(component_model.add_imports, **imports)
 
         # Finally, we return an instance of the new component class.
+        # noinspection PySuperArguments
         return super(cls, component_model).create(**props)
 
 
