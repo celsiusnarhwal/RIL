@@ -1,7 +1,6 @@
 import typing as t
 
 import reflex as rx
-from loguru import logger
 from pydantic import BaseModel, Field, field_serializer, field_validator
 from pydantic_extra_types.color import Color
 
@@ -48,7 +47,7 @@ class SimpleIconProps(Props):
     A short, accessible, description of the icon.
     """
 
-    color: Color | t.Literal["brand", "default"] = "currentColor"
+    color: Color | t.Literal["brand"] = "currentColor"
     """
     The color of this icon. May be:
     - a hex code (e.g., `"#03cb98"`)
@@ -81,17 +80,6 @@ class SimpleIconProps(Props):
     def validate_version(cls, v):
         if isinstance(v, int) and not v >= 5:
             raise ValueError("Simple Icons version must be greater than or equal to 5")
-
-        return v
-
-    @field_validator("color")
-    def validate_color(cls, v):
-        if v == "default":
-            v = "brand"
-            logger.warning(
-                "The 'default' color for Simple Icons is deprecated; use 'brand' instead. 'default' will no longer "
-                "be supported in RIL 2.0.0."
-            )
 
         return v
 
