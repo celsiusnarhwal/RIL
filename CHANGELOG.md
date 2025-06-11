@@ -18,7 +18,6 @@ RIL adheres to [semantic versioning](https://semver.org/spec/v2.0.0.html).
     # rxconfig.py
     
     import reflex as rx
-    
     from RIL import SVGRPlugin
     
     config = rx.Config(
@@ -34,6 +33,14 @@ component, now default to the icon name you pass to those components' initializa
 
 ### Added
 
+- The `color` props of the Simple Icons, Material Symbols, Octicons, Phosphor, and Bootstrap Icons components now 
+  accept `rx.color` components as values. For example:
+    ```python
+    import reflex as rx
+    import RIL as icons
+    
+    icons.simple("simple icons", color=rx.color("mint"))
+    ```
 - The Material Symbols component now allows you to change the icon
   weight. ([Docs](https://ril.celsiusnarhwal.dev/material/#props))
 
