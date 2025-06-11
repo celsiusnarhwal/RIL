@@ -1,4 +1,3 @@
-import copy
 import typing as t
 
 import reflex as rx
@@ -8,7 +7,6 @@ from pydantic import (
     ConfigDict,
     GetCoreSchemaHandler,
     PlainSerializer,
-    model_serializer,
     validate_call,
 )
 from pydantic_core import core_schema
@@ -53,17 +51,10 @@ class SVGComponent(Base):
 
 
 class Props(BaseModel):
-    model_config = ConfigDict(extra="allow", arbitrary_types_allowed=True)
+    model_config = ConfigDict(extra="allow")
 
     def model_dump(self, **kwargs):
         return super().model_dump(**kwargs, exclude_none=True, by_alias=True)
-
-    @model_serializer(mode="wrap")
-    def serialize(self, handler: t.Callable):
-        serialized = handler(self)
-        reserialized = copy.deepcopy(serialized)
-
-        return reserialized
 
 
 class _ReflexColorPydanticAnnotation:
