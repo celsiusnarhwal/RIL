@@ -42,6 +42,7 @@ docs = [
 [tool.ruff.lint]
 ignore = ["F403"]
 extend-select = ["I"]
+fixable = ["ALL"]
 
 [tool.pdm.version]
 source = "scm"
