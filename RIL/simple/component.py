@@ -89,7 +89,7 @@ class SimpleIcon(Base):
 
     icon: rx.Var[str]
     title: rx.Var[t.Any]
-    color: rx.Var[str]
+    color: rx.Var[t.Any]
 
     @classmethod
     @validate_props

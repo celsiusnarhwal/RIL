@@ -6,9 +6,12 @@ RIL adheres to [semantic versioning](https://semver.org/spec/v2.0.0.html).
 
 ## <a name="2-0-0">2.0.0 — Unreleased</a>
 
+> [!IMPORTANT]
+> **This version has not yet been released!** The changes below are a working preview of what's to come.
+
 ### 🚨 Breaking Changes
 
-
+- Support for Reflex 0.7.12 and earlier has been dropped. 
 - The Material Symbols and Bootstrap Icons components now have special requirements for use:
   - [Turbopack](https://nextjs.org/docs/app/api-reference/turbopack) must be enabled. Turbopack can be enabled by setting the [`REFLEX_USE_TURBOPACK`](https://reflex.dev/docs/api-reference/environment-variables/#:~:text=REFLEX_USE_TURBOPACK)
     environment variable to `true`.
@@ -25,7 +28,9 @@ RIL adheres to [semantic versioning](https://semver.org/spec/v2.0.0.html).
         plugins=[SVGRPlugin()],
     )
     ```
+
 - All non-Font Awesome icons now have a size of `1em` by default.
+- The Simple Icons component's `color` prop no longer accepts `"default"` as a value. Use `"brand"` instead.
 - The Phosphor and Phosphor Context components' `weight` props have been renamed to `variant`. The `phosphor.weight`
   setting has likewise been renamed to `phosphor.variant`. ([Docs](https://ril.celsiusnarhwal.dev/phosphor))
 - The `title` props of the Material Symbols and Bootstrap Icons components, and the `alt` prop of the Phosphor
@@ -46,7 +51,7 @@ component, now default to the icon name you pass to those components' initializa
 
 ### Changed
 
-- Material Symbol names are now case-insensitive.
+- Icon names passed to the Material Symbols component are now case-insensitive.
 - The `color` props of the Simple Icons, Material Symbols, and Bootstrap Icons components now explicitly default to
   `"currentColor"`. `"currentColor"` is only usable as a default value; explicitly passing it will cause an error.
 - The Material Symbols and Bootstrap Icons components now
@@ -182,7 +187,7 @@ component, now default to the icon name you pass to those components' initializa
 ### Added
 
 - The Simple Icons component now allows you choose the major version of Simple Icons on a per-icon basis.
-  ([Docs](https://ril.celsiusnarhwal.dev/simple/#props))
+  ([Docs](https://ril.celsiusnarhwal.dev/simple/#version-switching))
 
 ## <a name="1-0-0">1.0.0 — 2024-11-22</a>
 

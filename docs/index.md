@@ -13,8 +13,7 @@ GitHub's [Octicons](https://primer.style/octicons), [Phosphor](https://phosphori
 and [Bootstrap Icons](https://icons.getbootstrap.com/), packaging over 12,000 icons in total.
 
 !!! warning "Support for Reflex 0.7.12 and earlier is deprecated"
-    Please upgrade to the latest versions of RIL and Reflex as soon as possible. For more information,
-    see [RIL's changelog](https://github.com/celsiusnarhwal/RIL/blob/main/CHANGELOG.md#1-4-3).
+    Please upgrade to the latest versions of RIL and Reflex as soon as possible.
 
 ## Installation
 
@@ -104,7 +103,7 @@ RIL can be configured through a `pyproject.toml` file, an `ril.toml` file, or en
     setting_name = value "(1)!"
     ```
 
-    1. Setting names must be written in `snake_case` rather than `kebab-case`.
+    1. Setting names must be written in `snake_case`.
 
     `pyproject.toml` must be in your current working directory for RIL to see it. (1)
     { .annotate }
@@ -123,7 +122,7 @@ RIL can be configured through a `pyproject.toml` file, an `ril.toml` file, or en
     setting_name = value "(1)!"
     ```
 
-    1. Setting names must be written in `snake_case` rather than `kebab-case`.
+    1. Setting names must be written in `snake_case`.
 
     `ril.toml` must be in your current working directory for RIL to see it.
 
