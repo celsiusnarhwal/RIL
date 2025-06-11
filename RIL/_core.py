@@ -14,7 +14,6 @@ from pydantic import (
 from pydantic_core import core_schema
 from pydantic_extra_types.color import Color as PydanticColor
 from reflex import ImportDict
-from reflex.components.component import T
 from reflex.constants.colors import Color as ReflexColor
 
 from RIL.plugins import SVGRPlugin
@@ -38,7 +37,7 @@ class SVGComponent(Base):
     """
 
     @classmethod
-    def create(cls: type[T], *children, **props) -> T:
+    def create(cls, *children, **props):
         from reflex.config import get_config
 
         if not any((type(plugin) is SVGRPlugin for plugin in get_config().plugins)):
