@@ -55,6 +55,8 @@ component, now default to the icon name you pass to those components' initializa
 - Icon names passed to the Material Symbols component are now case-insensitive.
 - The `color` props of the Simple Icons, Material Symbols, Octicons, Phosphor and Bootstrap Icons components now 
   explicitly default to `"currentColor"`. `"currentColor"` is only usable as a default value; explicitly passing it will cause an error.
+- The `variant` prop of the Phosphor component and the `phosphor.variant` setting now explicitly default to `"regular"`.
+- The props of the Phosphor context component now default to their corresponding `phoshor.*` settings.
 - The Material Symbols and Bootstrap Icons components now
   use [@marella's Material Symbols SVG packages](https://github.com/marella/material-symbols)
   and [the official Bootstrap Icons package](https://www.npmjs.com/package/bootstrap-icons), respectively.
