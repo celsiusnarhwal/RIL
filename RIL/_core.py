@@ -15,7 +15,7 @@ from pydantic_core import core_schema
 from pydantic_extra_types.color import Color as PydanticColor
 from reflex import ImportDict
 from reflex.components.component import T
-from reflex.constants.colors import Color as BaseReflexColor
+from reflex.constants.colors import Color as ReflexColor
 
 from RIL.plugins import SVGRPlugin
 
@@ -41,7 +41,7 @@ class SVGComponent(Base):
     def create(cls: type[T], *children, **props) -> T:
         from reflex.config import get_config
 
-        if not any((isinstance(plugin, SVGRPlugin) for plugin in get_config().plugins)):
+        if not any((type(plugin) is SVGRPlugin for plugin in get_config().plugins)):
             raise ValueError(
                 f"You must add the Reflex Icon Library's SVGR plugin (RIL.plugins.SVGRPlugin) to your "
                 f"rxconfig.py to use {cls.__name__}."
@@ -72,11 +72,11 @@ class _ReflexColorPydanticAnnotation:
     def __get_pydantic_core_schema__(
         cls, _source_type: t.Any, _handler: GetCoreSchemaHandler
     ) -> core_schema.CoreSchema:
-        return core_schema.is_instance_schema(BaseReflexColor)
+        return core_schema.is_instance_schema(ReflexColor)
 
 
 Color = t.Annotated[
-    PydanticColor | t.Annotated[BaseReflexColor, _ReflexColorPydanticAnnotation],
+    PydanticColor | t.Annotated[ReflexColor, _ReflexColorPydanticAnnotation],
     PlainSerializer(
         lambda v: v.as_hex() if isinstance(v, PydanticColor) else format(v)
     ),
