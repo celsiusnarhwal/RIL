@@ -1,27 +1,28 @@
 import copy
-import importlib.metadata
 import typing as t
 
-import pydantic.v1
 import reflex as rx
 import reflex.utils.prerequisites as rxp
-import semver
-from loguru import logger
 from pydantic import (
     BaseModel,
     ConfigDict,
     Field,
+    GetCoreSchemaHandler,
+    PlainSerializer,
     model_serializer,
     validate_call,
 )
+from pydantic_core import core_schema
+from pydantic_extra_types.color import Color as PydanticColor
 from reflex import ImportDict
 from reflex.components.component import T
+from reflex.constants.colors import Color as BaseReflexColor
 
 from RIL.plugins import SVGRPlugin
 
 
 class Props(BaseModel):
-    model_config = ConfigDict(extra="allow")
+    model_config = ConfigDict(extra="allow", arbitrary_types_allowed=True)
 
     def model_dump(self, **kwargs):
         return super().model_dump(**kwargs, exclude_none=True, by_alias=True)
@@ -55,24 +56,24 @@ class Base(rx.Component):
     ):
         if isinstance(props_to_override, Props):
             props_to_override = props_to_override.model_dump()
-
-        if semver.Version.parse(importlib.metadata.version("reflex")) < "0.7.13":
-            logger.warning(
-                "Support for your version of Reflex is deprecated and will be removed in RIL 2.0.0. "
-                "Please upgrade to the latest versions of Reflex and RIL."
-            )
-            for field in rx.Component.get_fields():
-                props_to_override.pop(field, None)
-
-            model = pydantic.v1.create_model(
-                cls.__name__,
-                __base__=cls,
-                lib_dependencies=(list[str], lib_dependencies),
-                **{k: (rx.Var[t.Any], v) for k, v in props_to_override.items()},
-            )
-
-            return model
-        else:
+            #
+            # if semver.Version.parse(importlib.metadata.version("reflex")) < "0.7.13":
+            #     logger.warning(
+            #         "Support for your version of Reflex is deprecated and will be removed in RIL 2.0.0. "
+            #         "Please upgrade to the latest versions of Reflex and RIL."
+            #     )
+            #     for field in rx.Component.get_fields():
+            #         props_to_override.pop(field, None)
+            #
+            #     model = pydantic.v1.create_model(
+            #         cls.__name__,
+            #         __base__=cls,
+            #         lib_dependencies=(list[str], lib_dependencies),
+            #         **{k: (rx.Var[t.Any], v) for k, v in props_to_override.items()},
+            #     )
+            #
+            #     return model
+            # else:
             if isinstance(cls.lib_dependencies, list):
                 lib_dependencies += cls.lib_dependencies
 
@@ -106,6 +107,22 @@ class SVGComponent(Base):
             raise ValueError(f"Turbopack is required to use {cls.__name__}")
 
         return super().create(*children, **props)
+
+
+class _ReflexColorPydanticAnnotation:
+    @classmethod
+    def __get_pydantic_core_schema__(
+        cls, _source_type: t.Any, _handler: GetCoreSchemaHandler
+    ) -> core_schema.CoreSchema:
+        return core_schema.is_instance_schema(BaseReflexColor)
+
+
+Color = t.Annotated[
+    PydanticColor | t.Annotated[BaseReflexColor, _ReflexColorPydanticAnnotation],
+    PlainSerializer(
+        lambda v: v.as_hex() if isinstance(v, PydanticColor) else format(v)
+    ),
+]
 
 
 def validate_props(func):

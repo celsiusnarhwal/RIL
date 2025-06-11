@@ -2,12 +2,11 @@ import typing as t
 
 import casefy
 import reflex as rx
-from pydantic import ConfigDict, Field, field_serializer, model_serializer
-from pydantic_extra_types.color import Color
+from pydantic import ConfigDict, Field, model_serializer
 from reflex import Component
 from reflex.utils.imports import ImportDict
 
-from RIL._core import Base, Props, validate_props
+from RIL._core import Base, Color, Props, validate_props
 from RIL.settings import settings
 
 __all__ = ["phosphor"]
@@ -48,10 +47,6 @@ class PhosphorIconProps(Props):
     """
     Alt text for the icon.
     """
-
-    @field_serializer("color")
-    def serialize_color_as_hex(self, color: Color | str):
-        return color.as_hex() if isinstance(color, Color) else color
 
 
 class PhosphorIconContextProps(PhosphorIconProps):

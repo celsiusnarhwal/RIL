@@ -3,10 +3,9 @@ import typing as t
 import casefy
 import inflect as ifl
 import reflex as rx
-from pydantic import Field, computed_field, field_serializer
-from pydantic_extra_types.color import Color
+from pydantic import Field, computed_field
 
-from RIL._core import Props, SVGComponent, validate_props
+from RIL._core import Color, Props, SVGComponent, validate_props
 
 __all__ = ["material"]
 
@@ -66,10 +65,6 @@ class MaterialSymbolProps(Props):
     @property
     def package(self) -> str:
         return f"@material-symbols/svg-{self.weight}"
-
-    @field_serializer("color")
-    def serialize_color_as_hex(self, color: Color | str):
-        return color.as_hex() if isinstance(color, Color) else color
 
 
 class MaterialSymbol(SVGComponent):

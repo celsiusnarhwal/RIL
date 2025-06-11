@@ -3,10 +3,10 @@ import typing as t
 
 import casefy
 import reflex as rx
-from pydantic import Field, field_serializer
-from pydantic_extra_types.color import Color
+import reflex.constants.colors
+from pydantic import Field
 
-from RIL._core import Base, Props, validate_props
+from RIL._core import Base, Color, Props, validate_props
 
 __all__ = ["octicons"]
 
@@ -28,10 +28,6 @@ class OcticonProps(Props):
     The size of the icon. May be `"small"`, `"medium"`, or `"large"`. May also be an integer (in pixels) or 
     a CSS size string (e.g., `'1rem'`),
     """
-
-    @field_serializer("color")
-    def serialize_color_as_hex(self, color: Color | None):
-        return color.as_hex() if isinstance(color, Color) else color
 
 
 class Octicon(Base):

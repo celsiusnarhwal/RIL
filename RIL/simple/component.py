@@ -1,10 +1,9 @@
 import typing as t
 
 import reflex as rx
-from pydantic import BaseModel, Field, field_serializer, field_validator
-from pydantic_extra_types.color import Color
+from pydantic import BaseModel, Field, field_validator
 
-from RIL._core import Base, Props, validate_props
+from RIL._core import Base, Color, Props, validate_props
 from RIL.settings import settings
 
 __all__ = ["simple", "si"]
@@ -82,10 +81,6 @@ class SimpleIconProps(Props):
             raise ValueError("Simple Icons version must be greater than or equal to 5")
 
         return v
-
-    @field_serializer("color")
-    def serialize_color_as_hex(self, color: Color | str):
-        return color.as_hex() if isinstance(color, Color) else color
 
 
 class SimpleIcon(Base):

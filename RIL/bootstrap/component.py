@@ -2,10 +2,9 @@ import typing as t
 
 import casefy
 import reflex as rx
-from pydantic import Field, computed_field, field_serializer
-from pydantic_extra_types.color import Color
+from pydantic import Field, computed_field
 
-from RIL._core import Props, SVGComponent, validate_props
+from RIL._core import Color, Props, SVGComponent, validate_props
 
 
 class BootstrapIconProps(Props):
@@ -39,10 +38,6 @@ class BootstrapIconProps(Props):
     @property
     def width(self) -> int | str:
         return self.size
-
-    @field_serializer("color")
-    def serialize_color_as_hex(self, color: Color | None):
-        return color.as_hex() if color else color
 
 
 class BootstrapIcon(SVGComponent):
