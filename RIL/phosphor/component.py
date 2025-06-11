@@ -18,13 +18,13 @@ NPM_PACKAGE = "@phosphor-icons/react@^2"
 
 class PhosphorIconProps(Props):
     variant: t.Literal["thin", "light", "regular", "bold", "fill", "duotone"] = Field(
-        "regular", serialization_alias="weight"
+        None, serialization_alias="weight"
     )
     """
     The variant of the icon (i.e., style). May be one of `"thin"`, `"light"`, `"regular"`, `"bold"`, `"fill"`, or `"duotone"`.
     """
 
-    color: Color = "currentColor"
+    color: Color = None
     """
     The color of the icon. May be:
     - a hex code
@@ -35,7 +35,7 @@ class PhosphorIconProps(Props):
     Hex codes are case-insensitive and the leading `#` is optional.
     """
 
-    size: int | str = "1em"
+    size: int | str = None
     """
     The size of the icon. May be an integer (in pixels) or a CSS size string (e.g., `'1rem'`).
     
@@ -56,18 +56,21 @@ class PhosphorIconProps(Props):
 class PhosphorIconContextProps(PhosphorIconProps):
     model_config = ConfigDict(extra="ignore")
 
+    color: Color = settings.phosphor.color
+    size: int | str = settings.phosphor.size
+    variant: t.Literal["thin", "light", "regular", "bold", "fill", "duotone"] = Field(
+        settings.phosphor.variant, serialization_alias="weight"
+    )
+
     @model_serializer(mode="wrap")
     def serialize(self, handler: t.Callable):
-        serialized = super().serialize(handler)
-        return {"value": serialized}
+        return {"value": handler(self)}
 
 
 class PhosphorIconContext(Base):
     tag = "PhosphorIconContext.Provider"
 
-    weight: rx.Var[t.Any]
-    color: rx.Var[t.Any]
-    size: rx.Var[t.Any]
+    value: rx.Var[t.Any]
 
     def add_imports(self) -> ImportDict | list[ImportDict]:
         return {NPM_PACKAGE: [rx.ImportVar("IconContext", alias="PhosphorIconContext")]}
@@ -75,7 +78,7 @@ class PhosphorIconContext(Base):
     @classmethod
     @validate_props
     def create(cls, *children, props: PhosphorIconContextProps) -> rx.Component:
-        return super().create(**props.model_dump())
+        return super().create(*children, **props.model_dump())
 
 
 class PhosphorIcon(Base):
@@ -93,20 +96,13 @@ class PhosphorIcon(Base):
 
         component = super().create(**props.model_dump())
         component.tag = casefy.pascalcase(icon.casefold()) + "Icon"
-        component.alias = "Phosphor" + props.variant.capitalize() + component.tag
+        component.alias = "Phosphor" + component.tag
 
         return component
 
     @staticmethod
     def _get_app_wrap_components() -> dict[tuple[int, str], Component]:
-        if settings.phosphor.provider_settings:
-            return {
-                (1, "PhosphorIconContext.Provider"): PhosphorIconContext.create(
-                    **settings.phosphor.provider_settings
-                )
-            }
-
-        return {}
+        return {(1, "PhosphorIconContext.Provider"): PhosphorIconContext.create()}
 
 
 class Phosphor(rx.ComponentNamespace):

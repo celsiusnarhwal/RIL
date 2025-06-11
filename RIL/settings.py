@@ -78,8 +78,10 @@ class PhosphorSettings(BaseModel):
     """
 
     color: Color = None
-    size: int | str = None
-    variant: t.Literal["thin", "light", "regular", "bold", "fill", "duotone"] = None
+    size: int | str = "1em"
+    variant: t.Literal["thin", "light", "regular", "bold", "fill", "duotone"] = (
+        "regular"
+    )
 
     @property
     def provider_settings(self) -> dict:
