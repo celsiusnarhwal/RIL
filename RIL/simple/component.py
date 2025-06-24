@@ -31,7 +31,7 @@ class SimpleIconsPackage(BaseModel):
         )
 
     @property
-    def import_name(self) -> str:
+    def object_import(self) -> str:
         name = self.package_alias
 
         if self.version != "latest" and self.version <= 7:
@@ -96,10 +96,18 @@ class SimpleIcon(Base):
     def create(cls, icon: str, props: SimpleIconProps):
         tag = "si" + icon.replace(" ", "").replace(".", "dot").capitalize()
 
-        component = super().create(**props.model_dump(), icon=rx.Var(tag))
+        if props.version == "latest":
+            var = rx.Var(tag)
+            object_import_var = rx.ImportVar(tag, install=False)
+        else:
+            alias = tag + str(props.version)
+            var = rx.Var(alias)
+            object_import_var = rx.ImportVar(tag, alias=alias, install=False)
+
+        component = super().create(**props.model_dump(), icon=var)
         component.imports = {
             props.package.package_name: rx.ImportVar(None, render=False),
-            props.package.import_name: rx.ImportVar(tag, install=False),
+            props.package.object_import: object_import_var,
         }
 
         return component
