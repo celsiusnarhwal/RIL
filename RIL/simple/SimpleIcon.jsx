@@ -1,5 +1,3 @@
-import * as React from "react";
-
 // noinspection JSUnusedGlobalSymbols
 export const SimpleIcon = (
     ({icon, title, color = "currentColor", size = "1em", ...others}, ref) => {
