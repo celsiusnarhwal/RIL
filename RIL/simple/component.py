@@ -94,6 +94,9 @@ class SimpleIcon(Base):
     @classmethod
     @validate_props
     def create(cls, icon: str, props: SimpleIconProps):
+        if icon == "/e/":
+            icon = "e"
+
         tag = "si" + icon.replace(" ", "").replace(".", "dot").capitalize()
 
         if props.version == "latest":
