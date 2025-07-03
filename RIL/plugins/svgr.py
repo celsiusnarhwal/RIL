@@ -1,47 +1,44 @@
-import re
+import hashlib
 from typing import Unpack
 
-import json5 as json
-from deepmerge import always_merger
+import reflex as rx
 from reflex.plugins import CommonContext, Plugin, PreCompileContext
+from reflex.utils.path_ops import cp as copy_file
+from reflex.utils.prerequisites import get_web_dir
+
+from RIL import templates
 
 __all__ = ["SVGRPlugin"]
 
 
-def _update_next_config(next_config_content: str):
-    next_config = json.loads(
-        re.search("{.*}", next_config_content, flags=re.DOTALL).group(0)
-    )
-
-    loader_config = {
-        "loaders": [
-            {
-                "loader": "@svgr/webpack",
-                "options": {"dimensions": False, "titleProp": True},
-            }
-        ],
-        "as": "*.js",
+def _update_vite_config():
+    reflex_vite_configs = {
+        "source": rx.constants.Templates.Dirs.WEB_TEMPLATE / "vite.config.js",
+        "destination": get_web_dir() / "vite.reflex.config.js",
     }
 
-    turbopack_config = {
-        "turbopack": {
-            "rules": {
-                "**/node_modules/@material-symbols/svg-*/**/*.svg": loader_config,
-                "**/node_modules/bootstrap-icons/icons/*.svg": loader_config,
-            }
-        }
+    ril_vite_configs = {
+        "source": templates.directory / "vite.config.js",
+        "destination": get_web_dir() / "vite.config.js",
     }
 
-    next_config = always_merger.merge(next_config, turbopack_config)
+    for config_set in [reflex_vite_configs, ril_vite_configs]:
+        if config_set["source"].exists():
+            src_hash = hashlib.sha256(config_set["source"].read_bytes()).hexdigest()
+        else:
+            src_hash = None
 
-    return f"module.exports = {json.dumps(next_config)}"
+        dst_hash = hashlib.sha256(config_set["destination"].read_bytes()).hexdigest()
+
+        if src_hash != dst_hash:
+            copy_file(config_set["source"], config_set["destination"])
 
 
 class SVGRPlugin(Plugin):
     def get_frontend_development_dependencies(
         self, **context: Unpack[CommonContext]
     ) -> list[str] | set[str] | tuple[str, ...]:
-        return ["@svgr/webpack"]
+        return ["vite-plugin-svgr"]
 
     def pre_compile(self, **context: Unpack[PreCompileContext]) -> None:
-        context["add_modify_task"]("next.config.js", _update_next_config)
+        context["add_save_task"](_update_vite_config)
