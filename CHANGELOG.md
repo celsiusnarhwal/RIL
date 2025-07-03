@@ -12,7 +12,7 @@ RIL adheres to [semantic versioning](https://semver.org/spec/v2.0.0.html).
 ### 🚨 Breaking Changes
 
 - Support for Reflex versions earlier than 0.8.0 has been dropped. 
-- The Material Symbols and Bootstrap Icons components require RIL's new `SVGRPlugin` must be included in your `rxconfig.py`.
+- The Material Symbols and Bootstrap Icons components require RIL's new `SVGRPlugin` to be included in your `rxconfig.py`.
   
     ```python
     # rxconfig.py
