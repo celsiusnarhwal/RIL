@@ -32,7 +32,7 @@ RIL adheres to [semantic versioning](https://semver.org/spec/v2.0.0.html).
   setting has likewise been renamed to `phosphor.variant`. ([Docs](https://ril.celsiusnarhwal.dev/phosphor))
 - The `title` props of the Material Symbols and Bootstrap Icons components, and the `alt` prop of the Phosphor
 component, now default to the icon name you pass to those components' initialization methods.
-- RIL no longer works with any third-party tools that modify Reflex's `vite.config.js` file. I would be *shocked* if this
+- RIL may not work with any third-party tools that modify Reflex's `vite.config.js` file. I would be *shocked* if this
 created an actual problem for anyone, but on the off chance this change breaks something for you, 
 please [open an issue](https://github.com/celsiusnarhwal/RIL/issues) and explain your situation.
 
