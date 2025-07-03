@@ -11,11 +11,8 @@ RIL adheres to [semantic versioning](https://semver.org/spec/v2.0.0.html).
 
 ### 🚨 Breaking Changes
 
-- Support for Reflex 0.7.12 and earlier has been dropped. 
-- The Material Symbols and Bootstrap Icons components now have special requirements for use:
-  - [Turbopack](https://nextjs.org/docs/app/api-reference/turbopack) must be enabled. Turbopack can be enabled by setting the [`REFLEX_USE_TURBOPACK`](https://reflex.dev/docs/api-reference/environment-variables/#:~:text=REFLEX_USE_TURBOPACK)
-    environment variable to `true`.
-  - RIL's new `SVGRPlugin` must be included in your `rxconfig.py`.
+- Support for Reflex versions earlier than 0.8.0 has been dropped. 
+- The Material Symbols and Bootstrap Icons components require RIL's new `SVGRPlugin` must be included in your `rxconfig.py`.
   
     ```python
     # rxconfig.py
@@ -29,7 +26,7 @@ RIL adheres to [semantic versioning](https://semver.org/spec/v2.0.0.html).
     )
     ```
 
-- All non-Font Awesome icons now have a size of `1em` by default.
+- All non-Font Awesome icons have a size of `1em` by default.
 - The Simple Icons component's `color` prop no longer accepts `"default"` as a value. Use `"brand"` instead.
 - The Phosphor and Phosphor Context components' `weight` props have been renamed to `variant`. The `phosphor.weight`
   setting has likewise been renamed to `phosphor.variant`. ([Docs](https://ril.celsiusnarhwal.dev/phosphor))
