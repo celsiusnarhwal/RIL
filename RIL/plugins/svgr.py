@@ -23,12 +23,14 @@ def _update_vite_config():
     }
 
     for config_set in [reflex_vite_configs, ril_vite_configs]:
-        if config_set["source"].exists():
-            src_hash = hashlib.sha256(config_set["source"].read_bytes()).hexdigest()
-        else:
-            src_hash = None
+        src_hash = hashlib.sha256(config_set["source"].read_bytes()).hexdigest()
 
-        dst_hash = hashlib.sha256(config_set["destination"].read_bytes()).hexdigest()
+        if config_set["destination"].exists():
+            dst_hash = hashlib.sha256(
+                config_set["destination"].read_bytes()
+            ).hexdigest()
+        else:
+            dst_hash = None
 
         if src_hash != dst_hash:
             copy_file(config_set["source"], config_set["destination"])
