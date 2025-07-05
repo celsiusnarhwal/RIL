@@ -1,7 +1,6 @@
 import typing as t
 
 import reflex as rx
-import reflex.utils.prerequisites as rxp
 from pydantic import (
     BaseModel,
     ConfigDict,
@@ -43,9 +42,6 @@ class SVGComponent(Base):
                 f"You must add the Reflex Icon Library's SVGR plugin (RIL.plugins.SVGRPlugin) to your "
                 f"rxconfig.py to use {cls.__name__}."
             )
-
-        if not rxp.environment.REFLEX_USE_TURBOPACK.get():
-            raise ValueError(f"Turbopack is required to use {cls.__name__}")
 
         return super().create(*children, **props)
 
