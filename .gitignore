@@ -162,6 +162,7 @@ cython_debug/
 
 ### Miscellaneous
 reflex_app/
+.web/
 .vercel/
 .pdm-build/
 .envrc
