@@ -48,8 +48,13 @@ class FontAwesomeIcon(Base):
     """
 
     fixed_width: rx.Var[bool]
+
+    automatic_width: rx.Var[bool]
     """
-    Whether the icon should have fixed with.
+    If True, the icon's width will be its symbol; if not, it will be the entire Icon Canvas.
+    
+    See Also
+        https://docs.fontawesome.com/web/style/icon-canvas
     """
 
     list_item: rx.Var[bool]
@@ -57,7 +62,7 @@ class FontAwesomeIcon(Base):
     Whether the icon should be displayed as a list item.
     """
 
-    rotation: rx.Var[t.Literal[90, 180, 270]]
+    rotation: rx.Var[int | float]
     """
     The icon's angle of rotation.
     """
@@ -111,7 +116,7 @@ class FontAwesomeIcon(Base):
         return imports
 
     @classmethod
-    def _get_package_for_style(cls, style: str) -> str:
+    def _get_package_for_style(cls, style: str, *, is_pack: bool = False) -> str:
         # If a Kit exists, we use it.
         if settings.fontawesome.kit_package:
             # For custom icons, the module path is "kit/custom".
@@ -129,10 +134,17 @@ class FontAwesomeIcon(Base):
         # At this point, we know we aren't using a Kit, so we need to figure out what package
         # we *are* using.
 
-        # Since we're not using a Kit, custom icons should raise a `ValueError`.
+        # Since we're not using a Kit, custom icons and icon packs should raise an exception.
+
         if style == "kit":
             raise ValueError(
-                f"Additional configuration is required to use custom Font Awesome icons. "
+                f"A Kit is required to use custom Font Awesome icons. "
+                f"{utils.docs('fontawesome/pro/#using-a-kit')}"
+            )
+
+        if is_pack:
+            raise ValueError(
+                f"A Kit is required to use Font Awesome Pro+ icon packs. "
                 f"{utils.docs('fontawesome/pro/#using-a-kit')}"
             )
 
@@ -162,7 +174,8 @@ class FontAwesomeIcon(Base):
 
         # Only thing left to do at this point is raise an exception.
         raise ValueError(
-            f"The {' '.join(style.split('-')).title()} style requires Font Awesome Pro. {utils.docs('fontawesome/pro')}"
+            f"The {' '.join(style.split('-')).title()} style requires Font Awesome {'Pro+' if is_pack else 'Pro'}. "
+            f"{utils.docs('fontawesome/pro')}"
         )
 
     @classmethod
@@ -180,7 +193,14 @@ class FontAwesomeIcon(Base):
         )
 
     @classmethod
-    def create(cls, icon: str = None, _icon_style: str = None, **props) -> t.Self:
+    def create(
+        cls,
+        icon: str = None,
+        *,
+        _icon_style: str = None,
+        _icon_pack: bool = False,
+        **props,
+    ) -> t.Self:
         props_to_override = {}
 
         # The icon name is normalized to fa{Icon} and given an alias to avoid
@@ -190,7 +210,7 @@ class FontAwesomeIcon(Base):
         alias = cls._get_icon_alias(icon, _icon_style)
 
         # Determine the package this icon should be imported from.
-        package = cls._get_package_for_style(_icon_style)
+        package = cls._get_package_for_style(_icon_style, is_pack=_icon_pack)
 
         props["icon"] = rx.Var(alias)
 
@@ -200,15 +220,19 @@ class FontAwesomeIcon(Base):
         if settings.fontawesome.kit_package:
             second_dependency = f"{settings.fontawesome.kit_package}@latest"
         else:
-            second_dependency = f"{package}@^6"
+            second_dependency = f"{package}"
 
         lib_dependencies = [
-            "@fortawesome/fontawesome-svg-core@^6",
+            "@fortawesome/fontawesome-svg-core",
             second_dependency,
         ]
 
         # The component needs to import the icon from the appropriate package.
         imports = {package: [rx.ImportVar(tag, alias=alias, install=False)]}
+
+        fixed_width = props.pop("fixed_width")
+        if isinstance(fixed_width, bool) and props.get("automatic_width") is None:
+            props["automatic_width"] = not fixed_width
 
         # The `animation` prop is applied as a boolean prop of the animation's name.
         animation = props.get("animation")
@@ -217,6 +241,20 @@ class FontAwesomeIcon(Base):
             props_to_override.update(
                 {animation: True for animation in animation.split(" ")}
             )
+
+        rotation = props.get("rotation")
+        if isinstance(rotation, int | float):
+            props.pop("rotation")
+
+            transforms = props.get("transform")
+            rotation_transform = f"rotate-{rotation}"
+
+            if isinstance(transforms, str):
+                transforms += " " + rotation_transform
+            elif transforms is None:
+                transforms = rotation_transform
+
+            props["transform"] = transforms
 
         # If a mask was provided, we need to combine the component's dependencies and imports with those
         # of the mask.
@@ -291,6 +329,92 @@ class FontAwesomeSharpDuotone(rx.ComponentNamespace):
     )
 
 
+class FontAwesomeChisel(rx.ComponentNamespace):
+    regular = partial(
+        staticmethod(FontAwesomeIcon.create),
+        _icon_style="chisel-regular",
+        _icon_pack=True,
+    )
+
+
+class FontAwesomeEtch(rx.ComponentNamespace):
+    solid = partial(
+        staticmethod(FontAwesomeIcon.create), _icon_style="etch-solid", _icon_pack=True
+    )
+
+
+class FontAwesomeJelly(rx.ComponentNamespace):
+    regular = partial(
+        staticmethod(FontAwesomeIcon.create),
+        _icon_style="jelly-regular",
+        _icon_pack=True,
+    )
+
+
+class FontAwesomeJellyDuo(rx.ComponentNamespace):
+    regular = partial(
+        staticmethod(FontAwesomeIcon.create),
+        _icon_style="jelly-duo-regular",
+        _icon_pack=True,
+    )
+
+
+class FontAwesomeJellyFill(rx.ComponentNamespace):
+    regular = partial(
+        staticmethod(FontAwesomeIcon.create),
+        _icon_style="jelly-fill-regular",
+        _icon_pack=True,
+    )
+
+
+class FontAwesomeNotdog(rx.ComponentNamespace):
+    solid = partial(
+        staticmethod(FontAwesomeIcon.create),
+        _icon_style="notdog-solid",
+        _icon_pack=True,
+    )
+
+
+class FontAwesomeNotdogDuo(rx.ComponentNamespace):
+    solid = partial(
+        staticmethod(FontAwesomeIcon.create),
+        _icon_style="notdog-duo-solid",
+        _icon_pack=True,
+    )
+
+
+class FontAwesomeSlab(rx.ComponentNamespace):
+    regular = partial(
+        staticmethod(FontAwesomeIcon.create),
+        _icon_style="slab-regular",
+        _icon_pack=True,
+    )
+
+
+class FontAwesomeSlabPress(rx.ComponentNamespace):
+    regular = partial(
+        staticmethod(FontAwesomeIcon.create),
+        _icon_style="slab-press-regular",
+        _icon_pack=True,
+    )
+
+
+class FontAwesomeThumbprint(rx.ComponentNamespace):
+    light = partial(
+        staticmethod(FontAwesomeIcon.create),
+        _icon_style="thumbprint-light",
+        _icon_pack=True,
+    )
+
+
+class FontAwesomeWhiteboard(rx.ComponentNamespace):
+    semibold = partial(
+        staticmethod(FontAwesomeIcon.create),
+        _icon_style="whiteboard-semibold",
+        _icon_pack=True,
+    )
+
+
 class FontAwesome(rx.ComponentNamespace):
     solid = __call__ = partial(
         staticmethod(FontAwesomeIcon.create), _icon_style="classic-solid"
@@ -305,6 +429,17 @@ class FontAwesome(rx.ComponentNamespace):
     sharp = FontAwesomeSharp()
     duotone = FontAwesomeDuotone()
     sharp_duotone = FontAwesomeSharpDuotone()
+    chisel = FontAwesomeChisel()
+    etch = FontAwesomeEtch()
+    jelly = FontAwesomeJelly()
+    jelly_duo = jelly_duotone = FontAwesomeJellyDuo()
+    jelly_fill = FontAwesomeJellyFill()
+    notdog = FontAwesomeNotdog()
+    notdog_duo = notdog_duotone = FontAwesomeNotdogDuo()
+    slab = FontAwesomeSlab()
+    slab_press = FontAwesomeSlabPress()
+    thumbprint = FontAwesomeThumbprint()
+    whiteboard = FontAwesomeWhiteboard()
 
 
 fontawesome = fa = FontAwesome()

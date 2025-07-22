@@ -11,7 +11,7 @@ RIL adheres to [semantic versioning](https://semver.org/spec/v2.0.0.html).
 
 ### 🚨 Breaking Changes
 
-- Support for Reflex versions earlier than 0.8.0 has been dropped. 
+- Support for Reflex versions earlier than 0.8.0 has been dropped.
 - The Material Symbols and Bootstrap Icons components require RIL's new `SVGRPlugin` to be included in your `rxconfig.py`.
   
     ```python
@@ -35,6 +35,7 @@ component, now default to the icon name you pass to those components' initializa
 
 ### Added
 
+- RIL now supports Font Awesome 7. ([Docs](https://ril.celsiusnarhwal.dev/fontawesome))
 - The `color` props of the Simple Icons, Material Symbols, Octicons, Phosphor, and Bootstrap Icons components now 
   accept `rx.color` components as values. For example:
 
@@ -46,6 +47,12 @@ component, now default to the icon name you pass to those components' initializa
     ```
 - The Material Symbols component now allows you to change the icon
   weight. ([Docs](https://ril.celsiusnarhwal.dev/material/#props))
+
+
+### Removed
+
+- Support for Font Awesome 6 has been removed. Font Awesome icons you were already using in your projects may look different after upgrading.
+
 
 ### Changed
 

@@ -6,7 +6,7 @@ from RIL._core import Base
 
 class FontAwesomeIcon(Base):
     @classmethod
-    def _get_package_for_style(cls, style: str) -> str: ...
+    def _get_package_for_style(cls, style: str, *, is_pack: bool) -> str: ...
     @classmethod
     def _normalize_icon_name(cls, icon_name: str) -> str: ...
     @classmethod
@@ -349,11 +349,55 @@ class FontAwesomeSharpDuotone(rx.ComponentNamespace):
             Whether to invert the icon's colors.
         """
 
+class FontAwesomeChisel(rx.ComponentNamespace):
+    regular = FontAwesomeIcon.create
+
+class FontAwesomeEtch(rx.ComponentNamespace):
+    solid = FontAwesomeIcon.create
+
+class FontAwesomeJelly(rx.ComponentNamespace):
+    regular = FontAwesomeIcon.create
+
+class FontAwesomeJellyDuo(rx.ComponentNamespace):
+    regular = FontAwesomeIcon.create
+
+class FontAwesomeJellyFill(rx.ComponentNamespace):
+    regular = FontAwesomeIcon.create
+
+class FontAwesomeNotdog(rx.ComponentNamespace):
+    solid = FontAwesomeIcon.create
+
+class FontAwesomeNotdogDuo(rx.ComponentNamespace):
+    solid = FontAwesomeIcon.create
+
+class FontAwesomeSlab(rx.ComponentNamespace):
+    regular = FontAwesomeIcon.create
+
+class FontAwesomeSlabPress(rx.ComponentNamespace):
+    regular = FontAwesomeIcon.create
+
+class FontAwesomeThumbprint(rx.ComponentNamespace):
+    light = FontAwesomeIcon.create
+
+class FontAwesomeWhiteboard(rx.ComponentNamespace):
+    semibold = FontAwesomeIcon.create
+
 class FontAwesome(rx.ComponentNamespace):
     solid = regular = light = thin = brands = kit = FontAwesomeIcon.create
     sharp = FontAwesomeSharp()
     duotone = FontAwesomeDuotone()
     sharp_duotone = FontAwesomeSharpDuotone()
+    chisel = FontAwesomeChisel()
+    etch = FontAwesomeEtch()
+    jelly = FontAwesomeJelly()
+    jelly_duo = jelly_duotone = FontAwesomeJellyDuo()
+    jelly_fill = FontAwesomeJellyFill()
+    notdog = FontAwesomeNotdog()
+    notdog_duo = notdog_duotone = FontAwesomeNotdogDuo()
+    slab = FontAwesomeSlab()
+    slab_press = FontAwesomeSlabPress()
+    thumbprint = FontAwesomeThumbprint()
+    whiteboard = FontAwesomeWhiteboard()
 
     @staticmethod
     def __call__(
