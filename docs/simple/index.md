@@ -31,15 +31,6 @@ import RIL as icons
 icons.simple("simple icons")
 ```
 
-!!! warning "There's just one unintuitive exception"
-    The :simple-e: icon, identified by Simple Icons as "/e/", is passed as simply `#!python "e"`.
-
-    ```python
-    import RIL as icons
-
-    icons.simple("e")
-    ```
-
 Icon names are case-inensitive.
 
 
