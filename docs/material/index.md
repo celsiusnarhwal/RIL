@@ -17,12 +17,8 @@ for use with its [Material](https://material.io) design system.
 ```python
 import RIL as icons
 
-icons.material("Search")
+icons.material("search")
 ```
-
-!!! warning "Icon names are case-sensitive"
-    Unlike RIL's other icon libraries, Material Symbol names are case-sensitive. The name you pass must _exactly_ match
-    the name on Google Fonts.
 
 ## Props
 

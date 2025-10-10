@@ -32,7 +32,7 @@ def index() -> rx.Component:
     return rx.container(
         icons.fontawesome.solid("house"),
         icons.simple("python"),
-        icons.material("Search"),
+        icons.material("search"),
         icons.octicons("check-circle-fill"),
         icons.phosphor("acorn"),
         icons.bootstrap("airplane"),
