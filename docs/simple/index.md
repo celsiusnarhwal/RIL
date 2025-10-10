@@ -80,7 +80,7 @@ in your project
 that do not explicitly set the `version` prop.
 
 ???+ config "`simple.version`: Controls the major version of Simple Icons used by RIL."
-    `simple.version` is the highest major version of Simple Icons that RIL may use (or `latest`). RIL
+    `simple.version` is the highest major version of Simple Icons that RIL may use by default (or `latest`). RIL
     will use the newest version of Simple Icons available within this constraint.
 
     If this is an integer, it must be greater than or equal to 5. Defaults to `latest`.
