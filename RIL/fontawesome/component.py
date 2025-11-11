@@ -116,7 +116,10 @@ class FontAwesomeIcon(Base):
         return imports
 
     @classmethod
-    def _get_package_for_style(cls, style: str, *, is_pack: bool = False) -> str:
+    def _get_package_for_style(cls, style: str) -> str:
+        is_pack = style.startswith("__icon-pack__")
+        style = style.lstrip("__icon-pack__")
+
         # If a Kit exists, we use it.
         if settings.fontawesome.kit_package:
             # For custom icons, the module path is "kit/custom".
@@ -186,6 +189,8 @@ class FontAwesomeIcon(Base):
 
     @classmethod
     def _get_icon_alias(cls, icon_name: str, icon_style: str) -> str:
+        icon_style = icon_style.lstrip("__icon-pack__")
+
         return (
             "fa"
             + casefy.pascalcase(icon_style)
@@ -198,7 +203,6 @@ class FontAwesomeIcon(Base):
         icon: str = None,
         *,
         _icon_style: str = None,
-        _icon_pack: bool = False,
         **props,
     ) -> t.Self:
         props_to_override = {}
@@ -210,7 +214,7 @@ class FontAwesomeIcon(Base):
         alias = cls._get_icon_alias(icon, _icon_style)
 
         # Determine the package this icon should be imported from.
-        package = cls._get_package_for_style(_icon_style, is_pack=_icon_pack)
+        package = cls._get_package_for_style(_icon_style)
 
         props["icon"] = rx.Var(alias)
 
@@ -230,7 +234,7 @@ class FontAwesomeIcon(Base):
         # The component needs to import the icon from the appropriate package.
         imports = {package: [rx.ImportVar(tag, alias=alias, install=False)]}
 
-        fixed_width = props.pop("fixed_width")
+        fixed_width = props.pop("fixed_width", None)
         if isinstance(fixed_width, bool) and props.get("automatic_width") is None:
             props["automatic_width"] = not fixed_width
 
@@ -330,89 +334,108 @@ class FontAwesomeSharpDuotone(rx.ComponentNamespace):
 
 
 class FontAwesomeChisel(rx.ComponentNamespace):
-    regular = partial(
+    regular = __call__ = partial(
         staticmethod(FontAwesomeIcon.create),
-        _icon_style="chisel-regular",
-        _icon_pack=True,
+        _icon_style="__icon-pack__chisel-regular",
     )
 
 
 class FontAwesomeEtch(rx.ComponentNamespace):
-    solid = partial(
-        staticmethod(FontAwesomeIcon.create), _icon_style="etch-solid", _icon_pack=True
-    )
-
-
-class FontAwesomeJelly(rx.ComponentNamespace):
-    regular = partial(
+    solid = __call__ = partial(
         staticmethod(FontAwesomeIcon.create),
-        _icon_style="jelly-regular",
+        _icon_style="__icon-pack__etch-solid",
         _icon_pack=True,
     )
 
 
 class FontAwesomeJellyDuo(rx.ComponentNamespace):
-    regular = partial(
+    regular = __call__ = partial(
         staticmethod(FontAwesomeIcon.create),
-        _icon_style="jelly-duo-regular",
-        _icon_pack=True,
+        _icon_style="__icon-pack__jelly-duo-regular",
     )
 
 
 class FontAwesomeJellyFill(rx.ComponentNamespace):
-    regular = partial(
+    regular = __call__ = partial(
         staticmethod(FontAwesomeIcon.create),
-        _icon_style="jelly-fill-regular",
-        _icon_pack=True,
+        _icon_style="__icon-pack__jelly-fill-regular",
+    )
+
+
+class FontAwesomeJelly(rx.ComponentNamespace):
+    regular = __call__ = partial(
+        staticmethod(FontAwesomeIcon.create),
+        _icon_style="__icon-pack__jelly-regular",
+    )
+    duo = duotone = FontAwesomeJellyDuo()
+    fill = FontAwesomeJellyFill()
+
+
+class FontAwesomeNotdogDuo(rx.ComponentNamespace):
+    solid = __call__ = partial(
+        staticmethod(FontAwesomeIcon.create),
+        _icon_style="__icon-pack__notdog-duo-solid",
     )
 
 
 class FontAwesomeNotdog(rx.ComponentNamespace):
-    solid = partial(
+    solid = __call__ = partial(
         staticmethod(FontAwesomeIcon.create),
-        _icon_style="notdog-solid",
-        _icon_pack=True,
+        _icon_style="__icon-pack__notdog-solid",
     )
+    duo = duotone = FontAwesomeNotdogDuo()
 
 
-class FontAwesomeNotdogDuo(rx.ComponentNamespace):
-    solid = partial(
+class FontAwesomeSlabPress(rx.ComponentNamespace):
+    regular = __call__ = partial(
         staticmethod(FontAwesomeIcon.create),
-        _icon_style="notdog-duo-solid",
-        _icon_pack=True,
+        _icon_style="__icon-pack__slab-press-regular",
     )
 
 
 class FontAwesomeSlab(rx.ComponentNamespace):
-    regular = partial(
+    regular = __call__ = partial(
         staticmethod(FontAwesomeIcon.create),
-        _icon_style="slab-regular",
-        _icon_pack=True,
+        _icon_style="__icon-pack__slab-regular",
     )
-
-
-class FontAwesomeSlabPress(rx.ComponentNamespace):
-    regular = partial(
-        staticmethod(FontAwesomeIcon.create),
-        _icon_style="slab-press-regular",
-        _icon_pack=True,
-    )
+    press = FontAwesomeSlabPress()
 
 
 class FontAwesomeThumbprint(rx.ComponentNamespace):
-    light = partial(
+    light = __call__ = partial(
         staticmethod(FontAwesomeIcon.create),
-        _icon_style="thumbprint-light",
-        _icon_pack=True,
+        _icon_style="__icon-pack__thumbprint-light",
     )
 
 
 class FontAwesomeWhiteboard(rx.ComponentNamespace):
-    semibold = partial(
+    semibold = __call__ = partial(
         staticmethod(FontAwesomeIcon.create),
-        _icon_style="whiteboard-semibold",
-        _icon_pack=True,
+        _icon_style="__icon-pack__whiteboard-semibold",
     )
+
+
+class FontAwesomeUtilityDuo(rx.ComponentNamespace):
+    semibold = __call__ = partial(
+        staticmethod(FontAwesomeIcon.create),
+        _icon_style="__icon-pack__utility-duo-semibold",
+    )
+
+
+class FontAwesomeUtilityFill(rx.ComponentNamespace):
+    semibold = __call__ = partial(
+        staticmethod(FontAwesomeIcon.create),
+        _icon_style="__icon-pack__utility-fill-semibold",
+    )
+
+
+class FontAwesomeUtility(rx.ComponentNamespace):
+    semibold = __call__ = partial(
+        staticmethod(FontAwesomeIcon.create),
+        _icon_style="__icon-pack__utility-semibold",
+    )
+    duo = duotone = FontAwesomeUtilityDuo()
+    fill = FontAwesomeUtilityFill()
 
 
 class FontAwesome(rx.ComponentNamespace):
@@ -432,14 +455,11 @@ class FontAwesome(rx.ComponentNamespace):
     chisel = FontAwesomeChisel()
     etch = FontAwesomeEtch()
     jelly = FontAwesomeJelly()
-    jelly_duo = jelly_duotone = FontAwesomeJellyDuo()
-    jelly_fill = FontAwesomeJellyFill()
     notdog = FontAwesomeNotdog()
-    notdog_duo = notdog_duotone = FontAwesomeNotdogDuo()
     slab = FontAwesomeSlab()
-    slab_press = FontAwesomeSlabPress()
     thumbprint = FontAwesomeThumbprint()
     whiteboard = FontAwesomeWhiteboard()
+    utility = FontAwesomeUtility()
 
 
 fontawesome = fa = FontAwesome()
