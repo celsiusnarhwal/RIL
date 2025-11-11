@@ -7,10 +7,6 @@ icon: fontawesome/brands/font-awesome
 [Font Awesome](https://fontawesome.com) is a library of over 50,000[^1] icons in several different styles,
 including over 400 icons for popular brands.
 
-!!! info "RIL only supports Font Awesome 6 for now"
-    Font Awesome 7 support is planned. Keep an eye on [this GitHub issue](https://github.com/celsiusnarhwal/RIL/issues/3)
-    for updates.
-
 ## Usage
 
 Font Awesome icons can be used via `#!python icons.fontawesome` or `#!python icons.fa`. There's no functional
@@ -25,10 +21,10 @@ pass its name to the method of your desired style.
     ```python
     import RIL as icons
 
-    icons.fa.solid("house")  # fa-solid fa-house
-    icons.fa.regular("magnifying-glass")  # fa-regular fa-magnifying-glass
-    icons.fa.light("user")  # fa-light fa-user
-    icons.fa.thin("check")  # fa-thin fa-check
+    icons.fa.solid("house") 
+    icons.fa.regular("magnifying-glass") 
+    icons.fa.light("user")
+    icons.fa.thin("check")  
     ```
 
 === ":fontawesome-sharp-solid-icons: Sharp"
@@ -36,10 +32,10 @@ pass its name to the method of your desired style.
     ```python
     import RIL as icons
 
-    icons.fa.sharp.solid("download")  # fa-sharp fa-solid fa-download
-    icons.fa.sharp.regular("image")  # fa-sharp fa-regular fa-image
-    icons.fa.sharp.light("phone")  # fa-sharp fa-light fa-phone
-    icons.fa.sharp.thin("bars")  # fa-sharp fa-thin fa-bars
+    icons.fa.sharp.solid("download")  
+    icons.fa.sharp.regular("image")  
+    icons.fa.sharp.light("phone")  
+    icons.fa.sharp.thin("bars") 
     ```
 
 === ":fontawesome-duotone-icons: Duotone"
@@ -47,10 +43,10 @@ pass its name to the method of your desired style.
     ```python
     import RIL as icons
 
-    icons.fa.duotone.solid("envelope")  # fa-duotone fa-solid fa-envelope
-    icons.fa.duotone.regular("wand-magic-sparkles")  # fa-duotone fa-regular fa-wand-magic-sparkles
-    icons.fa.duotone.light("bomb")  # fa-duotone fa-light fa-bomb
-    icons.fa.duotone.thin("camera-retro")  # fa-duotone fa-thin fa-camera-retro
+    icons.fa.duotone.solid("envelope") 
+    icons.fa.duotone.regular("wand-magic-sparkles") 
+    icons.fa.duotone.light("bomb")  
+    icons.fa.duotone.thin("camera-retro") 
     ```
 
 === ":fontawesome-sharp-duotone-solid-icons: Sharp Duotone"
@@ -58,10 +54,10 @@ pass its name to the method of your desired style.
     ```python
     import RIL as icons
 
-    icons.fa.sharp_duotone.solid("music")  # fa-sharp-duotone fa-solid fa-music
-    icons.fa.sharp_duotone.regular("comment")  # fa-sharp-duotone fa-regular fa-comment
-    icons.fa.sharp_duotone.light("hippo")  # fa-sharp-duotone fa-light fa-hippo
-    icons.fa.sharp_duotone.thin("calendar-days")  # fa-sharp-duotone fa-thin fa-calendar-days
+    icons.fa.sharp_duotone.solid("music")  
+    icons.fa.sharp_duotone.regular("comment")  
+    icons.fa.sharp_duotone.light("hippo") 
+    icons.fa.sharp_duotone.thin("calendar-days") 
     ```
 
 === ":fontawesome-brands-font-awesome: Brands"
@@ -69,8 +65,83 @@ pass its name to the method of your desired style.
     ```python
     import RIL as icons
 
-    icons.fa.brands("python") # fa-brands fa-python
+    icons.fa.brands("python")
     ```
+
+=== ":fontawesome-solid-box: Icon Packs"
+
+    !!! info
+        These styles require a Font Awesome Pro+ subscription and a [Kit](pro.md#using-a-kit).
+
+    === "Chisel"
+        ```python
+        import RIL as icons
+
+        icons.fa.chisel("house") 
+        ```
+
+    === "Etch"
+        ```python
+        import RIL as icons
+
+        icons.fa.etch("house")
+        ```
+
+    === "Jelly"
+        ```python
+        import RIL as icons
+
+        icons.fa.jelly("house")
+        icons.fa.jelly.fill("circle-user")
+        icons.fa.jelly.duo("image")
+        ```
+
+    === "Notdog"
+        ```python
+        import RIL as icons
+
+        icons.fa.notdog("house")
+        icons.fa.notdog.duo("circle-user")
+        ```
+
+    === "Slab"
+        ```python
+        import RIL as icons
+
+        icons.fa.slab("house")
+        icons.fa.slab.press("circle-user")
+        ```
+
+    === "Thumbprint"
+        ```python
+        import RIL as icons
+
+        icons.fa.thumbprint("house")
+        ```
+
+    === "Whiteboard"
+        ```python
+        import RIL as icons
+
+        icons.fa.whiteboard("house")
+        ```
+
+    === "Utility"
+        ```python
+        import RIL as icons
+
+        icons.fa.utility("house")
+        icons.fa.utility.fill("circle-user")
+        icons.fa.utility.duo("image")
+        ```
+
+    
+
+     
+
+
+
+    
 
 === ":fontawesome-solid-block-question: Custom Icons"
 

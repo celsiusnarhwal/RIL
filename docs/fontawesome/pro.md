@@ -1,6 +1,6 @@
 # Font Awesome Pro
 
-If you have an active [Font Awesome Pro](https://fontawesome.com/plans) subscription[^1], you
+If you have an active [Font Awesome Pro](https://fontawesome.com/plans) or Pro+ subscription[^1], you
 can use it with RIL in just two easy steps.
 
 First, enable Font Awesome Pro via the `fontawesome.pro_enabled` setting.
@@ -124,9 +124,14 @@ icons.fa.kit("name-of-icon")
     Duotone custom icons are currently not available in Kit packages, so you can't use them with RIL. 
     This is a limitation on Font Awesome's side, so you'll have to wait for things to change on their end.
 
+### Icon Packs
+
+If you have a Font Awesome Pro+ subscription, using a Kit enables you to use [Icon Packs](https://docs.fontawesome.com/web/dig-deeper/styles#chisel).
+No additional setup is required. See [Style Reference](style-reference.md) for details.
+
 ### Updating Kits
 
-If you add, remove, or edit icons in your Kit, you can get those changes in your Reflex project by
+If you add, remove, or edit icons or styles in your Kit, you can get those changes in your Reflex project by
 having Reflex reinstall your project's frontend packages:
 
 ```shell
@@ -214,4 +219,4 @@ or `ril.toml` file won't work.
 
 If things still aren't working, [open an issue](https://github.com/celsiusnarhwal/RIL/issues/new/choose).
 
-[^1]: You must be **actively paying** for Font Awesome Pro. A perpetual fallback license won't cut it.
+[^1]: You must be **actively paying** for Font Awesome Pro or Pro+. A perpetual fallback license won't cut it.

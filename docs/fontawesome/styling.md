@@ -23,22 +23,33 @@ icons.fa.solid("coffee", size="lg")
 icons.fa.solid("coffee", size="6x")
 ```
 
-## Fixed-width
+## Automatic Width
 
-Setting icons to use a fixed-width helps when you’re trying to align icons in a vertical column.
+Use the `automatic_width` prop to set an icon's width to its symbol rather than the entire [Icon Canvas](https://docs.fontawesome.com/web/style/icon-canvas).
 
 ```python
 import RIL as icons
 
-icons.fa.solid("coffee", fixed_width=True)
+icons.fa.solid("coffee", automatic_width=True)
 ```
+
+??? tip "Migrating from RIL v1?"
+    The `automatic_width` prop is the inverse of the old `fixed_width` prop; i.e., `#!python automatic_width=True` does
+    what `#!python fixed_width=False` did, and vice versa. `fixed_width` still works, but `automatic_width` is preferred
+    and will override `fixed_width` whenever the two are in conflict.
 
 ## Icons in a List
 
+You can use icons in lists by setting `#!python list_item=True` and wrapping them in an `#!python rx.list`:
+
 ```python
+import reflex as rx
 import RIL as icons
 
-icons.fa.solid("coffee", list_item=True)
+rx.list.unordered(
+    icons.fa.solid("coffee", list_item=True),
+    icons.fa.solid("check-square", list_item=True),
+)
 ```
 
 ## Rotate and Flip Icons
