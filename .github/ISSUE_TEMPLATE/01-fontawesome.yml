@@ -37,8 +37,7 @@ body:
       description: Please acknowledge the following statement.
       options:
         - label: If I've [configured RIL to use Font Awesome Pro](https://ril.celsiusnarhwal.dev/fontawesome/pro), I have **not** changed the [`fontawesome.npm_registry` setting](https://ril.celsiusnarhwal.dev/fontawesome/pro/#using-alternate-registries-advanced).
-    validations:
-      required: true
+          required: true
 
   - type: input
     attributes:
