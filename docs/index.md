@@ -6,7 +6,7 @@ hide:
 
 # The Reflex Icon Library
 
-The Reflex Icon Library (RIL) is your one-stop icon shop for [Reflex](https://reflex.dev) projects.
+The Reflex Icon Library (RIL) is your one-stop icon shop for [Reflex](https://reflex.dev/docs) projects.
 It includes the icon libraries of [Font Awesome](https://fontawesome.com), [Simple Icons](https://simpleicons.org),
 Google's [Material Symbols](https://fonts.google.com/icons),
 GitHub's [Octicons](https://primer.style/octicons), [Phosphor](https://phosphoricons.com/),
