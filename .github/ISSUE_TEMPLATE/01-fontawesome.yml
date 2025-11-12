@@ -31,12 +31,6 @@ body:
         > [!IMPORTANT]
         > Issues related to custom Font Awesome icons are inherently impossible for me to reproduce, so at least for now, I have to ask that you refrain from opening any such issues. Sorry!
 
-  - type: markdown
-    attributes:
-      value: |
-        > [!NOTE]
-        > Issues related to [Lucide](https://ril.celsiusnarhwal.dev/lucide) are issues with Reflex itself and belong in [Reflex's repository](https://github.com/reflex-dev/reflex/issues).
-
   - type: checkboxes
     attributes:
       label: Font Awesome Pro
