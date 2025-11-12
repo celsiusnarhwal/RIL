@@ -14,7 +14,7 @@ body:
       options:
         - label: I have searched this repository for similar issues.
           required: true
-        - label: I'm reporting a broken Font Awesome icon. There's a [separate issue template](https://github.com/celsiusnarhwal/RIL/issues/new?template=00-icon.yml) for icons from other libraries.
+        - label: I'm reporting a broken Font Awesome icon (there's a [separate issue template](https://github.com/celsiusnarhwal/RIL/issues/new?template=00-icon.yml) for icons from other libraries).
           required: true
         - label: The icon is listed on Font Awesome's [website](https://fontawesome.com).
           required: true
