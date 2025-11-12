@@ -51,10 +51,9 @@ body:
 
   - type: dropdown
     attributes:
-      label: Font Awesome Icon Style
+      label: Icon Style
       description: |
-        If you're reporting a Font Awesome icon, select its style here. 
-        Omitting this option while having selected "Font Awesome" at the previous dropdown will result in your issue being closed without response.
+        Select the style of the icon.
       options:
         - Brands
         - Classic Solid
