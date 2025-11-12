@@ -20,6 +20,8 @@ body:
           required: true
         - label: I'm following RIL's [documentation](https://ril.celsiusnarhwal.dev) with regards to the spelling and casing of icon names.
           required: true
+        - label: If I've [configured RIL to use Font Awesome Pro](https://ril.celsiusnarhwal.dev/fontawesome/pro), I have **not** changed the [`fontawesome.npm_registry` setting](https://ril.celsiusnarhwal.dev/fontawesome/pro/#using-alternate-registries-advanced).
+          required: true
         - label: I have reinstalled my project's frontend packages with `reflex init && reflex run` and the icon still isn't working.
           required: true
         - label: My issue is not related to a custom Font Awesome icon.
@@ -30,14 +32,6 @@ body:
       value: |
         > [!IMPORTANT]
         > Issues related to custom Font Awesome icons are inherently impossible for me to reproduce, so at least for now, I have to ask that you refrain from opening them. Sorry!
-
-  - type: checkboxes
-    attributes:
-      label: Font Awesome Pro
-      description: Please acknowledge the following statement.
-      options:
-        - label: If I've [configured RIL to use Font Awesome Pro](https://ril.celsiusnarhwal.dev/fontawesome/pro), I have **not** changed the [`fontawesome.npm_registry` setting](https://ril.celsiusnarhwal.dev/fontawesome/pro/#using-alternate-registries-advanced).
-          required: true
 
   - type: input
     attributes:
