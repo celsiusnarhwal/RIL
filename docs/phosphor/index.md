@@ -25,7 +25,7 @@ Icon names are case-inensitive.
 
 | **Name** | **Type**                           | **Description**                                                                                                                                                                  |   |
 |----------|------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---|
-| `weight` | `#!python str`                     | The weight of the icon. May be one of `#!python "thin"`, `#!python "light"`, `#!python "regular"`, `#!python "bold"`, `#!python "fill"`, or `#!python "duotone"`.                |   |
+| `variant` | `#!python str`                     | The variant of the icon. May be one of `#!python "thin"`, `#!python "light"`, `#!python "regular"`, `#!python "bold"`, `#!python "fill"`, or `#!python "duotone"`.                |   |
 | `color`  | `#!python str` \| `#!python tuple` | The color of the icon. May be a hex code, a tuple of RGB, RGBA, or HSL values, or any valid [CSS Color Module Level 3](https://www.w3.org/TR/css-color-3/#svg-color) color name. |   |
 | `size`   | `#!python int` \| `#!python str`   | The size of the icon. May be an integer (in pixels) or a CSS size string (e.g., `#!python "1rem"`).                                                                              |   |
 | `alt`     | `#!python str`                      | [Alt text](https://developer.mozilla.org/en-US/docs/Web/API/HTMLImageElement/alt) for the icon.                                                                                  |   |
@@ -64,7 +64,7 @@ in your project.
         [tool.ril.phosphor]
         color = "limegreen"
         size = 32
-        weight = "bold"
+        variant = "bold"
         ```
 
     === "ril.toml"
@@ -73,7 +73,7 @@ in your project.
         [phosphor]
         color = "limegreen"
         size = 32
-        weight = "bold"
+        variant = "bold"
         ```
 
     === "Environment variables / .env"
@@ -81,5 +81,5 @@ in your project.
         ```shell
         RIL_PHOSPHOR__COLOR="limegreen"
         RIL_PHOSPHOR__SIZE=32
-        RIL_PHOSPHOR__WEIGHT="bold"
+        RIL_PHOSPHOR__VARIANT="bold"
         ```
