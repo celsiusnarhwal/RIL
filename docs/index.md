@@ -12,9 +12,6 @@ Google's [Material Symbols](https://fonts.google.com/icons),
 GitHub's [Octicons](https://primer.style/octicons), [Phosphor](https://phosphoricons.com/),
 and [Bootstrap Icons](https://icons.getbootstrap.com/), packaging over 12,000 icons in total.
 
-!!! warning "Support for Reflex 0.7.12 and earlier is deprecated"
-    Please upgrade to the latest versions of RIL and Reflex as soon as possible.
-
 ## Installation
 
 ```shell
@@ -44,8 +41,8 @@ app.add_page(index)
 ```
 
 !!! warning "RIL does not validate icon names"
-    Passing the name of an icon that doesn't exist will get you a cryptic error from React, but RIL itself
-    won't complain. If you're passing an icon name that's not working and you're _confident_ it should, please
+    Passing the name of an icon that doesn't exist may cause cryptic errors and other weird problems with Reflex and React, 
+    but RIL itself won't complain. If you're passing an icon name that's not working and you're _confident_ it should, please
     [open an issue](https://github.com/celsiusnarhwal/RIL/issues/new/choose).
 
 This is just a basic example. For detailed usage instructions, see the documentation for each icon library:
