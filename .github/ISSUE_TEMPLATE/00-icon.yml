@@ -1,6 +1,5 @@
 name: Broken Icon
 description: Report an icon that should be working, but isn't.
-title: "[Broken Icon]: "
 labels:
   - bug
   - broken-icon
@@ -15,7 +14,7 @@ body:
       options:
         - label: I have searched this repository for similar issues.
           required: true
-        - label: I'm not reporting a broken [Font Awesome](https://ril.celsiusnarhwal.dev/fontawesome) icon. There's a separate issue template for that.
+        - label: I'm not reporting a broken [Font Awesome](https://ril.celsiusnarhwal.dev/fontawesome) icon. There's a [separate issue template](https://github.com/celsiusnarhwal/RIL/issues/new?template=01-fontawesome.yml) for that.
           required: true
         - label: I'm not reporting a broken [Lucide](https://ril.celsiusnarhwal.dev/lucide) icon ([open an issue with Reflex](https://github.com/reflex-dev/reflex/issues) instead).
         - label: The icon exists in the respective upstream icon library.

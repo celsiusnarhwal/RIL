@@ -1,6 +1,5 @@
 name: Broken Font Awesome Icon
-description: Report an icon that should be working, but isn't.
-title: "[Broken Icon]: "
+description: Report a Font Awesome icon that should be working, but isn't.
 labels:
   - bug
   - broken-icon
@@ -15,7 +14,9 @@ body:
       options:
         - label: I have searched this repository for similar issues.
           required: true
-        - label: The icon exists in the respective upstream icon library.
+        - label: I'm reporting a broken Font Awesome icon. There's a [separate issue template](https://github.com/celsiusnarhwal/RIL/issues/new?template=00-icon.yml) for icons from other libraries.
+          required: true
+        - label: The icon is listed on Font Awesome's [website](https://fontawesome.com).
           required: true
         - label: I'm following RIL's [documentation](https://ril.celsiusnarhwal.dev) with regards to the spelling and casing of icon names.
           required: true
