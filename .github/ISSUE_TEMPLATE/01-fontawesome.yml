@@ -112,7 +112,7 @@ body:
   - type: input
     attributes:
       label: Minimal Reproducible Example
-      description: Provide a link to a GitHub repository containing a [minimal reproducible example](https://stackoverflow.com/help/minimal-reproducible-example) of your issue. This isn't required, but your issue is likely to be resolved a lot faster if you do it.
+      description: Provide a link to public Git repository containing a [minimal reproducible example](https://stackoverflow.com/help/minimal-reproducible-example) of your issue. This isn't required, but your issue is likely to be resolved a lot faster if you do it.
 
   - type: textarea
     attributes:
