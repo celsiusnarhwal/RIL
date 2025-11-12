@@ -1557,6 +1557,7 @@ class FontAwesome(rx.ComponentNamespace):
     slab = FontAwesomeSlab()
     thumbprint = FontAwesomeThumbprint()
     whiteboard = FontAwesomeWhiteboard()
+    utility = FontAwesomeUtility()
 
     @staticmethod
     def __call__(
