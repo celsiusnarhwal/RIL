@@ -6,6 +6,9 @@ RIL adheres to [semantic versioning](https://semver.org/spec/v2.0.0.html).
 
 ## <a name="2-0-0">2.0.0 — 2025-11-03</a>
 
+> [!IMPORTANT]
+> Please run `reflex init && reflex run` after upgrading to version 2.0.0.
+
 ### 🚨 Breaking Changes
 
 - Support for Reflex versions earlier than 0.8.0 has been dropped.
