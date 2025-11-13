@@ -1,11 +1,5 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "cleanUrls": true,
-  "trailingSlash": true,
-  "redirects": [
-    {
-      "source": "/other/",
-      "destination": "/other/plugins/"
-    }
-  ]
+  "trailingSlash": true
 }

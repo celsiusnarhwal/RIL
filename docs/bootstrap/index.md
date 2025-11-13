@@ -10,7 +10,7 @@ hide:
 [Bootstrap](https://getbootstrap.com/) frontend framework.
 
 !!! info "Plugin required"
-    This icon library requires the [SVGR plugin](../other/plugins#svgr).
+    This icon library requires the [SVGR plugin](../plugins/index.md#svgr).
 
 
 ## Usage
