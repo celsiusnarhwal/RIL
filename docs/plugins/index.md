@@ -1,5 +1,7 @@
 ---
 icon: fontawesome/solid/plug
+hide:
+  - navigation
 ---
 
 # Plugins
