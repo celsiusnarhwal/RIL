@@ -27,6 +27,9 @@ nav:
       - Bootstrap Icons: bootstrap/index.md
   - Lucide:
       - Lucide: lucide/index.md
+  - Other:
+      - Other: other/index.md
+      - Plugins: other/plugins.md
 
 # Material for MkDocs
 theme:

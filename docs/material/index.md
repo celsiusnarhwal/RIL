@@ -9,6 +9,9 @@ hide:
 [Material Symbols](https://fonts.google.com/icons) is a library of icons designed by [Google](https://opensource.google)
 for use with its [Material](https://material.io) design system.
 
+!!! info "Plugin required"
+    This icon library requires the [SVGR plugin](../other/plugins#svgr).
+ 
 ## Usage
 
 1. [Find the icon you want](https://fonts.google.com/icons)

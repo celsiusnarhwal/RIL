@@ -9,6 +9,10 @@ hide:
 [Boostrap Icons](https://icons.getbootstrap.com/) is a library of over 2,000 icons designed for the 
 [Bootstrap](https://getbootstrap.com/) frontend framework.
 
+!!! info "Plugin required"
+    This icon library requires the [SVGR plugin](../other/plugins#svgr).
+
+
 ## Usage
 
 <div class="annotate" markdown>
