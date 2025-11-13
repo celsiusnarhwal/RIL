@@ -16,13 +16,8 @@
         <script>
             const path = window.location.pathname
 
-            if (path.startsWith("/fontawesome/")) {
-                document.write("Font Awesome © Fonticons, Inc.")
-
-                if (path.endsWith("/styling/")) {
-                    document.write(" Some content on this page is copied from the <a href=\"https://docs.fontawesome.com\" target='_blank'>Font Awesome documentation</a>.")
-                }
-
+            if (path.startsWith("/fontawesome/styling")) {
+                document.write(" Some content on this page is copied from the <a href=\"https://docs.fontawesome.com\" target='_blank'>Font Awesome documentation</a>.")
             }
 
             if (path.startsWith("/material/")) {
