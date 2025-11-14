@@ -23,12 +23,12 @@ Icon names are case-inensitive.
 
 ## Props
 
-| **Name** | **Type**                           | **Description**                                                                                                                                                                  |   |
-|----------|------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---|
-| `variant` | `#!python str`                     | The variant of the icon. May be one of `#!python "thin"`, `#!python "light"`, `#!python "regular"`, `#!python "bold"`, `#!python "fill"`, or `#!python "duotone"`.                |   |
-| `color`  | `#!python str` \| `#!python tuple` | The color of the icon. May be a hex code, a tuple of RGB, RGBA, or HSL values, or any valid [CSS Color Module Level 3](https://www.w3.org/TR/css-color-3/#svg-color) color name. |   |
-| `size`   | `#!python int` \| `#!python str`   | The size of the icon. May be an integer (in pixels) or a CSS size string (e.g., `#!python "1rem"`).                                                                              |   |
-| `alt`     | `#!python str`                      | [Alt text](https://developer.mozilla.org/en-US/docs/Web/API/HTMLImageElement/alt) for the icon.                                                                                  |   |
+| **Name**  | **Type**                           | **Description**                                                                                                                                                                               |   |
+|-----------|------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---|
+| `variant` | `#!python str`                     | The variant of the icon. May be one of `#!python "thin"`, `#!python "light"`, `#!python "regular"`, `#!python "bold"`, `#!python "fill"`, or `#!python "duotone"`.                            |   |
+| `color`   | `#!python str` \| `#!python tuple` | May be an [`rx.color` object](https://reflex.dev/docs/styling/theming/#shades) or [Pydantic-recognized color definition](https://docs.pydantic.dev/2.0/usage/types/extra_types/color_types/). |   |
+| `size`    | `#!python int` \| `#!python str`   | The size of the icon. May be an integer (in pixels) or a CSS size string (e.g., `#!python "1rem"`).                                                                                           |   |
+| `alt`     | `#!python str`                     | [Alt text](https://developer.mozilla.org/en-US/docs/Web/API/HTMLImageElement/alt) for the icon.                                                                                               |   |
 
 ## Context
 
@@ -48,7 +48,8 @@ icons.phosphor.context(
 )
 ```
 
-### Global Context 
+### Global Context
+
 You can configure the `phosphor` settings group to have a default style applied to all Phosphor icons
 in your project.
 

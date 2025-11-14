@@ -6,8 +6,8 @@ hide:
 
 # :fontawesome-brands-github: Octicons
 
-[Octicons](https://primer.style/octicons) is a library of icons designed by [GitHub](https://github.com/about) as part of
-its [Primer](https://primer.style) design system.
+[Octicons](https://primer.style/octicons) is a library of icons designed by [GitHub](https://github.com/about) as part
+of its [Primer](https://primer.style) design system.
 
 ## Usage
 
@@ -24,7 +24,7 @@ Icon names are case-inensitive.
 
 ## Props
 
-| **Name** | **Type**                           | **Description**                                                                                                                                                                  |   |
-|----------|------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---|
-| `color`  | `#!python str` \| `#!python tuple` | The color of the icon. May be a hex code, a tuple of RGB, RGBA, or HSL values, or any valid [CSS Color Module Level 3](https://www.w3.org/TR/css-color-3/#svg-color) color name. |   |
-| `size`   | `#!python int` \| `#!python str`   | The size of the icon. May be an integer (in pixels) or a CSS size string (e.g., `#!python "1rem"`).                                                                              |   |
+| **Name** | **Type**                           | **Description**                                                                                                                                                                                                      |   |
+|----------|------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---|
+| `color`  | `#!python str` \| `#!python tuple` | The color of the icon. May be an [`rx.color` object](https://reflex.dev/docs/styling/theming/#shades) or [Pydantic-recognized color definition](https://docs.pydantic.dev/2.0/usage/types/extra_types/color_types/). |   |
+| `size`   | `#!python int` \| `#!python str`   | The size of the icon. May be an integer (in pixels) or a CSS size string (e.g., `#!python "1rem"`).                                                                                                                  |   |
