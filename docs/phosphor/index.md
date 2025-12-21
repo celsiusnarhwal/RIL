@@ -48,6 +48,11 @@ icons.phosphor.context(
 )
 ```
 
+??? question "What about the `mirrored` prop?"
+    You may have noticed that Phosphor's documentation mentions a `mirrored` prop which isn't present in the above
+    example. RIL doesn't currently support this prop because I can't get it to work. I don't know why. If you do,
+    [contributions are welcome](https://github.com/celsiusnarhwal/RIL/pulls).
+
 ### Global Context
 
 You can configure the `phosphor` settings group to have a default style applied to all Phosphor icons
