@@ -4,6 +4,13 @@ Notable changes to the Reflex Icon Library will be documented here.
 
 RIL adheres to [semantic versioning](https://semver.org/spec/v2.0.0.html).
 
+## <a name="2-0-1">2.0.1 — 2025-12-21</a>
+
+## Fixed
+
+- Fixed a bug in the parsing of Material Symbol names. (#5)
+
+
 ## <a name="2-0-0">2.0.0 — 2025-11-03</a>
 
 > [!IMPORTANT]
