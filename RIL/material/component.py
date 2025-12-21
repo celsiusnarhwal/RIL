@@ -92,7 +92,7 @@ class MaterialSymbol(SVGComponent):
             + str(props.weight)
         )
         component.library = (
-            f"{props.package}/{props.variant}/{casefy.snakecase(icon.casefold())}"
+            f"{props.package}/{props.variant}/{icon.replace(' ', '_').casefold()}"
         )
 
         if props.filled:
