@@ -6,7 +6,7 @@ RIL adheres to [semantic versioning](https://semver.org/spec/v2.0.0.html).
 
 ## <a name="2-0-1">2.0.1 — 2025-12-21</a>
 
-## Fixed
+### Fixed
 
 - Fixed a bug in the parsing of Material Symbol names. (Resolves [#5](https://github.com/celsiusnarhwal/RIL/issues/5).)
 
