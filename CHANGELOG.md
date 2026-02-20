@@ -10,7 +10,6 @@ RIL adheres to [semantic versioning](https://semver.org/spec/v2.0.0.html).
 
 - RIL now supports Font Awesome's [Graphite](https://fontawesome.com/icons/packs/graphite) icon pack.
 
-
 ## <a name="2-0-1">2.0.1 — 2025-12-21</a>
 
 ### Fixed
