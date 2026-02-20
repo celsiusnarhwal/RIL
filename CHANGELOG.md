@@ -4,7 +4,7 @@ Notable changes to the Reflex Icon Library are documented here.
 
 RIL adheres to [semantic versioning](https://semver.org/spec/v2.0.0.html).
 
-## <a name="3-0-0">2.1.1 — Unreleased</a>
+## <a name="3-0-0">3.0.0 — Unreleased</a>
 
 > [!important]
 > This version of RIL has not yet been released. This is a preview of changes to come.
