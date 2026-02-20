@@ -438,6 +438,13 @@ class FontAwesomeUtility(rx.ComponentNamespace):
     fill = FontAwesomeUtilityFill()
 
 
+class FontAwesomeGraphite(rx.ComponentNamespace):
+    thin = __call__ = partial(
+        staticmethod(FontAwesomeIcon.create),
+        _icon_style="__icon-pack__graphite-thin",
+    )
+
+
 class FontAwesome(rx.ComponentNamespace):
     solid = __call__ = partial(
         staticmethod(FontAwesomeIcon.create), _icon_style="classic-solid"
@@ -460,6 +467,7 @@ class FontAwesome(rx.ComponentNamespace):
     thumbprint = FontAwesomeThumbprint()
     whiteboard = FontAwesomeWhiteboard()
     utility = FontAwesomeUtility()
+    graphite = FontAwesomeGraphite()
 
 
 fontawesome = fa = FontAwesome()
