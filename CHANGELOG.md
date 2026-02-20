@@ -4,6 +4,13 @@ Notable changes to the Reflex Icon Library are documented here.
 
 RIL adheres to [semantic versioning](https://semver.org/spec/v2.0.0.html).
 
+## <a name="2-1-1">2.1.1 — 2025-02-20</a>
+
+### Fixed
+
+- Fixed a bug that caused RIL to crash when writing the `.npmrc` file on certain versions of Reflex.
+- Fixed a bug where the SVGR plugin would fail on certain versions of Reflex.
+
 ## <a name="2-1-0">2.1.0 — 2025-02-20</a>
 
 ### Added
