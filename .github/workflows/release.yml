@@ -23,7 +23,7 @@ jobs:
           enable-cache: true
 
       - name: Build Package
-        run: uv build --no-sources
+        run: uv build
 
       - name: Publish Package
         run: uv publish
