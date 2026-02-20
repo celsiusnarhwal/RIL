@@ -2,7 +2,6 @@ import os
 import typing as t
 from pathlib import Path
 
-import reflex.utils.prerequisites as rxp
 from jinja2 import Environment, FileSystemLoader
 from pydantic import (
     AnyHttpUrl,
@@ -19,6 +18,12 @@ from pydantic_settings import (
     SettingsConfigDict,
     TomlConfigSettingsSource,
 )
+from reflex.utils.prerequisites import get_web_dir
+
+try:
+    from reflex.utils.prerequisites import initialize_npmrc
+except ImportError:
+    from reflex.utils.frontend_skeleton import initialize_npmrc
 
 jinja = Environment(loader=FileSystemLoader(Path(__file__).parent / "templates"))
 
@@ -46,13 +51,13 @@ class FontAwesomeSettings(BaseModel):
         """
         Write Font Awesome Pro-specific configuration to .npmrc as needed.
         """
-        rxp.initialize_npmrc()
+        initialize_npmrc()
 
         if self.pro_enabled:
             npmrc_template = jinja.get_template(".npmrc.jinja")
             reference_npmrc = npmrc_template.render(registry=self.npm_registry)
 
-            rxp.get_web_dir().joinpath(".npmrc").open("a").write("\n" + reference_npmrc)
+            get_web_dir().joinpath(".npmrc").open("a").write("\n" + reference_npmrc)
 
         return self
 
@@ -65,6 +70,7 @@ class SimpleIconsSettings(BaseModel):
     version: int | t.Literal["latest"] = Field("latest", ge=5)
 
     @field_validator("version")
+    @classmethod
     def validate_version(cls, v):
         if isinstance(v, int) and not v >= 5:
             raise ValueError("Simple Icons version must be greater than or equal to 5")

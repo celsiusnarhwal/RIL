@@ -12,10 +12,20 @@ __all__ = ["SVGRPlugin"]
 
 
 def _update_vite_config():
-    reflex_vite_configs = {
-        "source": rx.constants.Templates.Dirs.WEB_TEMPLATE / "vite.config.js",
-        "destination": get_web_dir() / "vite.reflex.config.js",
-    }
+    if (rx.constants.Templates.Dirs.WEB_TEMPLATE / "vite.config.js").exists():
+        reflex_vite_configs = {
+            "source": rx.constants.Templates.Dirs.WEB_TEMPLATE / "vite.config.js",
+            "destination": get_web_dir() / "vite.reflex.config.js",
+        }
+    else:
+        from reflex.utils.frontend_skeleton import initialize_vite_config
+
+        initialize_vite_config()
+
+        reflex_vite_configs = {
+            "source": get_web_dir() / "vite.config.js",
+            "destination": get_web_dir() / "vite.reflex.config.js",
+        }
 
     ril_vite_configs = {
         "source": templates.directory / "vite.config.js",
