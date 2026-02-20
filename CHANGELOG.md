@@ -1,12 +1,19 @@
 # Changelog[^1]
 
-Notable changes to the Reflex Icon Library will be documented here.
+Notable changes to the Reflex Icon Library are documented here.
 
 RIL adheres to [semantic versioning](https://semver.org/spec/v2.0.0.html).
 
+## <a name="2-1-0">2.1.0 — 2025-02-20</a>
+
+### Added
+
+- RIL now supports Font Awesome's [Graphite](https://fontawesome.com/icons/packs/graphite) icon pack.
+
+
 ## <a name="2-0-1">2.0.1 — 2025-12-21</a>
 
-## Fixed
+### Fixed
 
 - Fixed a bug in the parsing of Material Symbol names. (Resolves [#5](https://github.com/celsiusnarhwal/RIL/issues/5).)
 
