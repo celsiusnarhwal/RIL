@@ -4,6 +4,36 @@ Notable changes to the Reflex Icon Library are documented here.
 
 RIL adheres to [semantic versioning](https://semver.org/spec/v2.0.0.html).
 
+## <a name="3-0-0">2.1.1 — Unreleased</a>
+
+> [!important]
+> This version of RIL has not yet been released. This is a preview of changes to come.
+
+### 🚨 Breaking Changes
+
+- The SVGR plugin now uses [riebecj/reflex-vite-config-plugin](https://github.com/riebecj/reflex-vite-config-plugin) 
+to modify the Vite configuration. If you were previously using reflex-vite-config-plugin in your project and will now need 
+to use both `SVGRPlugin` _and_ a separate instance of `ViteConfigPlugin` in at the same time, you can do so by adding 
+them together:
+
+    ```python
+    # rxconfig.py
+    
+    import reflex as rx
+    from RIL import SVGRPlugin
+    from vite_config_plugin import ViteConfigPlugin
+    
+    config = rx.Config(
+        app_name="my_app",
+        plugins=[SVGRPlugin() + ViteConfigPlugin({{...}})]  # the order in which they are added does not matter
+    )
+    ```
+  If you were not previously using relfex-vite-config-plugin in your project, nothing changes for you,.
+
+### Changed
+
+- Support for Python 3.10 and earlier has been dropped.
+
 ## <a name="2-1-1">2.1.1 — 2025-02-20</a>
 
 ### Fixed

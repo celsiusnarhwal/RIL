@@ -6,7 +6,7 @@ authors = [
     { name = "celsius narhwal", email = "hello@celsiusnarhwal.dev" }
 ]
 dynamic = ["version"]
-requires-python = ">=3.10"
+requires-python = ">=3.11"
 dependencies = [
     "casefy>=0.1.7",
     "decorator>=5.2.1",
@@ -21,6 +21,7 @@ dependencies = [
     "pydantic-extra-types>=2.10.0",
     "pydantic-settings>=2.6.1",
     "reflex>=0.8.0",
+    "reflex-vite-config-plugin>=0.0.4",
     "semver>=3.0.2",
     "yarl>=1.18.0",
 ]

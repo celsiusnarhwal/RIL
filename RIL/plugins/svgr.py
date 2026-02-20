@@ -1,56 +1,51 @@
-import hashlib
-from typing import Unpack
-
-import reflex as rx
-from reflex.plugins import CommonContext, Plugin, PreCompileContext
-from reflex.utils.path_ops import cp as copy_file
-from reflex.utils.prerequisites import get_web_dir
-
-from RIL import templates
+import json5
+from json5 import QuoteStyle
+from pydantic import ConfigDict, validate_call
+from vite_config_plugin import RawJS, ViteConfigPlugin
 
 __all__ = ["SVGRPlugin"]
 
 
-def _update_vite_config():
-    if (rx.constants.Templates.Dirs.WEB_TEMPLATE / "vite.config.js").exists():
-        reflex_vite_configs = {
-            "source": rx.constants.Templates.Dirs.WEB_TEMPLATE / "vite.config.js",
-            "destination": get_web_dir() / "vite.reflex.config.js",
-        }
-    else:
-        from reflex.utils.frontend_skeleton import initialize_vite_config
-
-        initialize_vite_config()
-
-        reflex_vite_configs = {
-            "source": get_web_dir() / "vite.config.js",
-            "destination": get_web_dir() / "vite.reflex.config.js",
+class SVGRPlugin(ViteConfigPlugin):
+    def __init__(self, **_kwargs):
+        options = {
+            "svgrOptions": {
+                "titleProp": True,
+                "dimensions": False,
+            },
+            "include": [
+                "**/node_modules/@material-symbols/svg-*/**/*.svg",
+                "**/node_modules/bootstrap-icons/icons/*.svg",
+            ],
         }
 
-    ril_vite_configs = {
-        "source": templates.directory / "vite.config.js",
-        "destination": get_web_dir() / "vite.config.js",
-    }
+        config = {
+            "plugins": [
+                RawJS(
+                    f"svgr({json5.dumps(options, quote_style=QuoteStyle.ALWAYS_SINGLE)})"
+                )
+            ]
+        }
+        imports = ["import svgr from 'vite-plugin-svgr';"]
+        dependencies = ["vite-plugin-svgr"]
 
-    for config_set in [reflex_vite_configs, ril_vite_configs]:
-        src_hash = hashlib.sha256(config_set["source"].read_bytes()).hexdigest()
+        _kwargs = {
+            "config": config,
+            "imports": imports,
+            "dependencies": dependencies,
+            **_kwargs,
+        }
 
-        if config_set["destination"].exists():
-            dst_hash = hashlib.sha256(
-                config_set["destination"].read_bytes()
-            ).hexdigest()
-        else:
-            dst_hash = None
+        super().__init__(**_kwargs)
 
-        if src_hash != dst_hash:
-            copy_file(config_set["source"], config_set["destination"])
+    @validate_call(config=ConfigDict(arbitrary_types_allowed=True))
+    def __add__(self, other: ViteConfigPlugin):
+        return SVGRPlugin(
+            config=other.config,
+            imports=self.imports + other.imports,
+            dependencies=self.dependencies + other.dependencies,
+            extra_configs=[*other.extra_configs, self.config],
+        )
 
-
-class SVGRPlugin(Plugin):
-    def get_frontend_development_dependencies(
-        self, **context: Unpack[CommonContext]
-    ) -> list[str] | set[str] | tuple[str, ...]:
-        return ["vite-plugin-svgr"]
-
-    def pre_compile(self, **context: Unpack[PreCompileContext]) -> None:
-        context["add_save_task"](_update_vite_config)
+    def __radd__(self, other: ViteConfigPlugin):
+        return self + other
