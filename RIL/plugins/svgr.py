@@ -41,11 +41,10 @@ class SVGRPlugin(ViteConfigPlugin):
     @validate_call(config=ConfigDict(arbitrary_types_allowed=True))
     def __add__(self, other: ViteConfigPlugin):
         return SVGRPlugin(
-            config=other.config,
+            config=self.config,
             imports=self.imports + other.imports,
             dependencies=self.dependencies + other.dependencies,
-            extra_configs=[*other.extra_configs, self.config],
+            extra_configs=[other.config, *other.extra_configs, *self.extra_configs],
         )
 
-    def __radd__(self, other: ViteConfigPlugin):
-        return self + other
+    __radd__ = __add__
