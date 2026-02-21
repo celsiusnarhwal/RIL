@@ -12,23 +12,8 @@ RIL adheres to [semantic versioning](https://semver.org/spec/v2.0.0.html).
 ### 🚨 Breaking Changes
 
 - The SVGR plugin now uses [riebecj/reflex-vite-config-plugin](https://github.com/riebecj/reflex-vite-config-plugin) 
-to modify the Vite configuration. If you were previously using reflex-vite-config-plugin in your project and will now need 
-to use both `SVGRPlugin` and a separate instance of `ViteConfigPlugin` at the same time, you can do so by adding 
-them together:
-
-    ```python
-    # rxconfig.py
-    
-    import reflex as rx
-    from RIL import SVGRPlugin
-    from vite_config_plugin import ViteConfigPlugin
-    
-    config = rx.Config(
-        app_name="my_app",
-        plugins=[SVGRPlugin() + ViteConfigPlugin({{...}})]  # the order in which they are added does not matter
-    )
-    ```
-  If you were not previously using relfex-vite-config-plugin in your project, nothing changes for you,.
+to modify the Vite configuration. If you were previously using reflex-vite-config-plugin in your project, code
+changes may be necessary; see the [documentation](https://ril.celsiusnarhwal.dev/plugins#svgr)
 
 ### Changed
 
@@ -113,7 +98,7 @@ component, now default to the icon name you pass to those components' initializa
 - The `variant` prop of the Phosphor component and the `phosphor.variant` setting now explicitly default to `"regular"`.
 - The props of the Phosphor context component now default to values of their corresponding `phosphor.*` settings.
 - The Material Symbols and Bootstrap Icons components now
-  use [@marella's Material Symbols SVG packages](https://github.com/marella/material-symbols)
+  use [marella/material-symbols](https://github.com/marella/material-symbols)
   and [the official Bootstrap Icons package](https://www.npmjs.com/package/bootstrap-icons), respectively.
 
 ### Fixed
