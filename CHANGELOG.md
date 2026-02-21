@@ -13,7 +13,7 @@ RIL adheres to [semantic versioning](https://semver.org/spec/v2.0.0.html).
 
 - The SVGR plugin now uses [riebecj/reflex-vite-config-plugin](https://github.com/riebecj/reflex-vite-config-plugin) 
 to modify the Vite configuration. If you were previously using reflex-vite-config-plugin in your project, code
-changes may be necessary; see the [documentation](https://ril.celsiusnarhwal.dev/plugins#svgr)
+changes may be necessary; see the [documentation](https://ril.celsiusnarhwal.dev/plugins#svgr).
 
 ### Changed
 
