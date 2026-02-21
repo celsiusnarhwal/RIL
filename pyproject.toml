@@ -38,7 +38,7 @@ docs = [
     "cairosvg>=2.7.1",
     "fontawesomepro>=6.6.0",
     "iconoclast>=3.0.1",
-    "mkdocs-material",
+    "mkdocs-material>=9.7.2",
     "pillow>=11.0.0",
 ]
 
@@ -53,7 +53,6 @@ docstring-code-format = false
 source = "scm"
 
 [tool.uv.sources]
-mkdocs-material = { git = "https://github.com/squidfunk/mkdocs-material-insiders" }
 artwall = { git = "https://github.com/celsiusnarhwal/artwall" }
 
 [[tool.uv.index]]

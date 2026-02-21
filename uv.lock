@@ -868,8 +868,8 @@ wheels = [
 
 [[package]]
 name = "mkdocs-material"
-version = "9.7.0+insiders.4.53.18"
-source = { git = "https://github.com/squidfunk/mkdocs-material-insiders#06effb1e543b9d1d9f96775319c741a7c0b61525" }
+version = "9.7.2"
+source = { registry = "https://fa.celsiusnarhwal.dev/simple" }
 dependencies = [
     { name = "babel" },
     { name = "backrefs" },
@@ -882,6 +882,10 @@ dependencies = [
     { name = "pygments" },
     { name = "pymdown-extensions" },
     { name = "requests" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/34/57/5d3c8c9e2ff9d66dc8f63aa052eb0bac5041fecff7761d8689fe65c39c13/mkdocs_material-9.7.2.tar.gz", hash = "sha256:6776256552290b9b7a7aa002780e25b1e04bc9c3a8516b6b153e82e16b8384bd", size = 4097818, upload-time = "2026-02-18T15:53:07.763Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/cd/19/d194e75e82282b1d688f0720e21b5ac250ed64ddea333a228aaf83105f2e/mkdocs_material-9.7.2-py3-none-any.whl", hash = "sha256:9bf6f53452d4a4d527eac3cef3f92b7b6fc4931c55d57766a7d87890d47e1b92", size = 9305052, upload-time = "2026-02-18T15:53:05.221Z" },
 ]
 
 [[package]]
@@ -1691,7 +1695,7 @@ docs = [
     { name = "cairosvg", specifier = ">=2.7.1" },
     { name = "fontawesomepro", specifier = ">=6.6.0" },
     { name = "iconoclast", specifier = ">=3.0.1" },
-    { name = "mkdocs-material", git = "https://github.com/squidfunk/mkdocs-material-insiders" },
+    { name = "mkdocs-material", specifier = ">=9.7.2" },
     { name = "pillow", specifier = ">=11.0.0" },
 ]
 
