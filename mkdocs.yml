@@ -147,6 +147,8 @@ extra:
     - icon: fontawesome/brands/python
       link: https://pypi.org/project/reflex-icon-library
       name: pypi.org/project/reflex-icon-library
+    - icon: fontawesome/brands/twitter
+      link: httpos://twitter.com/celsiusnarhwal
     - icon: simple/bluesky
       link: https://bsky.app/profile/celsiusnarhwal.dev
       name: bsky.app/profile/celsiusnarhwal.dev
