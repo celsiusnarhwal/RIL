@@ -40,7 +40,7 @@ class SVGComponent(Base):
         if not any((type(plugin) is SVGRPlugin for plugin in get_config().plugins)):
             raise ValueError(
                 f"You must add the Reflex Icon Library's SVGR plugin (RIL.plugins.SVGRPlugin) to your "
-                f"rxconfig.py to use {cls.__name__}."
+                f"rxconfig.py to use {cls.__name__}. https://ril.celsiusnarhwal.dev/plugins#svgr"
             )
 
         return super().create(*children, **props)

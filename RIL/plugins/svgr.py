@@ -7,6 +7,10 @@ __all__ = ["SVGRPlugin"]
 
 
 class SVGRPlugin(ViteConfigPlugin):
+    """
+    Enables SVGs from certain icon libraries to be imported as React components.
+    """
+
     def __init__(self, **_kwargs):
         options = {
             "svgrOptions": {
