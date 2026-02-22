@@ -66,7 +66,7 @@ class SimpleIconProps(Props):
     version: int | t.Literal["latest"] = Field(settings.simple.version, exclude=True)
     """
     The major version of Simple Icons to use for this icon. May be "latest" or an integer 
-    greater than or equal to 10.
+    greater than or equal to 5.
     
     Defaults to the value of the `simple.version` setting.
     """
