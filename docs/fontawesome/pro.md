@@ -156,7 +156,7 @@ Below are links to the relevant documentation for several popular CI providers:
 
 - [:fontawesome-brands-github: GitHub Actions](https://docs.github.com/en/actions/advanced-guides/caching-dependencies-to-speed-up-workflows)
 - [:fontawesome-brands-gitlab: GitLab CI/CD](https://docs.gitlab.com/ee/ci/caching/)
-- [:simple-circleci: CircleCI](https://circleci.com/docs/2.0/caching/)
+- [:simple-circleci: CircleCI](https://circleci.com/docs/guides/optimize/caching/)
 - [:simple-travisci: Travis CI](https://docs.travis-ci.com/user/caching/)
 - [:fontawesome-brands-bitbucket: Bitbucket Pipelines](https://support.atlassian.com/bitbucket-cloud/docs/cache-dependencies/)
 
