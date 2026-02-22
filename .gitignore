@@ -164,5 +164,4 @@ cython_debug/
 reflex_app/
 .web/
 .vercel/
-.pdm-build/
 .envrc
